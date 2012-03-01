@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo ">>  removing db's..."
+rm db/development.sqlite3
+rm db/test.sqlite3
+
+rake db:migrate
+
+echo ">>  seeding development db..."
+rake db:seed
+
+echo ">>  building test-db..."
+rake db:test:prepare
+
+echo ""
+echo ">>  everything done"
+echo ""

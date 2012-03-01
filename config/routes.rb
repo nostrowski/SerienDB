@@ -1,4 +1,6 @@
 SerienDB::Application.routes.draw do
+  resources :series
+
   resources :users
 
   # The priority is based upon order of creation:
