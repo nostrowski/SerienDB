@@ -8,3 +8,17 @@
 
 
 User.create(:login => "nijo", :password => 'test123', :email => 'spam@nijos.de', :firstname => 'Nils', :lastname => 'Ostrowski')
+
+Series.create(:name => 'Bones', :added_by => 1, :edit_by => 1)
+
+s = Season.new(:series_id => 1, :number => 1, :added_by => 1, :edit_by => 1)
+s.users << User.first
+s.save
+
+s = Season.new(:series_id => 1, :number => 2, :added_by => 1, :edit_by => 1)
+s.users << User.first
+s.save
+
+s = Season.new(:series_id => 1, :number => 3, :added_by => 1, :edit_by => 1)
+s.users << User.first
+s.save
