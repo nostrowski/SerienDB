@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <b>Added by:</b>
-  <%= @series.added_by %>
+  <b>Created:</b>
+  <%= @series.created_at.to_s(:de) %> (by <%= @series.fullname_of_creator %>)
 </p>
 
 <p>
-  <b>Edit by:</b>
-  <%= @series.edit_by %>
+  <b>Edit:</b>
+  <%= @series.updated_at.to_s(:de) %> (by <%= @series.fullname_of_editor %>)
 </p>
 
 

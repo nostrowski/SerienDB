@@ -13,8 +13,8 @@
 <% @series.each do |series| %>
   <tr>
     <td><%= series.name %></td>
-    <td><%= series.added_by %></td>
-    <td><%= series.edit_by %></td>
+    <td><%= series.fullname_of_creator %></td>
+    <td><%= series.fullname_of_editor %></td>
     <td><%= link_to 'Show', series %></td>
     <td><%= link_to 'Edit', edit_series_path(series) %></td>
     <td><%= link_to 'Destroy', series, confirm: 'Are you sure?', method: :delete %></td>
