@@ -10,4 +10,12 @@ class Series < ActiveRecord::Base
   def fullname_of_editor
     User.find(edit_by).fullname
   end
+  
+  def users_owning_series_complete
+    [@aUser ||= User.first]
+  end
+  
+  def users_owning_series_partly
+    [@aUser ||= User.first]
+  end
 end

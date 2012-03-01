@@ -15,6 +15,23 @@
   <%= @series.updated_at.to_s(:de) %> (by <%= @series.fullname_of_editor %>)
 </p>
 
+<table>
+	<tr>
+		<th></th>
+		<th>Besitze ich</th>
+		<th>Besitzer</th>
+	</tr>
+	
+	<% @series.seasons.each do |season| %>
+	<tr>
+		<td>Staffel <%= season.number %></td>
+		<td><%= check_box_tag "s#{season.number}", '0', false, :disabled => true %></td>
+		<td><% season.users.each do |user| %><%= user.fullname + ", "%><% end %></td>
+	</tr>
+	<% end %>
+	
+</table>
+
 
 <%= link_to 'Edit', edit_series_path(@series) %> |
 <%= link_to 'Back', series_index_path %>

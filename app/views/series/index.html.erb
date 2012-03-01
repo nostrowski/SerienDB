@@ -2,9 +2,10 @@
 
 <table>
   <tr>
+  	<th></th>
     <th>Name</th>
-    <th>Added by</th>
-    <th>Edit by</th>
+    <th>Komplettbesitzer</th>
+    <th>Teilbesitzer</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,12 +13,13 @@
 
 <% @series.each do |series| %>
   <tr>
+  	<td>+</td>
     <td><%= series.name %></td>
-    <td><%= series.fullname_of_creator %></td>
-    <td><%= series.fullname_of_editor %></td>
-    <td><%= link_to 'Show', series %></td>
-    <td><%= link_to 'Edit', edit_series_path(series) %></td>
-    <td><%= link_to 'Destroy', series, confirm: 'Are you sure?', method: :delete %></td>
+    <td><% series.users_owning_series_complete.each do |user| %><%= user.fullname + ", "%><% end %></td>
+    <td>(<% series.users_owning_series_partly.each do |user| %><%= user.fullname + ", "%><% end %>)</td>
+    <td><%= link_to 'Details', series %></td>
+    <td><%= link_to 'Bearbeiten', edit_series_path(series) %></td>
+    <td><%= link_to 'Löschen', series, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
