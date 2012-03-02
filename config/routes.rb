@@ -1,4 +1,8 @@
 SerienDB::Application.routes.draw do
+  get "session/login"
+
+  get "session/logout"
+
   resources :series
 
   resources :users
