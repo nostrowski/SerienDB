@@ -1,4 +1,4 @@
-class AddTableOwners < ActiveRecord::Migration
+class CreateSeasonsUsers < ActiveRecord::Migration
   def change
     create_table :seasons_users, :id => false do |t|
       t.integer :season_id
