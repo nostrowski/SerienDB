@@ -24,6 +24,26 @@ class SeriesController < ApplicationController
     end
   end
   
+  def season_add
+    series = Series.find(params[:id])
+    new_number = 0
+    series.seasons.each do |season|
+      new_number = season.number if new_number < season.number
+    end
+    Season.create(:series_id => series.id, :number => new_number+1)
+    redirect_to :controller => "series", :action => "show", :id => series.id, notice: "Staffel erfolgreich erzeugt!"
+  end
+  
+  def season_remove
+    series = Series.find(params[:id])
+    delete_number = 0
+    series.seasons.each do |season|
+      delete_number = season.number if delete_number < season.number
+    end
+    series.seasons.find_by_number(delete_number).destroy
+    redirect_to :controller => "series", :action => "show", :id => series.id, notice: "Staffel erfolgreich entfernt!"
+  end
+  
   def save
     series = Series.find(params[:id])
     series.seasons.each do |season|

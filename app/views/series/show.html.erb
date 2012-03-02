@@ -35,5 +35,8 @@
 </table>
 <%= submit_tag "Speichern" %>
 </form>
+<%= link_to 'Staffel hinzufügen', :controller => 'series', :action => 'season_add', :id => @series.id, :mothod => 'puts' %><br />
+<%= link_to 'Staffel entfernen', :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %><br />
+<!-- Es sollte MUSS noch darauf geprüft werden, ob andere benutzer noch eine Staffel besitzen, bevor sie gelöscht wird -->
 <%= link_to 'Edit', edit_series_path(@series) %> |
 <%= link_to 'Back', series_index_path %>
