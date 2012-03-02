@@ -23,6 +23,15 @@ class SeriesController < ApplicationController
       format.json { render json: @series }
     end
   end
+  
+  def save
+    series = Series.find(params[:id])
+    series.seasons.each do |season|
+      season.users.delete(current_user)
+      season.users << current_user if params["s#{season.number}"]
+    end
+    redirect_to :controller => "series", :action => "show", :id => series.id, notice: "Staffel erfolgreich gespeichert!"
+  end
 
   # GET /series/new
   # GET /series/new.json
