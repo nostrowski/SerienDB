@@ -2,6 +2,8 @@ SerienDB::Application.routes.draw do
   get "session/login"
 
   get "session/logout"
+  
+  post "session/create"
 
   resources :series
 
