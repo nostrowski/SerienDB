@@ -1,4 +1,7 @@
 class SeriesController < ApplicationController
+  
+  #before_filter :validate_session
+  
   # GET /series
   # GET /series.json
   def index
