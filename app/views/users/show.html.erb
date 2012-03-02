@@ -25,6 +25,11 @@
   <%= @user.lastname %>
 </p>
 
+<p>
+  <b>Admin:</b>
+  <%= check_box_tag "admin", '0', @user.admin?, :disabled => true %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+
+<% if current_user.admin? || @user == current_user then %><%= link_to 'Edit', edit_user_path(@user) %> |<% end %>
 <%= link_to 'Back', users_path %>

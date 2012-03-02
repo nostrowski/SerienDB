@@ -10,7 +10,9 @@
       </ul>
     </div>
   <% end %>
-
+  
+  <% if @user == current_user || current_user.admin? then %>
+  
   <div class="field">
     <%= f.label :login %><br />
     <%= f.text_field :login %>
@@ -23,6 +25,9 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
+  
+  	<% if current_user.admin? then %>
+  
   <div class="field">
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname %>
@@ -31,7 +36,16 @@
     <%= f.label :lastname %><br />
     <%= f.text_field :lastname %>
   </div>
+  <div class="field">
+    <%= f.label :is_admin %><br />
+    <%= f.check_box :is_admin %>
+  </div>
+  
+  	<% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
+  
+  <% end %>
 <% end %>

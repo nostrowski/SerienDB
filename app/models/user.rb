@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   def password_valid? password_to_check
     password == password_to_check
   end
+  
+  def admin?
+    is_admin
+  end
 end

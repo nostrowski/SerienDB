@@ -7,6 +7,7 @@
     <th>Email</th>
     <th>Firstname</th>
     <th>Lastname</th>
+    <th>Admin</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,13 +20,14 @@
     <td><%= user.email %></td>
     <td><%= user.firstname %></td>
     <td><%= user.lastname %></td>
+    <td><%= check_box_tag "admin", '0', user.admin?, :disabled => true %></td>
     <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) if user == current_user || current_user.admin? %></td>
+    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete if current_user.admin? %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path if current_user.admin? %>

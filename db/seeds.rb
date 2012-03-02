@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(:login => "nijo", :password => 'test123', :email => 'spam@nijos.de', :firstname => 'Nils', :lastname => 'Ostrowski')
+User.create(:login => "nijo", :password => 'test123', :email => 'spam@nijos.de', :firstname => 'Nils', :lastname => 'Ostrowski', :is_admin => true)
+User.create(:login => "alex", :password => 'test123', :email => 'alex@nijos.de', :firstname => 'Alex', :lastname => 'Nassauer')
 
 Series.create(:name => 'Bones', :added_by => 1, :edit_by => 1)
 
