@@ -10,11 +10,13 @@ class Series < ActiveRecord::Base
   end
   
   def users_owning_series_complete
-    [@aUser ||= User.first]
+    build_owners_lists unless @owners_complete
+    return @owners_complete
   end
   
   def users_owning_series_partly
-    [@aUser ||= User.first]
+    build_ownlers_lists unless @owners_partly
+    return @owners_partly
   end
   
   def update_editor!
@@ -55,5 +57,23 @@ class Series < ActiveRecord::Base
       season.users << User.current if params["s#{season.number}"]
     end
     update_editor!
+  end
+  
+  private
+  
+  def build_owners_lists
+    @owners_complete = Array.new
+    @owners_partly = Array.new
+    
+    User.all.each do |user|
+      @owners_complete << user
+      seasons.each do |season|
+        unless user.seasons.include?(season) then
+          @owners_complete.delete(user)
+          @owners_partly << user
+          break
+        end
+      end
+    end
   end
 end
