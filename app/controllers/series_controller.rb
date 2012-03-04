@@ -52,6 +52,7 @@ class SeriesController < ApplicationController
   # GET /series/new.json
   def new
     @series = Series.new
+    @series.added_by = User.current.id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -71,7 +72,7 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       if @series.save
-        format.html { redirect_to @series, notice: 'Series was successfully created.' }
+        format.html { redirect_to @series, notice: 'Serie wurde erfolgreich erstellt!' }
         format.json { render json: @series, status: :created, location: @series }
       else
         format.html { render action: "new" }

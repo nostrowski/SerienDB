@@ -62,6 +62,8 @@ class Series < ActiveRecord::Base
   private
   
   def build_owners_lists
+    #TODO: falsche anzeigen wenn die serie keine staffeln besitzt (alle user als komplettbesitzer)
+    #TODO: falsche anzeige wenn ein user keine staffel besitzt (wird dennoch als teilbesitzer angezeigt)
     @owners_complete = Array.new
     @owners_partly = Array.new
     

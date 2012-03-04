@@ -15,14 +15,8 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :added_by %><br />
-    <%= f.number_field :added_by %>
-  </div>
-  <div class="field">
-    <%= f.label :edit_by %><br />
-    <%= f.number_field :edit_by %>
-  </div>
+  <%= f.hidden_field :added_by %>
+  <%= f.hidden_field :edit_by, :value => User.current.id %>
   <div class="actions">
     <%= f.submit %>
   </div>
