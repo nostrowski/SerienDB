@@ -31,5 +31,5 @@
 </p>
 
 
-<% if current_user.admin? || @user == current_user then %><%= link_to 'Edit', edit_user_path(@user) %> |<% end %>
+<% if User.current.admin? || @user == User.current then %><%= link_to 'Edit', edit_user_path(@user) %> |<% end %>
 <%= link_to 'Back', users_path %>

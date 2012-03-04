@@ -22,12 +22,12 @@
     <td><%= user.lastname %></td>
     <td><%= check_box_tag "admin", '0', user.admin?, :disabled => true %></td>
     <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) if user == current_user || current_user.admin? %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete if current_user.admin? %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) if user == User.current || User.current.admin? %></td>
+    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete if User.current.admin? %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path if current_user.admin? %>
+<%= link_to 'New User', new_user_path if User.current.admin? %>

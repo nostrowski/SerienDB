@@ -27,8 +27,8 @@
 	<% @series.seasons.each do |season| %>
 	<tr>
 		<td>Staffel <%= season.number %></td>
-		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(current_user.fullname) %></td>
-		<td><% season.users_fullname.each do |user_fullname| %><%= user_fullname + ", " unless user_fullname == current_user.fullname %><% end %></td>
+		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
+		<td><% season.users_fullname.each do |user_fullname| %><%= user_fullname + ", " unless user_fullname == User.current.fullname %><% end %></td>
 	</tr>
 	<% end %>
 	

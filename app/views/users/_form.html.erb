@@ -11,7 +11,7 @@
     </div>
   <% end %>
   
-  <% if @user == current_user || current_user.admin? then %>
+  <% if @user == User.current || User.current.admin? then %>
   
   <div class="field">
     <%= f.label :login %><br />
@@ -26,7 +26,7 @@
     <%= f.text_field :email %>
   </div>
   
-  	<% if current_user.admin? then %>
+  	<% if User.current.admin? then %>
   
   <div class="field">
     <%= f.label :firstname %><br />
