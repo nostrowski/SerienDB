@@ -28,16 +28,16 @@ class SeriesController < ApplicationController
     series = Series.find(params[:id])
     
     series.add_season!
-    redirect_to :controller => "series", :action => "show", :id => series.id, notice: "Staffel erfolgreich erzeugt!"
+    redirect_to series, notice: "Staffel erfolgreich erzeugt!"
   end
   
   def season_remove
     series = Series.find(params[:id])
     
     if series.remove_last_season! then
-      redirect_to :controller => "series", :action => "show", :id => series.id, notice: "Staffel erfolgreich entfernt!"
+      redirect_to series, notice: "Staffel erfolgreich entfernt!"
     else
-      redirect_to :controller => "series", :action => "show", :id => series.id, warning: "Staffel enth&auml;lt noch Besitzer! L&ouml;schen nicht m&ouml;glich!"
+      redirect_to series, alert: "Staffel enth&auml;lt noch Besitzer! L&ouml;schen nicht m&ouml;glich!"
     end
   end
   
@@ -45,7 +45,7 @@ class SeriesController < ApplicationController
     series = Series.find(params[:id])
     
     series.update_selected_seasons! params
-    redirect_to :controller => "series", :action => "show", :id => series.id, notice: "Staffel erfolgreich gespeichert!"
+    redirect_to series, notice: "Staffel erfolgreich gespeichert!"
   end
 
   # GET /series/new
@@ -88,7 +88,7 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       if @series.update_attributes(params[:series])
-        format.html { redirect_to @series, notice: 'Series was successfully updated.' }
+        format.html { redirect_to @series, notice: 'Serie erfolgreich aktualisiert!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

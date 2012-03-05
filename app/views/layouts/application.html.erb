@@ -7,6 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+<% if flash[:notice] %>
+<fieldset style="border-color: green">
+	<legend>Notice</legend>
+	<%= flash[:notice] %>
+</fieldset>
+<% end %>
+<% if flash[:alert] %>
+<fieldset style="border-color: red">
+	<legend>Warning</legend>
+	<%= flash[:alert] %>
+</fieldset>
+<% end %>
 
 <%= yield %>
 

@@ -42,7 +42,7 @@ class Series < ActiveRecord::Base
     
     season = seasons.find_by_number(delete_number)
     
-    if season.users_fullname.count == 0 || (season.users_fullname.count == 1 && season.users_fullname.include?(current_user.fullname)) then
+    if season.users_fullname.count == 0 || (season.users_fullname.count == 1 && season.users_fullname.include?(User.current.fullname)) then
       season.destroy
       update_editor!
       return true

@@ -9,12 +9,15 @@ class SessionController < ApplicationController
           new_session = Session.create(:user_id => @user.id)
           session[:s_id] = new_session.id
           session[:user_id] = @user.id
-          redirect_to :controller => "series", notice: "Login erfolgreich!"
+          
+          redirect_to Series, notice: "Login erfolgreich!"
         else
-          redirect_to :controller => "session", :action => "login", warning: "Passwort nicht korrekt!"
+          flash[:alert] = "Passwort nicht korrekt!"
+          render 'login'
         end
       else
-        redirect_to :controller => "session", :action => "login", warning: "Login-Name nicht korrekt!"
+        flash[:alert] = "Login-Name nicht korrekt!"
+        render 'login'
       end
     end
   end
@@ -23,6 +26,7 @@ class SessionController < ApplicationController
     Session.find(session[:s_id]).destroy if session[:s_id]
     session[:s_id] = nil
     session[:user_id] = nil
-    redirect_to :controller => "session", :action => "login", notice: "Logout erfolgreich!"
+    flash[:notice] = "Logout erfolgreich!"
+    render 'login'
   end
 end
