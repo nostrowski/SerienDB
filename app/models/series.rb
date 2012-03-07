@@ -39,16 +39,25 @@ class Series < ActiveRecord::Base
     seasons.each do |season|
       delete_number = season.number if delete_number < season.number
     end
-    
     season = seasons.find_by_number(delete_number)
-    
-    if season.users_fullname.count == 0 || (season.users_fullname.count == 1 && season.users_fullname.include?(User.current.fullname)) then
+    if season.removeable? then
       season.destroy
       update_editor!
       return true
     else
       return false
     end
+  end
+  
+  def removeable?
+    removeable = true
+    seasons.each do |season|
+      unless season.removeable? then
+        removeable = false
+        break
+      end
+    end
+    return removeable
   end
   
   def update_selected_seasons! params

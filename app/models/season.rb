@@ -10,4 +10,12 @@ class Season < ActiveRecord::Base
     end
     return @users_fullname
   end
+  
+  def removeable?
+    if users.count == 0 || (users.count == 1 && users.include?(User.current)) then
+      return true
+    else
+      return false
+    end
+  end
 end

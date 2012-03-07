@@ -19,7 +19,7 @@
     <td>(<%= gen_users_fullname_comma_list series.users_owning_series_partly %>)</td>
     <td><%= link_to 'Details', series %></td>
     <td><%= link_to 'Bearbeiten', edit_series_path(series) %></td>
-    <td><%= link_to 'Löschen', series, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Löschen', series, confirm: 'Sind Sie sicher?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

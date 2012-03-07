@@ -101,11 +101,14 @@ class SeriesController < ApplicationController
   # DELETE /series/1.json
   def destroy
     @series = Series.find(params[:id])
-    @series.destroy
-
-    respond_to do |format|
-      format.html { redirect_to series_index_url }
-      format.json { head :no_content }
+    if @series.removeable? then
+      @series.seasons.each do |season|
+        season.destroy
+      end
+      @series.destroy
+      redirect_to Series, notice: "Serie erfolgreich entfernt!"
+    else
+      redirect_to Series, alert: "Entfernen der Serie nicht erlaubt! Staffeln haben noch Besitzer."
     end
   end
 end
