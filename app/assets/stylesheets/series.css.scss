@@ -1,3 +1,33 @@
 // Place all the styles related to the Series controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#users_complete {
+  color:green;
+}
+
+#users_partly {
+  color:orange;
+}
+
+.header {
+  width:auto;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.header td {
+    background-color: white;
+    border: none;
+    padding-right:20px;
+}
+
+.header h1 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.header td#first-cell {
+  text-align:right;
+}

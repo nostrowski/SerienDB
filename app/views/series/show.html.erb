@@ -1,21 +1,15 @@
-<p>
-  <b>Name:</b>
-  <%= @series.name %>
-</p>
+<table class="header">
+	<tr>
+		<td id="first-cell"><h1><%= @series.name %></h1><%= link_to 'Bearbeiten', edit_series_path(@series) %></td>
+		<td><b>Erstellt:</b><br /><%= @series.created_at.to_s(:de) %> (by <%= @series.fullname_of_creator %>)</td>
+		<td><b>zuletzt bearbeitet:</b><br /><%= @series.updated_at.to_s(:de) %> (by <%= @series.fullname_of_editor %>)</td>
+	</tr>
+</table>
 
-<p>
-  <b>Created:</b>
-  <%= @series.created_at.to_s(:de) %> (by <%= @series.fullname_of_creator %>)
-</p>
-
-<p>
-  <b>Edit:</b>
-  <%= @series.updated_at.to_s(:de) %> (by <%= @series.fullname_of_editor %>)
-</p>
 
 <%= form_tag :controller => "series", :action => "save", :id => @series.id %>
 
-<table>
+<table class="content">
 	<tr>
 		<th></th>
 		<th>Besitze ich</th>
@@ -26,16 +20,23 @@
 	<tr>
 		<td>Staffel <%= season.number %></td>
 		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
-		<!-- <td><% season.users_fullname.each do |user_fullname| %><%= user_fullname + ", " unless user_fullname == User.current.fullname %><% end %></td> -->
 		<td><%= gen_users_fullname_comma_list season.users %></td>
 	</tr>
 	<% end %>
 	
+	<tr>
+		<td>
+			<%= link_to 'Staffel hinzufügen', :controller => 'series', :action => 'season_add', :id => @series.id, :mothod => 'puts' %><br />
+			<%= link_to 'Staffel entfernen', :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %>
+		</td>
+		<td>
+			<%= submit_tag "Speichern" %>
+			</form>
+		</td>
+		<td></td>
+	</tr>
+	
 </table>
-<%= submit_tag "Speichern" %>
-</form>
-<%= link_to 'Staffel hinzufügen', :controller => 'series', :action => 'season_add', :id => @series.id, :mothod => 'puts' %><br />
-<%= link_to 'Staffel entfernen', :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %><br />
+
+
 <!-- Es sollte MUSS noch darauf geprüft werden, ob andere benutzer noch eine Staffel besitzen, bevor sie gelöscht wird -->
-<%= link_to 'Edit', edit_series_path(@series) %> |
-<%= link_to 'Back', series_index_path %>

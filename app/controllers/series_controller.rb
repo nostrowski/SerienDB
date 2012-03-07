@@ -5,7 +5,7 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-    @series = Series.all
+    @series = Series.all(:order => "name")
 
     respond_to do |format|
       format.html # index.html.erb

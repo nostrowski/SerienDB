@@ -30,3 +30,39 @@
 	float: left;
 	padding-right: 10px;
 }
+
+table {
+	width: 100%;
+}
+
+td {
+	background:none;
+	border:none;
+	width:auto;
+}
+
+#title h1 {
+	padding:0px;
+	margin:0px;
+	margin-top:20px;
+	margin-bottom:20px;
+	font-size:26pt;
+}
+
+#title td {
+	padding-bottom:20px;
+}
+
+.content th {
+	background-color: #333333;
+	color: #ffffff;
+}
+
+.content td {
+	background-color: #ededed;
+	border: 1px solid #cccccc;
+}
+
+.content tr:hover td {
+	background-color: #cccccc;
+}

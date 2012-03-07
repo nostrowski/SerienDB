@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SerienDB</title>
+  <title>SerienDB-RAN</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<table>
 	
-<hr />
-<%= render :partial => 'layouts/mainmenu' %>
-<hr />
+<tr id="title">
+	<td><h1>SerienDB-RAN</h1></td>
+	<td>
+		<%= render :partial => 'layouts/notice' %>
+	</td>
+</tr>
 
-<% if flash[:notice] %>
-<fieldset style="border-color: green">
-	<legend>Notice</legend>
-	<%= flash[:notice] %>
-</fieldset>
-<% end %>
-<% if flash[:alert] %>
-<fieldset style="border-color: red">
-	<legend>Warning</legend>
-	<%= flash[:alert] %>
-</fieldset>
-<% end %>
+<tr>
+	<td colspan="2">
+		<fieldset>
+			<legend>Menü</legend>
+			<%= render :partial => 'layouts/mainmenu' %>
+		</fieldset>
+	</td>
+</tr>
 
+<tr>
+	<td colspan="2">
 <%= yield %>
+	</td>
+</tr>
+
+</table>
 
 </body>
 </html>

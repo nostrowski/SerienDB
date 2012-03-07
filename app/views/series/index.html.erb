@@ -1,25 +1,21 @@
 <h1>Listing series</h1>
 
-<table>
+<table class="content">
   <tr>
-  	<th></th>
     <th>Name</th>
     <th>Komplettbesitzer</th>
     <th>Teilbesitzer</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @series.each do |series| %>
   <tr>
-  	<td>+</td>
     <td><%= series.name %></td>
-    <td><%= gen_users_fullname_comma_list series.users_owning_series_complete %></td>
-    <td>(<%= gen_users_fullname_comma_list series.users_owning_series_partly %>)</td>
-    <td><%= link_to 'Details', series %></td>
-    <td><%= link_to 'Bearbeiten', edit_series_path(series) %></td>
-    <td><%= link_to 'Löschen', series, confirm: 'Sind Sie sicher?', method: :delete %></td>
+    <td id="users_complete"><%= gen_users_fullname_comma_list series.users_owning_series_complete %></td>
+    <td id="users_partly"><%= gen_users_fullname_comma_list series.users_owning_series_partly %></td>
+    <td><%= link_to 'Details', series %>
+    <%= link_to 'Bearbeiten', edit_series_path(series) %>
+    <%= link_to 'Löschen', series, confirm: 'Sind Sie sicher?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
