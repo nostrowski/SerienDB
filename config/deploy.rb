@@ -12,14 +12,41 @@ role :web, "192.168.2.82"     # Your HTTP server, Apache/etc
 role :app, "192.168.2.82"     # This may be the same as your `Web` server
 role :db,  "192.168.2.82", :primary => true # This is where Rails migrations will run
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+ssh_options[:forward_agent] = true
+set :deploy_via, :remote_cache
 
-# If you are using Passenger mod_rails uncomment this:
+after "deploy:finalize_update", "deploy:custom_deployment"
+
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
+  desc "Things to do after deployment"
+  task :custom_deployment do
+    set_permissions
+    stop_delayed_job
+    start_delayed_job
+  end
+
+  desc "Set permissions"
+  task :set_permissions do
+    run "chown -R nobody:nogroup /u/apps/"
+  end
+
+  desc "Stop delayed_job process"
+  task :stop_delayed_job do
+    run "cd #{current_path}; RAILS_ENV=production script/delayed_job stop"
+  end
+
+  desc "Start delayed_job process"
+  task :start_delayed_job do
+    run "cd #{current_path}; RAILS_ENV=production script/delayed_job start"
+  end
+
+  desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+ 
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
   end
 end
