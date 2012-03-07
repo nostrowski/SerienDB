@@ -21,23 +21,11 @@ namespace :deploy do
   desc "Things to do after deployment"
   task :custom_deployment do
     set_permissions
-    stop_delayed_job
-    start_delayed_job
   end
 
   desc "Set permissions"
   task :set_permissions do
     run "chown -R nobody:nogroup /u/apps/"
-  end
-
-  desc "Stop delayed_job process"
-  task :stop_delayed_job do
-    run "cd #{current_path}; RAILS_ENV=production script/delayed_job stop"
-  end
-
-  desc "Start delayed_job process"
-  task :start_delayed_job do
-    run "cd #{current_path}; RAILS_ENV=production script/delayed_job start"
   end
 
   desc "Restarting mod_rails with restart.txt"
