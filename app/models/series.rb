@@ -62,20 +62,21 @@ class Series < ActiveRecord::Base
   private
   
   def build_owners_lists
-    #TODO: falsche anzeigen wenn die serie keine staffeln besitzt (alle user als komplettbesitzer)
-    #TODO: falsche anzeige wenn ein user keine staffel besitzt (wird dennoch als teilbesitzer angezeigt)
     @owners_complete = Array.new
     @owners_partly = Array.new
     
     User.all.each do |user|
-      @owners_complete << user
+      has_a_season = false
+      has_a_season_not = false
       seasons.each do |season|
-        unless user.seasons.include?(season) then
-          @owners_complete.delete(user)
-          @owners_partly << user
-          break
+        if user.seasons.include?(season) then
+          has_a_season = true
+        else
+          has_a_season_not = true
         end
       end
+      @owners_complete << user if has_a_season == true && has_a_season_not == false
+      @owners_partly << user if has_a_season == true && has_a_season_not == true
     end
   end
 end
