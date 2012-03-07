@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
   
   def set_current_user
-    User.set_current User.find(session[:user_id])
+    User.set_current User.find(session[:user_id]) if session[:user_id]
   end
   
   def validate_session

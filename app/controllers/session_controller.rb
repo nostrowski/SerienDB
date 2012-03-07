@@ -26,6 +26,7 @@ class SessionController < ApplicationController
     Session.find(session[:s_id]).destroy if session[:s_id]
     session[:s_id] = nil
     session[:user_id] = nil
+    User.set_current nil
     flash[:notice] = "Logout erfolgreich!"
     render 'login'
   end
