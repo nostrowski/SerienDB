@@ -15,8 +15,8 @@
   <tr>
   	<td>+</td>
     <td><%= series.name %></td>
-    <td><% series.users_owning_series_complete.each do |user| %><%= user.fullname + ", "%><% end %></td>
-    <td>(<% series.users_owning_series_partly.each do |user| %><%= user.fullname + ", "%><% end %>)</td>
+    <td><%= gen_users_fullname_comma_list series.users_owning_series_complete %></td>
+    <td>(<%= gen_users_fullname_comma_list series.users_owning_series_partly %>)</td>
     <td><%= link_to 'Details', series %></td>
     <td><%= link_to 'Bearbeiten', edit_series_path(series) %></td>
     <td><%= link_to 'Löschen', series, confirm: 'Are you sure?', method: :delete %></td>

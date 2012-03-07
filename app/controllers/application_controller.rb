@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper_method :validate_session
+  helper_method :validate_session, :gen_users_fullname_comma_list
   before_filter :set_current_user, :validate_session, :except => [:login]
   
   Time::DATE_FORMATS[:de] = "%d.%m.%y %H:%M"
@@ -17,6 +17,15 @@ class ApplicationController < ActionController::Base
       flash[:warning] = "Nicht eingeloggt!"
       redirect_to :controller => "session", :action => "login"
     end
+  end
+  
+  def gen_users_fullname_comma_list users_list
+    result = ""
+    users_list.each do |user|
+      result += user.fullname
+      result += ", " unless user == users_list.last
+    end
+    return result
   end
 
 end

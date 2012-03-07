@@ -26,7 +26,8 @@
 	<tr>
 		<td>Staffel <%= season.number %></td>
 		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
-		<td><% season.users_fullname.each do |user_fullname| %><%= user_fullname + ", " unless user_fullname == User.current.fullname %><% end %></td>
+		<!-- <td><% season.users_fullname.each do |user_fullname| %><%= user_fullname + ", " unless user_fullname == User.current.fullname %><% end %></td> -->
+		<td><%= gen_users_fullname_comma_list season.users %></td>
 	</tr>
 	<% end %>
 	
