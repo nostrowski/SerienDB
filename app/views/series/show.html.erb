@@ -13,7 +13,7 @@
 	<tr>
 		<th></th>
 		<th>Besitze ich</th>
-		<th>andere Besitzer</th>
+		<th>alle Besitzer</th>
 	</tr>
 	
 	<% @series.seasons.each do |season| %>
@@ -24,7 +24,7 @@
 	</tr>
 	<% end %>
 	
-	<tr>
+	<tr class="last">
 		<td>
 			<%= link_to 'Staffel hinzufügen', :controller => 'series', :action => 'season_add', :id => @series.id, :mothod => 'puts' %><br />
 			<%= link_to 'Staffel entfernen', :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %>

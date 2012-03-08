@@ -31,3 +31,14 @@
 .header td#first-cell {
   text-align:right;
 }
+
+.last td {
+  background:none;
+  border:none;
+  vertical-align:top;
+}
+
+tr:hover .last td {
+  background:none;
+  border:none;
+}
