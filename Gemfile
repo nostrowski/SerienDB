@@ -36,6 +36,9 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem "comma", "~> 3.0"
+gem "fastercsv"
+
 group :test, :development do
   gem 'sqlite3'
 

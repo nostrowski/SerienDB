@@ -21,6 +21,24 @@ class Series < ActiveRecord::Base
     return @owners_partly
   end
   
+  def loginnames_owning_series_complete
+    result = ""
+    users_owning_series_complete.each do |user|
+      result += user.login
+      result += " "
+    end
+    return result
+  end
+  
+  def loginnames_owning_series_partly
+    result = ""
+    users_owning_series_partly.each do |user|
+      result += user.login
+      result += " "
+    end
+    return result
+  end
+  
   def update_editor!
     self.updated_at = Time.now
     self.edit_by = User.current.id
@@ -89,5 +107,14 @@ class Series < ActiveRecord::Base
       @owners_complete << user if has_a_season == true && has_a_season_not == false
       @owners_partly << user if has_a_season == true && has_a_season_not == true
     end
+  end
+  
+# ===============
+# = CSV support =
+# ===============
+  comma do
+    name
+    loginnames_owning_series_complete 'Komplettbesitzer'
+    loginnames_owning_series_partly 'Teilbesitzer'
   end
 end

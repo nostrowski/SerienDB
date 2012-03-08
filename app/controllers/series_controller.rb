@@ -4,12 +4,14 @@ class SeriesController < ApplicationController
   
   # GET /series
   # GET /series.json
+  # GET /series.csv
   def index
     @series = Series.all(:order => "name")
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @series }
+      format.csv { render :csv => @series }
     end
   end
 
