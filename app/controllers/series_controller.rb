@@ -11,7 +11,7 @@ class SeriesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @series }
-      format.csv { render :csv => @series }
+      format.csv { render :csv => @series,  :col_sep => ';' }
     end
   end
 
