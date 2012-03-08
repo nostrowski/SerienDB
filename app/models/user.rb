@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class User < ActiveRecord::Base
   has_and_belongs_to_many :seasons
   has_many :sessions
@@ -14,8 +16,8 @@ class User < ActiveRecord::Base
     @fullname ||= (firstname + " " + lastname)
   end
   
-  def password_valid? password_to_check
-    password == password_to_check
+  def password_valid? clear_password
+    password == Digest::SHA1.hexdigest(clear_password)
   end
   
   def admin?

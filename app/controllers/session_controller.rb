@@ -13,11 +13,11 @@ class SessionController < ApplicationController
           redirect_to Series, notice: "Login erfolgreich!"
         else
           flash[:alert] = "Passwort nicht korrekt!"
-          render 'login'
+          redirect_to :action => 'login'
         end
       else
         flash[:alert] = "Login-Name nicht korrekt!"
-        render 'login'
+        redirect_to :action => 'login'
       end
     end
   end
@@ -28,6 +28,6 @@ class SessionController < ApplicationController
     session[:user_id] = nil
     User.set_current nil
     flash[:notice] = "Logout erfolgreich!"
-    render 'login'
+    redirect_to :action => 'login'
   end
 end
