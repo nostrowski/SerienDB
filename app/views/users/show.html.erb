@@ -1,30 +1,29 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @user.fullname %></h1>
 
 <p>
-  <b>Login:</b>
+  <b>Login-Name:</b>
   <%= @user.login %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b>E-Mail Adresse:</b>
   <%= @user.email %>
 </p>
 
 <p>
-  <b>Firstname:</b>
+  <b>Vorname:</b>
   <%= @user.firstname %>
 </p>
 
 <p>
-  <b>Lastname:</b>
+  <b>Nachname:</b>
   <%= @user.lastname %>
 </p>
 
 <p>
-  <b>Admin:</b>
+  <b>Admin?</b>
   <%= check_box_tag "admin", '0', @user.admin?, :disabled => true %>
 </p>
 
 
-<% if User.current.admin? || @user == User.current then %><%= link_to 'Edit', edit_user_path(@user) %> |<% end %>
-<%= link_to 'Back', users_path %>
+<% if User.current.admin? || @user == User.current then %><%= link_to 'Bearbeiten', edit_user_path(@user) %><% end %>

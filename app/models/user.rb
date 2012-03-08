@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :seasons
   has_many :sessions
   
+  # validates_confirmation_of :password_clear
+  # attr_accessible :password_clear, :password_clear_confirmation
+  # attr_accessor :password_clear, :password_clear_confirmation
+  
   def self.set_current user
     @current_user = user
   end
@@ -22,5 +26,24 @@ class User < ActiveRecord::Base
   
   def admin?
     is_admin
+  end
+  
+  def update_attributes params
+    had_an_error = false
+    unless params[:password] == params[:password_confirmation] then
+      errors.add(:password, ': "Passwort" und "Passwort wiederholen" nicht identisch!')
+      had_an_error = true
+    else
+      self.password = Digest::SHA1.hexdigest(params[:password]) unless params[:password] == ""
+    end
+    
+    self.login = params[:login] if params[:login]
+    self.login = params[:login] if params[:login]
+    self.firstname = params[:firstname] if params[:firstname]
+    self.lastname = params[:lastname] if params[:lastname]
+    self.is_admin = params[:is_admin] if params[:is_admin]
+    
+    self.save unless had_an_error
+    return !had_an_error
   end
 end
