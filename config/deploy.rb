@@ -8,9 +8,9 @@ set :user, "root"
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "192.168.2.82"     # Your HTTP server, Apache/etc
-role :app, "192.168.2.82"     # This may be the same as your `Web` server
-role :db,  "192.168.2.82", :primary => true # This is where Rails migrations will run
+role :web, "83.169.23.219"     # Your HTTP server, Apache/etc
+role :app, "83.169.23.219"     # This may be the same as your `Web` server
+role :db,  "83.169.23.219", :primary => true # This is where Rails migrations will run
 
 ssh_options[:forward_agent] = true
 set :deploy_via, :remote_cache
