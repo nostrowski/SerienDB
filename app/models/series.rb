@@ -1,6 +1,8 @@
 class Series < ActiveRecord::Base
   has_many :seasons
   
+  validates_uniqueness_of :name, :case_sensitive => false
+  
   def fullname_of_creator
     User.find(added_by).fullname
   end

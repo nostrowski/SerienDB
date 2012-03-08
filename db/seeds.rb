@@ -10,6 +10,7 @@ require 'digest/sha1'
 
 User.create(:login => "nijo", :password => Digest::SHA1.hexdigest('test123'), :email => 'spam@nijos.de', :firstname => 'Nils', :lastname => 'Ostrowski', :is_admin => true)
 User.create(:login => "alex", :password => Digest::SHA1.hexdigest('test123'), :email => 'alex@nijos.de', :firstname => 'Alex', :lastname => 'Nassauer')
+User.create(:login => "rafi", :password => Digest::SHA1.hexdigest('test123'), :email => 'rw@nijos.de', :firstname => 'Rafael', :lastname => 'Wunderwald')
 
 Series.create(:name => 'Bones', :added_by => 1, :edit_by => 1)
 
