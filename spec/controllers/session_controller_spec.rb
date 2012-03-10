@@ -4,6 +4,8 @@ describe SessionController do
 
   describe "GET 'login'" do
     it "returns http success" do
+      pending
+      
       get 'login'
       response.should be_success
     end
@@ -11,6 +13,8 @@ describe SessionController do
 
   describe "GET 'logout'" do
     it "returns http success" do
+      pending
+      
       get 'logout'
       response.should be_success
     end

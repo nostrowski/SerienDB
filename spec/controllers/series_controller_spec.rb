@@ -36,6 +36,8 @@ describe SeriesController do
 
   describe "GET index" do
     it "assigns all series as @series" do
+      pending
+      
       series = Series.create! valid_attributes
       get :index, {}, valid_session
       assigns(:series).should eq([series])
@@ -44,6 +46,8 @@ describe SeriesController do
 
   describe "GET show" do
     it "assigns the requested series as @series" do
+      pending
+      
       series = Series.create! valid_attributes
       get :show, {:id => series.to_param}, valid_session
       assigns(:series).should eq(series)
@@ -52,6 +56,8 @@ describe SeriesController do
 
   describe "GET new" do
     it "assigns a new series as @series" do
+      pending
+      
       get :new, {}, valid_session
       assigns(:series).should be_a_new(Series)
     end
@@ -59,6 +65,8 @@ describe SeriesController do
 
   describe "GET edit" do
     it "assigns the requested series as @series" do
+      pending
+      
       series = Series.create! valid_attributes
       get :edit, {:id => series.to_param}, valid_session
       assigns(:series).should eq(series)
@@ -68,18 +76,24 @@ describe SeriesController do
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Series" do
+        pending
+        
         expect {
           post :create, {:series => valid_attributes}, valid_session
         }.to change(Series, :count).by(1)
       end
 
       it "assigns a newly created series as @series" do
+        pending
+        
         post :create, {:series => valid_attributes}, valid_session
         assigns(:series).should be_a(Series)
         assigns(:series).should be_persisted
       end
 
       it "redirects to the created series" do
+        pending
+        
         post :create, {:series => valid_attributes}, valid_session
         response.should redirect_to(Series.last)
       end
@@ -87,6 +101,8 @@ describe SeriesController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved series as @series" do
+        pending
+        
         # Trigger the behavior that occurs when invalid params are submitted
         Series.any_instance.stub(:save).and_return(false)
         post :create, {:series => {}}, valid_session
@@ -94,6 +110,8 @@ describe SeriesController do
       end
 
       it "re-renders the 'new' template" do
+        pending
+        
         # Trigger the behavior that occurs when invalid params are submitted
         Series.any_instance.stub(:save).and_return(false)
         post :create, {:series => {}}, valid_session
@@ -105,6 +123,8 @@ describe SeriesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested series" do
+        pending
+        
         series = Series.create! valid_attributes
         # Assuming there are no other series in the database, this
         # specifies that the Series created on the previous line
@@ -115,12 +135,16 @@ describe SeriesController do
       end
 
       it "assigns the requested series as @series" do
+        pending
+        
         series = Series.create! valid_attributes
         put :update, {:id => series.to_param, :series => valid_attributes}, valid_session
         assigns(:series).should eq(series)
       end
 
       it "redirects to the series" do
+        pending
+        
         series = Series.create! valid_attributes
         put :update, {:id => series.to_param, :series => valid_attributes}, valid_session
         response.should redirect_to(series)
@@ -129,6 +153,8 @@ describe SeriesController do
 
     describe "with invalid params" do
       it "assigns the series as @series" do
+        pending
+        
         series = Series.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Series.any_instance.stub(:save).and_return(false)
@@ -137,6 +163,8 @@ describe SeriesController do
       end
 
       it "re-renders the 'edit' template" do
+        pending
+        
         series = Series.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Series.any_instance.stub(:save).and_return(false)
@@ -148,6 +176,8 @@ describe SeriesController do
 
   describe "DELETE destroy" do
     it "destroys the requested series" do
+      pending
+      
       series = Series.create! valid_attributes
       expect {
         delete :destroy, {:id => series.to_param}, valid_session
@@ -155,6 +185,8 @@ describe SeriesController do
     end
 
     it "redirects to the series list" do
+      pending
+      
       series = Series.create! valid_attributes
       delete :destroy, {:id => series.to_param}, valid_session
       response.should redirect_to(series_index_url)

@@ -21,7 +21,11 @@ class User < ActiveRecord::Base
   end
   
   def password_valid? clear_password
-    password == Digest::SHA1.hexdigest(clear_password)
+    password == hash_password(clear_password)
+  end
+  
+  def hash_password clear_password
+    Digest::SHA1.hexdigest(clear_password)
   end
   
   def admin?
@@ -34,7 +38,7 @@ class User < ActiveRecord::Base
       errors.add(:password, ': "Passwort" und "Passwort wiederholen" nicht identisch!')
       had_an_error = true
     else
-      self.password = Digest::SHA1.hexdigest(params[:password]) unless params[:password] == ""
+      self.password = hash_password(params[:password]) unless params[:password] == ""
     end
     
     self.login = params[:login] if params[:login]
