@@ -32,8 +32,20 @@ describe User do
     User.current.should == User.first
   end
   
-  it "resetting of attributes test (with update_attributes metthod)" do
-    pending
+  it "update of attributes test (with update_attributes metthod)" do
+    user = User.first
+    params = { :login => "cmu", :firstname => "Carl", :lastname => "Muster", :password => "geheim", :password_confirmation => "geheim", :is_admin => true }
+    
+    user.update_attributes(params).should == true
+    User.first.fullname.should == "Carl Muster"
+    User.first.admin?.should == true
+    User.first.password_valid?("geheim").should == true
+    User.first.login.should == "cmu"
+  end
+  
+  it "update of attributes, with wrong password confirmation" do
+    params = {:password => "geheim", :password_confirmation => "geh"}
+    User.first.update_attributes(params).should == false
   end
   
 end
