@@ -9,6 +9,7 @@ class SessionController < ApplicationController
           new_session = Session.create(:user_id => @user.id)
           session[:s_id] = new_session.id
           session[:user_id] = @user.id
+          Session.drop_old
           
           redirect_to Series, notice: "Login erfolgreich!"
         else
