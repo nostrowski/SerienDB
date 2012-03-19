@@ -6,6 +6,7 @@
 <table class="content">
   <tr>
     <th>Name</th>
+    <th></th>
     <th>Komplettbesitzer</th>
     <th>Teilbesitzer</th>
     <th></th>
@@ -14,6 +15,10 @@
 <% @series.each do |series| %>
   <tr>
     <td><%= series.name %></td>
+    <td><font color="
+    	<%=(series.users_owning_series_complete.include?(User.current)?"green":
+    	(series.users_owning_series_partly.include?(User.current)?"orange":"red"))
+    	%>">X</font></td>
     <td id="users_complete"><%= gen_users_fullname_comma_list series.users_owning_series_complete %></td>
     <td id="users_partly"><%= gen_users_fullname_comma_list series.users_owning_series_partly %></td>
     <td><%= link_to 'Details', series %>
