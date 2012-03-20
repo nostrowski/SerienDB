@@ -1,5 +1,6 @@
 class Series < ActiveRecord::Base
   has_many :seasons
+  has_and_belongs_to_many :tags
   
   validates_uniqueness_of :name, :case_sensitive => false
   

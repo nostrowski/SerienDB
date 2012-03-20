@@ -1,4 +1,6 @@
 SerienDB::Application.routes.draw do
+  resources :tags
+
   get "session/login"
   get "session/logout"
   post "session/login"
