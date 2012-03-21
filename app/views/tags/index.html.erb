@@ -2,8 +2,9 @@
 
 <table>
   <tr>
-    <th>Acronym</th>
-    <th>Comment</th>
+    <th>Kürzel</th>
+    <th>Kommentar</th>
+    <th>Priorität</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><font color="<%= tag.color %>"><%= tag.acronym %></font></td>
     <td><%= tag.comment %></td>
+    <td><%= tag.priority %></td>
     <td><%= link_to 'Show', tag %></td>
     <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
     <td><%= link_to 'Destroy', tag, confirm: 'Are you sure?', method: :delete %></td>

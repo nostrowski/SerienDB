@@ -18,7 +18,7 @@ class Series < ActiveRecord::Base
   end
   
   def users_owning_series_partly
-    build_ownlers_lists unless @owners_partly
+    build_owners_lists unless @owners_partly
     return @owners_partly
   end
   

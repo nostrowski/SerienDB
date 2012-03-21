@@ -25,3 +25,6 @@ s.save
 s = Season.new(:series_id => 1, :number => 3, :added_by => 1, :edit_by => 1)
 s.users << User.first
 s.save
+
+Tag.create(:acronym => 'C', :comment => "(Complete) Produktion eingestellt", :color => "green", :priority => "2")
+Tag.create(:acronym => 'C', :comment => "(Complete) Wird noch produziert, neue Staffeln jedoch nicht mehr in Deutsch", :color => "orange", :priority => "1")
