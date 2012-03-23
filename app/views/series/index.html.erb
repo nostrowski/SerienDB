@@ -1,6 +1,7 @@
 <h1>Serien</h1>
 
-<%= link_to 'Serie anlegen', new_series_path %>
+<%= link_to 'Serie anlegen', new_series_path %> |
+<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %>
 <br /><br />
 
 <table class="content">
@@ -29,4 +30,5 @@
 </table>
 
 <br />
-<%= link_to 'Serie anlegen', new_series_path %>
+<%= link_to 'Serie anlegen', new_series_path %> |
+<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %>
