@@ -41,9 +41,19 @@ class TagsController < ApplicationController
   # POST /tags.json
   def create
     @tag = Tag.new(params[:tag])
+    
+    increment_priorities = Tag.find_by_priority(0) != nil
 
     respond_to do |format|
       if @tag.save
+        if increment_priorities then
+          Tag.all.each do |tag|
+            unless tag == @tag then
+              tag.priority += 1
+              tag.save
+            end
+          end
+        end
         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
         format.json { render json: @tag, status: :created, location: @tag }
       else
@@ -73,11 +83,31 @@ class TagsController < ApplicationController
   # DELETE /tags/1.json
   def destroy
     @tag = Tag.find(params[:id])
-    @tag.destroy
+    if @tag.priority == 0 then
+      @tag.destroy
+      Tag.all.each do |tag|
+        tag.priority -= 1
+        tag.save
+      end
+    end
 
     respond_to do |format|
       format.html { redirect_to tags_url }
       format.json { head :no_content }
     end
+  end
+  
+  # PUT /tags/1/priority_up
+  def priority_up
+    @tag = Tag.find(params[:id])
+    @tag.priority_up!
+    redirect_to :controller => "tags"
+  end
+  
+  # PUT /tags/1/priority_down
+  def priority_down
+    @tag = Tag.find(params[:id])
+    @tag.priority_down!
+    redirect_to :controller => "tags"
   end
 end

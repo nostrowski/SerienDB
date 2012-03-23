@@ -1,27 +1,38 @@
-<h1>Listing tags</h1>
+<h1>Tags</h1>
 
-<table>
+<%= link_to 'Tag anlegen', new_tag_path %>
+<br /><br />
+
+<table class="content">
   <tr>
     <th>Kürzel</th>
     <th>Kommentar</th>
-    <th>Priorität</th>
+    <th>Position</th>
     <th></th>
-    <th></th>
-    <th></th>
+  </tr>
+  
+  <tr>
+  	<td><font color="green"><b>X</b></font></td><td>Man selbst ist Komplettbesitzer der Serie</td><td></td><td></td>
+  </tr>
+  <tr>
+  	<td><font color="orange"><b>X</b></font></td><td>Man selbst ist Teilbesitzer der Serie</td><td></td><td></td>
+  </tr>
+  <tr>
+  	<td><font color="red"><b>X</b></font></td><td>Man selbst besitz keine Staffel dieser Serie</td><td></td><td></td>
   </tr>
 
 <% @tags.each do |tag| %>
   <tr>
-    <td><font color="<%= tag.color %>"><%= tag.acronym %></font></td>
+    <td><font color="<%= tag.color %>"><b><%= tag.acronym %></b></font></td>
     <td><%= tag.comment %></td>
-    <td><%= tag.priority %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to '+', {:controller => "tags", :id => tag.id, :action => "priority_up" }, method: :put %>
+    	<%= link_to '-', {:controller => "tags", :id => tag.id, :action => "priority_down" }, method: :put %>
+    </td>
+    <td><%= link_to 'Bearbeiten', edit_tag_path(tag) %>
+    <%= link_to 'Löschen', tag, confirm: 'Sind Sie sicher?', method: :delete if tag.priority == 0 %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to 'Tag anlegen', new_tag_path %>
