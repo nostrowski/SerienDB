@@ -13,17 +13,15 @@
   </tr>
 
 <% @series.each do |series| %>
+<% @a_series = series %>
   <tr>
-    <td><%= series.name %></td>
-    <td><font color="
-    	<%=(series.users_owning_series_complete.include?(User.current)?"green":
-    	(series.users_owning_series_partly.include?(User.current)?"orange":"red"))
-    	%>">X</font></td>
-    <td id="users_complete"><%= gen_users_fullname_comma_list series.users_owning_series_complete %></td>
-    <td id="users_partly"><%= gen_users_fullname_comma_list series.users_owning_series_partly %></td>
-    <td><%= link_to 'Details', series %>
-    <%= link_to 'Bearbeiten', edit_series_path(series) %>
-    <%= link_to 'Löschen', series, confirm: 'Sind Sie sicher?', method: :delete %></td>
+    <td><%= @a_series.name %></td>
+    <td><b><%= render 'taglist' %></b></td>
+    <td id="users_complete"><%= gen_users_fullname_comma_list @a_series.users_owning_series_complete %></td>
+    <td id="users_partly"><%= gen_users_fullname_comma_list @a_series.users_owning_series_partly %></td>
+    <td><%= link_to 'Details', @a_series %>
+    <%= link_to 'Bearbeiten', edit_series_path(@a_series) %>
+    <%= link_to 'Löschen', @a_series, confirm: 'Sind Sie sicher?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
