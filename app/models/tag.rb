@@ -22,4 +22,8 @@ class Tag < ActiveRecord::Base
       self.save
     end
   end
+  
+  def full_description
+    self.acronym + " " + self.comment
+  end
 end

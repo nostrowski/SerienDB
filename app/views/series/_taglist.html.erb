@@ -9,7 +9,7 @@ else
 	end
 end %>
 ">X</font>
-<% @a_series.tags.each do |tag| %>
+<% @a_series.tags.order("priority DESC").each do |tag| %>
 	<font color="<%= tag.color %>">
 	<%= tag.acronym %>
 	</font>

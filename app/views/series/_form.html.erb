@@ -15,6 +15,10 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+  	<%= f.label :tags %><br />
+  	<%= f.collection_select :tag_ids, Tag.all, :id, :full_description, {}, { :multiple => true} %>
+  </div>
   <%= f.hidden_field :added_by %>
   <%= f.hidden_field :edit_by, :value => User.current.id %>
   <div class="actions">
