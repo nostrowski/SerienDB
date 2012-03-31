@@ -8,9 +8,21 @@ else
 		"red"
 	end
 end %>
-">X</font>
+"><span title="<%=
+if @a_series.users_owning_series_complete.include?(User.current) then
+	"Man selbst ist Komplettbesitzer der Serie"
+else
+	if @a_series.users_owning_series_partly.include?(User.current) then
+		"Man selbst ist Teilbesitzer der Serie"
+	else
+		"Man selbst besitz keine Staffel dieser Serie"
+	end
+end %>
+">X</span></font>
 <% @a_series.tags.order("priority DESC").each do |tag| %>
 	<font color="<%= tag.color %>">
-	<%= tag.acronym %>
+		<span title="<%= tag.comment %>">
+			<%= tag.acronym %>
+		</span>
 	</font>
 <% end %>

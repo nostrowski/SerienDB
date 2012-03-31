@@ -54,6 +54,7 @@ td {
 }
 
 #footer td {
+	font-size:0.8em;
 	padding-top:20px;
 	text-align:center;
 	color:#666666;
@@ -71,4 +72,8 @@ td {
 
 .content tr:hover td {
 	background-color: #cccccc;
+}
+
+textarea {
+	height:60px;
 }
