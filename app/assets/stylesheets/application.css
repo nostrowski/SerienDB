@@ -53,6 +53,12 @@ td {
 	padding-bottom:20px;
 }
 
+#footer td {
+	padding-top:20px;
+	text-align:center;
+	color:#666666;
+}
+
 .content th {
 	background-color: #333333;
 	color: #ffffff;

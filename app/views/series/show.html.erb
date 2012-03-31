@@ -1,6 +1,8 @@
+<% @a_series = @series %>
 <table class="header">
 	<tr>
 		<td id="first-cell"><h1><%= @series.name %></h1><%= link_to 'Bearbeiten', edit_series_path(@series) %></td>
+		<td><b>Tags:</b><br /><b><%= render 'taglist' %></b></td>
 		<td><b>Erstellt:</b><br /><%= @series.created_at.to_s(:de) %> (by <%= @series.fullname_of_creator %>)</td>
 		<td><b>zuletzt bearbeitet:</b><br /><%= @series.updated_at.to_s(:de) %> (by <%= @series.fullname_of_editor %>)</td>
 	</tr>
