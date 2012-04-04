@@ -1,2 +1,7 @@
+v1.0:
+email wird in user nicht gespeichert, unbedingt zum model hinzufügen
+
 v1.5:
-beim tag anlegen oder bearbeiten prüfen, dass die eingaben auch korrekt sind (farbcode, und kürzel nur ein zeichen)
+in der tag-prüfung auch hex-farbcodes zulassen
+
+user -> email-muster prüfen lassen

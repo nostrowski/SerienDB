@@ -4,10 +4,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :seasons
   has_many :sessions
   
-  # validates_confirmation_of :password_clear
-  # attr_accessible :password_clear, :password_clear_confirmation
-  # attr_accessor :password_clear, :password_clear_confirmation
-  
   def self.set_current user
     @current_user = user
   end
@@ -41,7 +37,14 @@ class User < ActiveRecord::Base
       self.password = hash_password(params[:password]) unless params[:password] == ""
     end
     
-    self.login = params[:login] if params[:login]
+    if User.find_by_login(params[:login]) then
+      errors.add(:login, ': "Loginname" bereits vergeben!')
+      had_an_error = true
+    else
+      self.login = params[:login] if params[:login]
+    end
+    
+    self.email = params[:email] if params[:email]
     self.firstname = params[:firstname] if params[:firstname]
     self.lastname = params[:lastname] if params[:lastname]
     self.is_admin = params[:is_admin] if params[:is_admin]
