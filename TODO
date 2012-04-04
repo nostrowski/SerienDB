@@ -1,6 +1,3 @@
-v1.0:
-email wird in user nicht gespeichert, unbedingt zum model hinzufügen
-
 v1.5:
 in der tag-prüfung auch hex-farbcodes zulassen
 
