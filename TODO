@@ -1,2 +1,2 @@
 v1.5:
-sortierung der tags, bei serie bearbeiten, nach priorität
+beim tag anlegen oder bearbeiten prüfen, dass die eingaben auch korrekt sind (farbcode, und kürzel nur ein zeichen)
