@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
     end
     
     self.login = params[:login] if params[:login]
+    self.email = params[:email] if params[:email]
     self.firstname = params[:firstname] if params[:firstname]
     self.lastname = params[:lastname] if params[:lastname]
     self.is_admin = params[:is_admin] if params[:is_admin]
