@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'Benutzer erfolgreich erstellt.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -59,8 +59,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      if @user.update_attributes(params[:user], params[:id])
+        format.html { redirect_to @user, notice: 'Benutzer erfolgreicht bearbeitet.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
