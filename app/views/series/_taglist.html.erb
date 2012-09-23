@@ -18,7 +18,14 @@ else
 		"Man selbst besitz keine Staffel dieser Serie"
 	end
 end %>
-">X</span></font>
+"><%=
+highestSelfOwningSeason = User.current.seasons.order("number DESC").find(:all, :conditions => ["series_id = ?", @a_series.id]).first
+if highestSelfOwningSeason == nil then
+	"X"
+else
+	highestSelfOwningSeason.number
+end
+%></span></font>
 <% @a_series.tags.order("priority DESC").each do |tag| %>
 	<font color="<%= tag.color %>">
 		<span title="<%= tag.comment %>">

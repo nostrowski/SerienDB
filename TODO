@@ -1,13 +1,13 @@
 v1.6:
-das X in der Übersicht in die höchte Staffel ändern, die man besitzt
-
-in der tag-prüfung auch hex-farbcodes zulassen
+erledigt -- das X in der Übersicht in die höchte Staffel ändern, die man besitzt
 
 bei serie bearbeiten einen hacken für pilotfilm hinzufügen, entsprechend sollte der pilotfilm auch bei serien details auftauchen, könnte zB als staffel s00 abgespeichert werden
 
-vX.X
 Nur Serien mit bestimmten Tags anzeigen (zB P (Production))
 
+vX.X
 Staffeltags hinzufügen (zB das eine Staffel aktuell ausgestrahlt wird)
+
+in der tag-prüfung auch hex-farbcodes zulassen
 
 Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
