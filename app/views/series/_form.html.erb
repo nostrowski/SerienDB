@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+  	<%= f.check_box :has_pilot %>
+    Hat eine Pilotfolge
+  </div>
+  <div class="field">
   	<%= f.label :tags %><br />
   	<%= f.collection_select :tag_ids, Tag.all(:order => "priority DESC"), :id, :full_description, {}, { :multiple => true} %>
   </div>

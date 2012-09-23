@@ -18,9 +18,9 @@
 		<th>alle Besitzer</th>
 	</tr>
 	
-	<% @series.seasons.each do |season| %>
+	<% @series.seasons.order("number ASC").each do |season| %>
 	<tr>
-		<td>Staffel <%= season.number %></td>
+		<td><%if season.number == 0 then%>Pilotfolge<%else%>Staffel <%= season.number %><%end%></td>
 		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
 		<td><%= gen_users_fullname_comma_list season.users %></td>
 	</tr>

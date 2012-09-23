@@ -12,6 +12,10 @@ class Series < ActiveRecord::Base
     User.find(edit_by).fullname
   end
   
+  def pilot?
+    has_pilot
+  end
+  
   def users_owning_series_complete
     build_owners_lists unless @owners_complete
     return @owners_complete
@@ -56,11 +60,7 @@ class Series < ActiveRecord::Base
   end
   
   def remove_last_season!
-    delete_number = 0
-    seasons.each do |season|
-      delete_number = season.number if delete_number < season.number
-    end
-    season = seasons.find_by_number(delete_number)
+    season = seasons.order("number DESC").first
     if season.removeable? then
       season.destroy
       update_editor!
@@ -87,6 +87,42 @@ class Series < ActiveRecord::Base
       season.users << User.current if params["s#{season.number}"]
     end
     update_editor!
+  end
+  
+  def update_attributes params
+    had_an_error = false
+    self.name = params[:name] if params[:name]
+    self.has_pilot = params[:has_pilot] if params[:has_pilot]
+    self.tag_ids = params[:tag_ids] if params[:tag_ids]
+    self.added_by = params[:added_by] if params[:added_by]
+    self.edit_by = params[:edit_by] if params[:edit_by]
+    
+    firstSeason = self.seasons.order("number ASC").first
+    
+    if self.pilot? then
+      if firstSeason == nil || firstSeason.number != 0 then
+        season = Season.new
+        season.series = self
+        season.number = 0
+        season.added_by = User.current.id
+        season.edit_by = User.current.id
+        season.created_at = Time.now
+        season.updated_at = Time.now
+        season.save
+      end
+    else
+      if firstSeason.number == 0 then
+        if firstSeason.removeable? then
+          firstSeason.destroy
+        else
+          had_an_error = true
+          errors.add(:has_pilot, ': Entfernen der Pilotfolge nicht erlaubt! Pilotfolge hat noch Besitzer.')
+        end
+      end
+    end
+    
+    self.save unless had_an_error
+    return !had_an_error
   end
   
   private
