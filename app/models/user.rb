@@ -62,6 +62,8 @@ class User < ActiveRecord::Base
     self.firstname = params[:firstname] if params[:firstname]
     self.lastname = params[:lastname] if params[:lastname]
     self.is_admin = params[:is_admin] if params[:is_admin]
+    self.replace_uncomplete_x = params[:replace_uncomplete_x] if params[:replace_uncomplete_x]
+    self.replace_complete_x = params[:replace_complete_x] if params[:replace_complete_x]
     
     self.save unless had_an_error
     return !had_an_error

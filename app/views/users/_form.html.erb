@@ -30,7 +30,7 @@
     <%= f.text_field :email %>
   </div>
   
-  	<% if User.current.admin? then %>
+  <% if User.current.admin? then %>
   
   <div class="field">
     <%= f.label 'Vorname' %><br />
@@ -41,11 +41,20 @@
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
-    <%= f.label 'Admin?' %><br />
-    <%= f.check_box :is_admin %>
+  	<%= f.check_box :is_admin %>
+    <%= f.label 'Admin?' %>
   </div>
   
-  	<% end %>
+  <% end %>
+  	
+  <div class="field">
+  	<%= f.check_box :replace_uncomplete_x %>
+    Bei unvollständigen Serien '<font color="orange"><b>X</b></font>' durch höchste Staffel ersetzen
+  </div>
+  <div class="field">
+  	<%= f.check_box :replace_complete_x %>
+    Bei vollständigen Serien '<font color="green"><b>X</b></font>' durch höchste Staffel ersetzen
+  </div>
   
   <div class="actions">
     <%= f.submit 'Speichern' %>

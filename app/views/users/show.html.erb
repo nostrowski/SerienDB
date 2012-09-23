@@ -21,8 +21,18 @@
 </p>
 
 <p>
-  <b>Admin?</b>
   <%= check_box_tag "admin", '0', @user.admin?, :disabled => true %>
+  <b>Admin?</b>
+</p>
+
+<p>
+  <%= check_box_tag "admin", '0', @user.replace_uncomplete_x?, :disabled => true %>
+  <b>Bei unvollständigen Serien '<font color="orange">X</font>' durch höchste Staffel ersetzen</b>
+</p>
+
+<p>
+  <%= check_box_tag "admin", '0', @user.replace_complete_x?, :disabled => true %>
+  <b>Bei vollständigen Serien '<font color="green">X</font>' durch höchste Staffel ersetzen</b>
 </p>
 
 

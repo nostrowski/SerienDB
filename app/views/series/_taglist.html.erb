@@ -20,10 +20,22 @@ else
 end %>
 "><%=
 highestSelfOwningSeason = User.current.seasons.order("number DESC").find(:all, :conditions => ["series_id = ?", @a_series.id]).first
-if highestSelfOwningSeason == nil then
-	"X"
+if @a_series.users_owning_series_complete.include?(User.current) then
+	if User.current.replace_complete_x then
+		User.current.seasons.order("number DESC").find(:all, :conditions => ["series_id = ?", @a_series.id]).first.number
+	else
+		"X"
+	end
 else
-	highestSelfOwningSeason.number
+	if @a_series.users_owning_series_partly.include?(User.current) then
+		if User.current.replace_uncomplete_x then
+			User.current.seasons.order("number DESC").find(:all, :conditions => ["series_id = ?", @a_series.id]).first.number
+		else
+			"X"
+		end
+	else
+		"X"
+	end
 end
 %></span></font>
 <% @a_series.tags.order("priority DESC").each do |tag| %>

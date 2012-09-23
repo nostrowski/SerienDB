@@ -12,10 +12,18 @@
   </tr>
   
   <tr>
+  	<% if User.current.replace_complete_x then %>
   	<td><font color="green"><b>n</b></font></td><td>Man selbst ist Komplettbesitzer der Serie. (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td>
+  	<% else %>
+  	<td><font color="green"><b>X</b></font></td><td>Man selbst ist Komplettbesitzer der Serie.</td><td></td><td></td>
+  	<% end %>
   </tr>
   <tr>
+  	<% if User.current.replace_uncomplete_x then %>
   	<td><font color="orange"><b>n</b></font></td><td>Man selbst ist Teilbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td>
+  	<% else %>
+  	<td><font color="orange"><b>X</b></font></td><td>Man selbst ist Teilbesitzer der Serie</td><td></td><td></td>
+  	<% end %>
   </tr>
   <tr>
   	<td><font color="red"><b>X</b></font></td><td>Man selbst besitz keine Staffel dieser Serie</td><td></td><td></td>
