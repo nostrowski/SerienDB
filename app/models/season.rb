@@ -18,4 +18,13 @@ class Season < ActiveRecord::Base
       return false
     end
   end
+  
+  def pilot?
+    if number == 0 then
+      return true
+    else
+      return false
+    end
+  end
+  
 end

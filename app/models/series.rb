@@ -61,7 +61,7 @@ class Series < ActiveRecord::Base
   
   def remove_last_season!
     season = seasons.order("number DESC").first
-    if season.removeable? then
+    if season.removeable? && !season.pilot? then
       season.destroy
       update_editor!
       return true
@@ -79,6 +79,11 @@ class Series < ActiveRecord::Base
       end
     end
     return removeable
+  end
+  
+  def last_season_pilot?
+    season = seasons.order("number DESC").first
+    return season.pilot?
   end
   
   def update_selected_seasons! params

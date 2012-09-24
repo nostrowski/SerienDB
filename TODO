@@ -5,7 +5,9 @@ erledigt -- in den benutzereinstellungen, auswahlmöglichkeit schaffen in der ü
 
 erledigt -- bei serie bearbeiten einen hacken für pilotfilm hinzufügen, entsprechend sollte der pilotfilm auch bei serien details auftauchen, könnte zB als staffel s00 abgespeichert werden
 
-bugfix -> Pilotfolge darf nicht auf konventionellem weg entfernt werden können, also nicht über "Staffel entfernen" in den Serien Details, wenn nurnoch die Pilotfolge als Staffel vorhanden ist
+erledigt -- bug-> Pilotfolge darf nicht auf konventionellem weg entfernt werden können, also nicht über "Staffel entfernen" in den Serien Details, wenn nurnoch die Pilotfolge als Staffel vorhanden ist
+
+erledigt -- bug-> sich verschiebender Footer bei Meldungen
 
 vX.X
 Staffeltags hinzufügen (zB das eine Staffel aktuell ausgestrahlt wird)

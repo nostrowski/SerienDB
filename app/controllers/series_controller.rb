@@ -39,7 +39,11 @@ class SeriesController < ApplicationController
     if series.remove_last_season! then
       redirect_to series, notice: "Staffel erfolgreich entfernt!"
     else
-      redirect_to series, alert: 'Entfernen der Staffel nicht erlaubt! Staffel hat noch Besitzer.'
+      if series.last_season_pilot? then
+        redirect_to series, alert: 'Entfernen der Pilotfolge, auf diesem Weg, nicht erlaubt!'
+      else
+        redirect_to series, alert: 'Entfernen der Staffel nicht erlaubt! Staffel hat noch Besitzer.'
+      end
     end
   end
   
