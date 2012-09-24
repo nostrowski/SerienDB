@@ -1,19 +1,9 @@
-v1.6:
-erledigt -- das X in der Übersicht in die höchte Staffel ändern, die man besitzt
+v1.7
+Nur Serien mit bestimmten Tags anzeigen (zB P (Production))
 
-erledigt -- in den benutzereinstellungen, auswahlmöglichkeit schaffen in der übersicht zwischen einem X und der höchsten staffel zu wählen
-
-erledigt -- bei serie bearbeiten einen hacken für pilotfilm hinzufügen, entsprechend sollte der pilotfilm auch bei serien details auftauchen, könnte zB als staffel s00 abgespeichert werden
-
-erledigt -- bug-> Pilotfolge darf nicht auf konventionellem weg entfernt werden können, also nicht über "Staffel entfernen" in den Serien Details, wenn nurnoch die Pilotfolge als Staffel vorhanden ist
-
-erledigt -- bug-> sich verschiebender Footer bei Meldungen
-
-vX.X
 Staffeltags hinzufügen (zB das eine Staffel aktuell ausgestrahlt wird)
-
-in der tag-prüfung auch hex-farbcodes zulassen
 
 Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
 
-Nur Serien mit bestimmten Tags anzeigen (zB P (Production))
+vX.X
+in der tag-prüfung auch hex-farbcodes zulassen
