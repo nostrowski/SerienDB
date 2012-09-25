@@ -20,12 +20,18 @@ after "deploy:finalize_update", "deploy:custom_deployment"
 namespace :deploy do
   desc "Things to do after deployment"
   task :custom_deployment do
+    migrate_db
     set_permissions
   end
 
   desc "Set permissions"
   task :set_permissions do
     run "chown -R nobody:nogroup /u/apps/"
+  end
+
+  desc "Datenbank migrieren"
+  task :migrate_db do
+    run 'rake db:migrate RAILS_ENV="production"'
   end
 
   desc "Restarting mod_rails with restart.txt"

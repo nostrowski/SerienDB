@@ -40,7 +40,7 @@ gem "comma", "~> 3.0"
 gem "fastercsv"
 
 group :test, :development do
-#  gem 'sqlite3'
+  gem 'sqlite3'
 
   gem "rspec-rails", "~> 2.6"
   gem "autotest"
@@ -48,5 +48,5 @@ group :test, :development do
 end
 
 group :production do
-  gem 'mysql2'
+#  gem 'mysql2'
 end
