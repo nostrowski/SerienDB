@@ -130,6 +130,34 @@ class Series < ActiveRecord::Base
     return !had_an_error
   end
   
+  def is_filtered? filter
+    if filter[:tag_id] == "" then
+      t = true
+    else
+      t = false
+      if filter[:tag_id] != "" && self.tags.include?(Tag.find_by_id(filter[:tag_id])) then
+        t = true
+      end
+    end
+    
+    if filter[:complete] == "0" && filter[:uncomplete] == "0" && filter[:nothing] == "0" then
+      x = true
+    else
+      x = false
+      if filter[:complete] == "1" && users_owning_series_complete.include?(User.current) then
+        x = true
+      end
+      if filter[:uncomplete] == "1" && users_owning_series_partly.include?(User.current) then
+        x = true
+      end
+      if filter[:nothing] == "1" && !users_owning_series_complete.include?(User.current) && !users_owning_series_partly.include?(User.current) then
+        x = true
+      end
+    end
+     
+    return !(x && t)
+  end
+  
   private
   
   def build_owners_lists

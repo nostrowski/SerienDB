@@ -1,8 +1,12 @@
 <h1>Serien</h1>
 
+<%= render 'filter' if params[:filter_show] %>
+
 <%= link_to 'Serie anlegen', new_series_path %> |
-<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %>
-<br /><br />
+<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %><%
+if !params[:filter_show] then %> |
+<%= link_to 'Filter', { :controller => "series", :filter_show => true } %>
+<% end %><br /><br />
 
 <table class="content">
   <tr>
@@ -14,7 +18,8 @@
   </tr>
 
 <% @series.each do |series| %>
-<% @a_series = series %>
+  <% if !params[:filter] || !series.is_filtered?(params[:filter]) then %>
+  <% @a_series = series %>
   <tr>
     <td><%= @a_series.name %></td>
     <td><b><%= render 'taglist' %></b></td>
@@ -24,9 +29,13 @@
     <%= link_to 'Bearbeiten', edit_series_path(@a_series) %>
     <%= link_to 'Löschen', @a_series, confirm: 'Sind Sie sicher?', method: :delete %></td>
   </tr>
+  <% end %>
 <% end %>
 </table>
 
 <br />
 <%= link_to 'Serie anlegen', new_series_path %> |
-<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %>
+<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %><%
+if !params[:filter_show] then %> |
+<%= link_to 'Filter', { :controller => "series", :filter_show => true } %>
+<% end %>
