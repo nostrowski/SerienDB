@@ -20,8 +20,8 @@ after "deploy:finalize_update", "deploy:custom_deployment"
 namespace :deploy do
   desc "Things to do after deployment"
   task :custom_deployment do
-    migrate_db
-#    set_permissions
+#    migrate_db
+    set_permissions
 #    install_bundle
 #    restart_apache
   end
