@@ -21,9 +21,9 @@ namespace :deploy do
   desc "Things to do after deployment"
   task :custom_deployment do
     migrate_db
-    set_permissions
-    install_bundle
-    restart_apache
+#    set_permissions
+#    install_bundle
+#    restart_apache
   end
 
   desc "Set permissions"
@@ -31,20 +31,20 @@ namespace :deploy do
     run "chown -R nobody:nogroup /u/apps/"
   end
 
-  desc "Datenbank migrieren"
-  task :migrate_db do
-    run "cd #{deploy_to}/current && /usr/local/rvm/gems/ruby-1.9.3-p125/bin/rake db:migrate RAILS_ENV=production"
-  end
+#  desc "Datenbank migrieren"
+#  task :migrate_db do
+#    run "cd #{deploy_to}/current && /usr/local/rvm/gems/ruby-1.9.3-p125/bin/rake db:migrate RAILS_ENV=production"
+#  end
 
-  desc "Bundle Installieren"
-  task :install_bundle do
-    run "cd #{deploy_to}/current && /usr/local/rvm/gems/ruby-1.9.3-p125/bin/bundle install RAILS_ENV=production"
-  end
+#  desc "Bundle Installieren"
+#  task :install_bundle do
+#    run "cd #{deploy_to}/current && /usr/local/rvm/gems/ruby-1.9.3-p125/bin/bundle install RAILS_ENV=production"
+#  end
 
-  desc "Apache neustarten"
-  task :restart_apache do
-    run "/etc/init.d/apache2 restart"
-  end
+#  desc "Apache neustarten"
+#  task :restart_apache do
+#    run "/etc/init.d/apache2 restart"
+#  end
 
   desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
