@@ -42,7 +42,7 @@ namespace :deploy do
   end
 
   desc "Apache neustarten"
-  task :restart_apache
+  task :restart_apache do
     run "/etc/init.d/apache2 restart"
   end
 
