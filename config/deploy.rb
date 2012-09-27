@@ -22,6 +22,8 @@ namespace :deploy do
   task :custom_deployment do
     migrate_db
     set_permissions
+    install_bundle
+    restart_apache
   end
 
   desc "Set permissions"
@@ -31,7 +33,17 @@ namespace :deploy do
 
   desc "Datenbank migrieren"
   task :migrate_db do
-    run 'rake db:migrate RAILS_ENV="production"'
+    run "cd #{deploy_to}/current && /usr/bin/env rake db:migrate RAILS_ENV=production"
+  end
+
+  desc "Bundle Installieren"
+  task :install_bundle do
+    run "cd #{deploy_to}/current && /usr/bin/env bundle install RAILS_ENV=production"
+  end
+
+  desc "Apache neustarten"
+  task :restart_apache
+    run "/etc/init.d/apache2 restart"
   end
 
   desc "Restarting mod_rails with restart.txt"
