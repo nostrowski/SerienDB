@@ -33,12 +33,12 @@ namespace :deploy do
 
   desc "Datenbank migrieren"
   task :migrate_db do
-    run "cd #{deploy_to}/current && /usr/bin/env rake db:migrate RAILS_ENV=production"
+    run "cd #{deploy_to}/current && /usr/local/rvm/gems/ruby-1.9.3-p125/bin/rake db:migrate RAILS_ENV=production"
   end
 
   desc "Bundle Installieren"
   task :install_bundle do
-    run "cd #{deploy_to}/current && /usr/bin/env bundle install RAILS_ENV=production"
+    run "cd #{deploy_to}/current && /usr/local/rvm/gems/ruby-1.9.3-p125/bin/bundle install RAILS_ENV=production"
   end
 
   desc "Apache neustarten"
