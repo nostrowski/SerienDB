@@ -1,9 +1,7 @@
-v1.7
-erledigt -- Nur Serien mit bestimmten Tags anzeigen (zB P (Production)) sollte auch für die verschiedenen X'e gelten
+v1.8
+Staffeltags hinzufügen (zB das eine Staffel aktuell ausgestrahlt wird)
 
 vX.X
 in der tag-prüfung auch hex-farbcodes zulassen
-
-Staffeltags hinzufügen (zB das eine Staffel aktuell ausgestrahlt wird)
 
 Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
