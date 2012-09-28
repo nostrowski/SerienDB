@@ -17,9 +17,16 @@ if !params[:filter_show] then %> |
     <th></th>
   </tr>
 
+<%
+count_of_shown_series = 0
+count_of_shown_seasons = 0 
+%>
+
 <% @series.each do |series| %>
   <% if !params[:filter] || !series.is_filtered?(params[:filter]) then %>
   <% @a_series = series %>
+  <% count_of_shown_series += 1 %>
+  <% count_of_shown_seasons += series.seasons.count %>
   <tr>
     <td><%= @a_series.name %></td>
     <td><b><%= render 'taglist' %></b></td>
@@ -31,6 +38,14 @@ if !params[:filter_show] then %> |
   </tr>
   <% end %>
 <% end %>
+  <tr>
+  	<th colspan="5">
+  		<center>
+  		<%= count_of_shown_series %> <%= (count_of_shown_series==1?"Serie":"Serien") %> mit 
+  		<%= count_of_shown_seasons %> <%= (count_of_shown_seasons==1?"Staffel":"Staffeln") %>
+  		</center>
+  	</th>
+  </tr>
 </table>
 
 <br />
@@ -39,3 +54,4 @@ if !params[:filter_show] then %> |
 if !params[:filter_show] then %> |
 <%= link_to 'Filter', { :controller => "series", :filter_show => true } %>
 <% end %>
+
