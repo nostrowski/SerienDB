@@ -27,4 +27,12 @@ class Season < ActiveRecord::Base
     end
   end
   
+  def name
+    result = ""
+    result << self.series.name
+    result << (self.number!=0?"_s":"_Pilot")
+    result << (self.number!=0?(self.number.to_s):"")
+    return result
+  end
+  
 end
