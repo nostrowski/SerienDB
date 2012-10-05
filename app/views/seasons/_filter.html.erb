@@ -1,0 +1,8 @@
+<fieldset>
+	<legend>Filter</legend>
+	<%= form_for("seasons", :method => "get") do |f| %>
+	  <%= check_box(:filter, :owning) %><font color="green"><b>X</b></font>
+	  <%= check_box(:filter, :not_owning) %><font color="red"><b>X</b></font>
+	  <%= f.submit 'Filtern' %>
+	<% end %>
+</fieldset>

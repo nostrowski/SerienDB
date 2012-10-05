@@ -1,5 +1,14 @@
 <h1>Staffeln</h1>
 
+<%= render 'filter' if params[:filter_show] %>
+
+<%= link_to 'Als CSV exportieren', { :controller => "seasons", :format => "csv" } %><%
+if !params[:filter_show] then %> |
+<%= link_to 'Filter', { :controller => "seasons", :filter_show => true } %>
+<% end %>
+
+<br /><br />
+
 <table class="content">
   <tr>
     <th>Name</th>
@@ -9,12 +18,24 @@
   </tr>
 
 <% @seasons.each do |season| %>
+  <% if !params[:filter] || !season.is_filtered?(params[:filter]) then %>
   <tr>
     <td><%= season.name %></td>
     <td><font color="<%= (season.users.include?(User.current)?"green":"red") %>"><b>X</b></font></td>
     <td><%= gen_users_fullname_comma_list season.users %></td>
-    <td><%= link_to 'Details', season.series %>
+    <td><%= link_to 'Details', season.series %> <%=
+    	link_to('Entfernen', :controller => 'series', :action => 'season_remove', :id => season.series.id, :mothod => 'puts') if
+    	season.series.seasons.order("number DESC").first.number == season.number
+    	%></td>
   </tr>
+  <% end %>
 <% end %>
 
 </table>
+
+<br />
+
+<%= link_to 'Als CSV exportieren', { :controller => "season", :format => "csv" } %><%
+if !params[:filter_show] then %> |
+<%= link_to 'Filter', { :controller => "seasons", :filter_show => true } %>
+<% end %>

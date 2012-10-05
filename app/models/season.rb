@@ -11,6 +11,15 @@ class Season < ActiveRecord::Base
     return @users_fullname
   end
   
+  def users_loginname_comma_list
+    result = ""
+    users.each do |user|
+      result += user.login
+      result += ", " unless user == users.last
+    end
+    return result
+  end
+  
   def removeable?
     if users.count == 0 || (users.count == 1 && users.include?(User.current)) then
       return true
@@ -33,6 +42,30 @@ class Season < ActiveRecord::Base
     result << (self.number!=0?"_s":"_Pilot")
     result << (self.number!=0?(self.number.to_s):"")
     return result
+  end
+  
+  def is_filtered? filter
+    if filter[:owning] == "0" && filter[:not_owning] == "0" then
+      x = true
+    else
+      x = false
+      if filter[:owning] == "1" && users.include?(User.current) then
+        x = true
+      end
+      if filter[:not_owning] == "1" && !users.include?(User.current) then
+        x = true
+      end
+    end
+     
+    return !x
+  end
+  
+# ===============
+# = CSV support =
+# ===============
+  comma do
+    name
+    users_loginname_comma_list 'Besitzer'
   end
   
 end
