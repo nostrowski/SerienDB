@@ -1,11 +1,20 @@
 class Tag < ActiveRecord::Base
   has_and_belongs_to_many :series
+  has_and_belongs_to_many :seasons
   
   VALID_COLORS = ["green", "red", "orange", "blue", "black"]
   
   validates_length_of :acronym, :is => 1
   validates_inclusion_of :acronym, :in => 'A'..'Z'
   validates_inclusion_of :color, :in => VALID_COLORS
+  
+  def self.for_series
+    Tag.find :all, :order => 'priority DESC', :conditions => ['seasontag = "f"']
+  end
+  
+  def self.for_seasons
+    Tag.find :all, :order => 'priority DESC', :conditions => ['seasontag = "t"']
+  end
   
   def priority_up!
     new_priority = self.priority + 1

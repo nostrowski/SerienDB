@@ -4,7 +4,7 @@
 	  <%= check_box(:filter, :complete) %><font color="green"><b>X</b></font>
 	  <%= check_box(:filter, :uncomplete) %><font color="orange"><b>X</b></font>
 	  <%= check_box(:filter, :nothing) %><font color="red"><b>X</b></font>
-	  <%= collection_select(:filter, :tag_id, Tag.all(:order => "priority DESC"), :id, :full_description, options={:prompt => 'Individuelle Tags'}) %>
+	  <%= collection_select(:filter, :tag_id, Tag.for_series, :id, :full_description, options={:prompt => 'Individuelle Tags'}) %>
 	  <%= f.submit 'Filtern' %>
 	<% end %>
 </fieldset>

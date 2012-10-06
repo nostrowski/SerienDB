@@ -16,6 +16,7 @@ User.create(:login => "rafi", :password => Digest::SHA1.hexdigest('test123'), :e
 #Tags
 Tag.create(:acronym => 'C', :comment => "(Complete) Produktion eingestellt", :color => "green", :priority => "2")
 Tag.create(:acronym => 'C', :comment => "(Complete) Wird noch produziert, neue Staffeln jedoch nicht mehr in Deutsch", :color => "orange", :priority => "1")
+Tag.create(:acronym => 'B', :seasontag => true, :comment => "(Broadcasted) Staffel wird Ausgestrahlt", :color => "orange", :priority => "0")
 
 #Series
 s = Series.new(:name => 'Bones', :added_by => 1, :edit_by => 1)

@@ -1,6 +1,7 @@
 class Season < ActiveRecord::Base
   belongs_to :series
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :tags
   
   def users_fullname
     return @users_fullname if @users_fullname

@@ -7,32 +7,34 @@
   <tr>
     <th>Kürzel</th>
     <th>Kommentar</th>
+    <th>Staffeltag</th>
     <th>Position</th>
     <th></th>
   </tr>
   
   <tr>
   	<% if User.current.replace_complete_x then %>
-  	<td><font color="green"><b>n</b></font></td><td>Man selbst ist Komplettbesitzer der Serie. (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td>
+  	<td><font color="green"><b>n</b></font></td><td>Man selbst ist Komplettbesitzer der Serie. (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td><td></td>
   	<% else %>
-  	<td><font color="green"><b>X</b></font></td><td>Man selbst ist Komplettbesitzer der Serie.</td><td></td><td></td>
+  	<td><font color="green"><b>X</b></font></td><td>Man selbst ist Komplettbesitzer der Serie.</td><td></td><td></td><td></td>
   	<% end %>
   </tr>
   <tr>
   	<% if User.current.replace_uncomplete_x then %>
-  	<td><font color="orange"><b>n</b></font></td><td>Man selbst ist Teilbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td>
+  	<td><font color="orange"><b>n</b></font></td><td>Man selbst ist Teilbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td><td></td>
   	<% else %>
-  	<td><font color="orange"><b>X</b></font></td><td>Man selbst ist Teilbesitzer der Serie</td><td></td><td></td>
+  	<td><font color="orange"><b>X</b></font></td><td>Man selbst ist Teilbesitzer der Serie</td><td></td><td></td><td></td>
   	<% end %>
   </tr>
   <tr>
-  	<td><font color="red"><b>X</b></font></td><td>Man selbst besitz keine Staffel dieser Serie</td><td></td><td></td>
+  	<td><font color="red"><b>X</b></font></td><td>Man selbst besitz keine Staffel dieser Serie</td><td></td><td></td><td></td>
   </tr>
 
 <% @tags.each do |tag| %>
   <tr>
     <td><font color="<%= tag.color %>"><b><%= tag.acronym %></b></font></td>
     <td><%= tag.comment %></td>
+    <td><%= check_box_tag "seasontag", '0', tag.seasontag?, :disabled => true %></td>
     <td><%= link_to '+', {:controller => "tags", :id => tag.id, :action => "priority_up" }, method: :put %>
     	<%= link_to '-', {:controller => "tags", :id => tag.id, :action => "priority_down" }, method: :put %>
     </td>

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
   	<%= f.label :tags %><br />
-  	<%= f.collection_select :tag_ids, Tag.all(:order => "priority DESC"), :id, :full_description, {}, { :multiple => true} %>
+  	<%= f.collection_select :tag_ids, Tag.for_series, :id, :full_description, {}, { :multiple => true} %>
   </div>
   <%= f.hidden_field :added_by %>
   <%= f.hidden_field :edit_by, :value => User.current.id %>
