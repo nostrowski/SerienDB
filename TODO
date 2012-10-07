@@ -1,15 +1,8 @@
-v1.8
-erledigt -- Staffeltags hinzufügen (zB das eine Staffel aktuell ausgestrahlt wird)
-
-erledigt -- Übersichtsansicht für Seasons hinzufügen, ähnlich aufgebaut wie Series:index
-
-erledigt -- Filter von seasons:index anpassen, sobald die Staffeltags existieren
-
-erledigt -- Statistik über Anzahl der angezeigten Serien (Staffel,...) im Footer von Serien:index anzeigen
-
-vX.X
+v1.9
 in der tag-prüfung auch hex-farbcodes zulassen
 
-Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
-
 Episodenzahl zu Staffeln hinzufügen
+
+vX.X
+
+Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
