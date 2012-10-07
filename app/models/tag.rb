@@ -9,11 +9,11 @@ class Tag < ActiveRecord::Base
   validates_inclusion_of :color, :in => VALID_COLORS
   
   def self.for_series
-    Tag.find :all, :order => 'priority DESC', :conditions => ['seasontag = "f"']
+    Tag.find :all, :order => 'priority DESC', :conditions => ['seasontag = "0"']
   end
   
   def self.for_seasons
-    Tag.find :all, :order => 'priority DESC', :conditions => ['seasontag = "t"']
+    Tag.find :all, :order => 'priority DESC', :conditions => ['seasontag = "1"']
   end
   
   def priority_up!
