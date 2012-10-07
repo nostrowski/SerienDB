@@ -1,0 +1,20 @@
+<font color="<%=
+if @a_season.users.include?(User.current) then
+	"green"
+else
+	"red"
+end %>
+"><span title="<%=
+if @a_season.users.include?(User.current) then
+	"Man selbst besitzt diese Staffel"
+else
+	"Man selbst besitzt diese Staffel nicht"
+end %>
+">X</span></font>
+<% @a_season.tags.order("priority DESC").each do |tag| %>
+	<font color="<%= tag.color %>">
+		<span title="<%= tag.comment %>">
+			<%= tag.acronym %>
+		</span>
+	</font>
+<% end %>

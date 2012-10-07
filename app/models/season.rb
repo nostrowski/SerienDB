@@ -46,6 +46,15 @@ class Season < ActiveRecord::Base
   end
   
   def is_filtered? filter
+    if filter[:tag_id] == "" then
+      t = true
+    else
+      t = false
+      if filter[:tag_id] != "" && self.tags.include?(Tag.find_by_id(filter[:tag_id])) then
+        t = true
+      end
+    end
+    
     if filter[:owning] == "0" && filter[:not_owning] == "0" then
       x = true
     else
@@ -58,7 +67,7 @@ class Season < ActiveRecord::Base
       end
     end
      
-    return !x
+    return !(x && t)
   end
   
 # ===============

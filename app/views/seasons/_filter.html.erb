@@ -3,6 +3,7 @@
 	<%= form_for("seasons", :method => "get") do |f| %>
 	  <%= check_box(:filter, :owning) %><font color="green"><b>X</b></font>
 	  <%= check_box(:filter, :not_owning) %><font color="red"><b>X</b></font>
+	  <%= collection_select(:filter, :tag_id, Tag.for_seasons, :id, :full_description, options={:prompt => 'Individuelle Tags'}) %>
 	  <%= f.submit 'Filtern' %>
 	<% end %>
 </fieldset>

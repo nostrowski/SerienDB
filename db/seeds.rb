@@ -20,7 +20,7 @@ Tag.create(:acronym => 'B', :seasontag => true, :comment => "(Broadcasted) Staff
 
 #Series
 s = Series.new(:name => 'Bones', :added_by => 1, :edit_by => 1)
-s.tags << Tag.last
+s.tags << Tag.find_by_id(2)
 s.save
 
 s = Series.new(:name => 'Battlestar Galactica', :has_pilot => true, :added_by => 1, :edit_by => 1)

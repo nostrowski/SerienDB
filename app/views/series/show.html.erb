@@ -14,15 +14,20 @@
 <table class="content">
 	<tr>
 		<th></th>
+		<th>Tags</th>
 		<th>Besitze ich</th>
 		<th>alle Besitzer</th>
+		<th></th>
 	</tr>
 	
 	<% @series.seasons.order("number ASC").each do |season| %>
+	<% @a_season = season %>
 	<tr>
 		<td><%if season.number == 0 then%>Pilotfolge<%else%>Staffel <%= season.number %><%end%></td>
+		<td><b><%= render 'seasons/taglist' %></b></td>
 		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
 		<td><%= gen_users_fullname_comma_list season.users %></td>
+		<td><%= link_to 'Bearbeiten', :controller => 'seasons', :action => 'edit',  :id => season.id %></td>
 	</tr>
 	<% end %>
 	
@@ -31,10 +36,12 @@
 			<%= link_to 'Staffel hinzufügen', :controller => 'series', :action => 'season_add', :id => @series.id, :mothod => 'puts' %><br />
 			<%= link_to 'Staffel entfernen', :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %>
 		</td>
+		<td></td>
 		<td>
 			<%= submit_tag "Speichern" %>
 			</form>
 		</td>
+		<td></td>
 		<td></td>
 	</tr>
 	
