@@ -3,6 +3,24 @@ class Season < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_and_belongs_to_many :tags
   
+  def self.sort_by_name input_array
+    a = Array.new(input_array)
+    x = 0
+    while x < a.count do
+      y = x + 1
+      while y < a.count do
+        if a[x].name > a[y].name then
+          tmp = a[x]
+          a[x] = a[y]
+          a[y] = tmp
+        end
+        y = y + 1
+      end
+      x = x + 1
+    end
+    return a
+  end
+  
   def users_fullname
     return @users_fullname if @users_fullname
     @users_fullname = Array.new()

@@ -16,7 +16,7 @@ if !params[:filter_show] then %> |
     <th>Besitzer</th>
     <th></th>
   </tr>
-
+<% @seasons = Season.sort_by_name(@seasons) %>
 <% @seasons.each do |season| %>
   <% @a_season = season %>
   <% if !params[:filter] || !season.is_filtered?(params[:filter]) then %>
