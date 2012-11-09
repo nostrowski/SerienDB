@@ -3,6 +3,8 @@
 	<%= form_for("seasons", :method => "get") do |f| %>
 	  <%= check_box(:filter, :owning) %><font color="green"><b>X</b></font>
 	  <%= check_box(:filter, :not_owning) %><font color="red"><b>X</b></font>
+	  <%= radio_button(:filter, :relation, :and, { :checked => true }) %>UND
+	  <%= radio_button(:filter, :relation, :or, { :checked => false }) %>ODER
 	  <%= collection_select(:filter, :tag_id, Tag.for_seasons, :id, :full_description, options={:prompt => 'Individuelle Tags'}) %>
 	  <%= f.submit 'Filtern' %>
 	<% end %>

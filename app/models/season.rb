@@ -85,7 +85,8 @@ class Season < ActiveRecord::Base
       end
     end
      
-    return !(x && t)
+    return !(x && t) if filter[:relation] == "and"
+    return !(x || t) if filter[:relation] == "or"
   end
   
 # ===============
