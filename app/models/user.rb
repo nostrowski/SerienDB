@@ -64,6 +64,7 @@ class User < ActiveRecord::Base
     self.is_admin = params[:is_admin] if params[:is_admin]
     self.replace_uncomplete_x = params[:replace_uncomplete_x] if params[:replace_uncomplete_x]
     self.replace_complete_x = params[:replace_complete_x] if params[:replace_complete_x]
+    self.filterrelation = params[:filterrelation] if params[:filterrelation]
     
     self.save unless had_an_error
     return !had_an_error

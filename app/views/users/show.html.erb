@@ -35,5 +35,10 @@
   <b>Bei vollständigen Serien '<font color="green">X</font>' durch höchste Staffel ersetzen</b>
 </p>
 
+<p>
+  <b>Standart Filter Relation:</b>
+  <%= if @user.filterrelation == "and" then "UND" else "ODER" end %>
+</p>
+
 
 <% if User.current.admin? || @user == User.current then %><%= link_to 'Bearbeiten', edit_user_path(@user) %><% end %>

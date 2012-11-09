@@ -56,6 +56,12 @@
     Bei vollständigen Serien '<font color="green"><b>X</b></font>' durch höchste Staffel ersetzen
   </div>
   
+  <div class="field">
+  	Standart Filter Relation:
+  	<%= f.radio_button :filterrelation, :and %>UND
+  	<%= f.radio_button :filterrelation, :or %>ODER
+  </div>
+  
   <div class="actions">
     <%= f.submit 'Speichern' %>
   </div>

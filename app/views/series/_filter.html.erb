@@ -4,8 +4,8 @@
 	  <%= check_box(:filter, :complete) %><font color="green"><b>X</b></font>
 	  <%= check_box(:filter, :uncomplete) %><font color="orange"><b>X</b></font>
 	  <%= check_box(:filter, :nothing) %><font color="red"><b>X</b></font>
-	  <%= radio_button(:filter, :relation, :and, { :checked => true }) %>UND
-	  <%= radio_button(:filter, :relation, :or, { :checked => false }) %>ODER
+	  <%= radio_button(:filter, :relation, :and, { :checked => (User.current.filterrelation == "and") }) %>UND
+	  <%= radio_button(:filter, :relation, :or, { :checked => (User.current.filterrelation == "or") }) %>ODER
 	  <%= collection_select(:filter, :tag_id, Tag.for_series, :id, :full_description, options={:prompt => 'Individuelle Tags'}) %>
 	  <%= f.submit 'Filtern' %>
 	<% end %>
