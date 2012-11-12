@@ -20,6 +20,7 @@ if !params[:filter_show] then %> |
 <%
 count_of_shown_series = 0
 count_of_shown_seasons = 0 
+count_of_shown_episodes = 0
 %>
 
 <% @series.each do |series| %>
@@ -27,6 +28,7 @@ count_of_shown_seasons = 0
   <% @a_series = series %>
   <% count_of_shown_series += 1 %>
   <% count_of_shown_seasons += series.seasons.count %>
+  <% count_of_shown_episodes += series.episodes_count %>
   <tr>
     <td><%= @a_series.name %></td>
     <td><b><%= render 'taglist' %></b></td>
@@ -42,7 +44,8 @@ count_of_shown_seasons = 0
   	<th colspan="5">
   		<center>
   		<%= count_of_shown_series %> <%= (count_of_shown_series==1?"Serie":"Serien") %> mit 
-  		<%= count_of_shown_seasons %> <%= (count_of_shown_seasons==1?"Staffel":"Staffeln") %>
+  		<%= count_of_shown_seasons %> <%= (count_of_shown_seasons==1?"Staffel":"Staffeln") %> und
+  		<%= count_of_shown_episodes %> <%= (count_of_shown_episodes==1?"Folge":"Folgen") %>
   		</center>
   	</th>
   </tr>

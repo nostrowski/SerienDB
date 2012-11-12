@@ -86,6 +86,15 @@ class Series < ActiveRecord::Base
     return season.pilot?
   end
   
+  def episodes_count
+    return @episodes_count if @episodes_count
+    @episodes_count = 0
+    seasons.each do |season|
+      @episodes_count += season.episodes_count
+    end
+    return @episodes_count
+  end
+  
   def update_selected_seasons! params
     seasons.each do |season|
       season.users.delete(User.current)
