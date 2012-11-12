@@ -1,6 +1,8 @@
 v2.0
 neues Design implementieren
 
+Bugfix: mit dem subtitle Element stimmt etwas nach nicht mit den Abständen zwischen Content und Rahmen (Serien index, show, usw)
+
 Zu Serien Marker und Erinnerungen hinzufügen
 
 vX.X

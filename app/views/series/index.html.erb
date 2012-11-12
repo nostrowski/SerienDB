@@ -1,14 +1,16 @@
-<h1>Serien</h1>
-
-<%= render 'filter' if params[:filter_show] %>
+<tr><td><table class="content" id="subtitle"><tr><td>
+<h2>Serien</h2>
 
 <%= link_to 'Serie anlegen', new_series_path %> |
 <%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %><%
 if !params[:filter_show] then %> |
 <%= link_to 'Filter', { :controller => "series", :filter_show => true } %>
-<% end %><br /><br />
+<% end %>
+</td></tr></table></td></tr>
 
-<table class="content">
+<%= render 'filter' if params[:filter_show] %>
+
+<tr><td><table class="content">
   <tr>
     <th>Name</th>
     <th>Tags</th>
@@ -49,12 +51,4 @@ count_of_shown_episodes = 0
   		</center>
   	</th>
   </tr>
-</table>
-
-<br />
-<%= link_to 'Serie anlegen', new_series_path %> |
-<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %><%
-if !params[:filter_show] then %> |
-<%= link_to 'Filter', { :controller => "series", :filter_show => true } %>
-<% end %>
-
+</table></td></tr>

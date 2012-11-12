@@ -1,12 +1,29 @@
 <% if flash[:notice] %>
-<fieldset style="border-color: green">
-	<legend>Hinweis</legend>
-	<%= flash[:notice] %>
-</fieldset>
+<tr>
+	<td>
+		<table class="content notice">
+			<tr>
+				<th>Hinweis</th>
+			</tr>
+			<tr>
+				<td><%= flash[:notice] %></td>
+			</tr>
+		</table>
+	</td>
+</tr>
 <% end %>
+
 <% if flash[:alert] %>
-<fieldset style="border-color: red">
-	<legend>Warnung</legend>
-	<%= flash[:alert] %>
-</fieldset>
+<tr>
+	<td>
+		<table class="content error">
+			<tr>
+				<th>Warnung</th>
+			</tr>
+			<tr>
+				<td><%= flash[:alert] %></td>
+			</tr>
+		</table>
+	</td>
+</tr>
 <% end %>

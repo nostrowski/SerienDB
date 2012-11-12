@@ -1,6 +1,12 @@
-<fieldset>
-	<legend>Filter</legend>
-	<%= form_for("series", :method => "get") do |f| %>
+<tr>
+	<td>
+		<table class="content">
+			<tr>
+				<th>Filter</th>
+			</tr>
+			<tr>
+				<td>
+    <%= form_for("series", :method => "get") do |f| %>
 	  <%= check_box(:filter, :complete) %><font color="green"><b>X</b></font>
 	  <%= check_box(:filter, :uncomplete) %><font color="orange"><b>X</b></font>
 	  <%= check_box(:filter, :nothing) %><font color="red"><b>X</b></font>
@@ -9,4 +15,8 @@
 	  <%= collection_select(:filter, :tag_id, Tag.for_series, :id, :full_description, options={:prompt => 'Individuelle Tags'}) %>
 	  <%= f.submit 'Filtern' %>
 	<% end %>
-</fieldset>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>

@@ -13,17 +13,16 @@
 
 .header {
   width:auto;
-  margin-top:20px;
-  margin-bottom:20px;
+  margin: 0;
+  padding: 0;
 }
 
-.header td {
-    background-color: white;
+.header tr td {
     border: none;
     padding-right:20px;
 }
 
-.header h1 {
+#subtitle h2 {
   padding: 0px;
   margin: 0px;
 }

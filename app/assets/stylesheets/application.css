@@ -12,66 +12,193 @@
  *= require_tree .
 */
 
-#mainmenu {
-	height: 20px;
-	width: 100%;
-	vertical-align: top;
+body, h1, h2, h3, td, th, ul, p, a:hover, #mainmenu ul li#act a, #submenu tr#act a {
+  color: #333333;
+  font-family: verdana, arial, helvetica, sans-serif;
 }
 
-#mainmenu ul {
-	padding:0px;
-	margin:0px;
-	list-style: none;
+body, td, th, ul, p {
+  font-size: 13px;
+  line-height: 17px;
 }
 
-#mainmenu ul li {
-	padding:0px;
-	margin:0px;
-	float: left;
-	padding-right: 10px;
-}
-
-table {
-	width: 100%;
-}
-
-td {
-	background:none;
-	border:none;
-	width:auto;
+p {
+  margin: 3px 0 5px 0; /* oben, rechts, unten, links */
+  padding: 0 0 0 0;
 }
 
 #title h1 {
-	padding:0px;
-	margin:0px;
-	margin-top:20px;
-	margin-bottom:20px;
-	font-size:26pt;
+    font-size: 26pt;
+    margin: 15px 0;
+    padding: 0;
+    padding-bottom: 0px;
+    text-align: center;
 }
 
-#title td {
-	padding-bottom:20px;
+#subtitle h2 {
+    font-size: 19pt;
+    margin: 8px 0 17px 0; /* oben, rechts, unten, links */
+    padding: 0;
 }
 
-#footer td {
-	font-size:0.8em;
-	padding-top:20px;
-	text-align:center;
-	color:#666666;
+a {
+  color: #666666;
 }
 
-.content th {
-	background-color: #333333;
-	color: #ffffff;
+a:hover, #mainmenu ul li#act a, #submenu tr#act a {
+  text-decoration: none;
 }
 
-.content td {
-	background-color: #ededed;
-	border: 1px solid #cccccc;
+.base {
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.content tr:hover td {
-	background-color: #cccccc;
+.base td, .content .base td {
+  border: none;
+  vertical-align: top;
+  text-align: left;
+}
+
+.content {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 8px;
+}
+
+.content tr:first-child th:first-child, .content tr:first-child td:first-child {
+  border-top-left-radius: 8px;
+  -webkit-border-top-left-radius: 8px;
+  -moz-border-radius-topleft: 8px;
+}
+
+.content tr:first-child th:last-child, .content tr:first-child td:last-child {
+  border-top-right-radius: 8px;
+  -webkit-border-top-right-radius: 8px;
+  -moz-border-radius-topright: 8px;
+}
+
+.content tr:last-child th:first-child, .content tr:last-child td:first-child, #mainmenu ul li:first-child {
+  border-bottom-left-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomleft: 8px;
+}
+
+.content tr:last-child th:last-child, .content tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+}
+
+.content tr th {
+  background-color: #333333;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.content tr td, #mainmenu tr:hover td {
+  background-color: #EDEDED;
+}
+
+.content tr td {
+  border-style: solid;
+  border-color: #333333;
+  border-width: 0 1px 1px 0px; /* oben, rechts, unten, links */
+  margin: 0;
+  padding: 4px 4px 4px 4px;
+}
+
+.content tr td:first-child {
+  border-left-width: 1px;
+}
+
+.content tr:first-child td {
+  border-top-width: 1px;
+}
+
+.content tr:hover td, #submenu tr#act td, #mainmenu ul li:hover, #mainmenu ul li#act {
+  background-color: #CCCCCC;
+}
+
+.error tr td, .warning tr td, .notice tr td {
+  text-align: center;
+}
+
+.error tr th {
+	background-color: #FF3333;
+}
+
+.error tr td {
+  background-color: #FFEDED;
+  border-color: #FF3333;
+  color: #FF3333;
+}
+
+.error tr:hover td {
+  background-color: #FFCCCC;
+}
+
+.warning tr th {
+	background-color: #999933;
+}
+
+.warning tr td {
+  background-color: #FFFFED;
+  border-color: #999933;
+  color: #999933;
+}
+
+.warning tr:hover td {
+  background-color: #FFFFCC;
+}
+
+.notice tr th {
+	background-color: #33FF33;
+}
+
+.notice tr td {
+  background-color: #EDFFED;
+  border-color: #33FF33;
+  color: #33FF33;
+}
+
+.notice tr:hover td {
+  background-color: #CCFFCC;
+}
+
+#submenu {
+  width: 250px;
+  margin: 0 0 0 0; /* oben, rechts, unten, links */
+  padding: 1px 1px 0 9px; /* oben, rechts, unten, links */
+}
+
+#submenu tr td {
+  text-align: center;
+}
+
+#mainmenu tr td {
+  margin: 0;
+  padding: 0;
+}
+
+#mainmenu ul {
+  list-style: none outside none;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+
+
+#mainmenu ul li {
+  float: left;
+  margin: 0;
+  padding: 5px 7px 5px 7px;
+  border-right: solid 1px #333333;
+}
+
+#footer tr td {
+	text-align: center;
 }
 
 textarea {

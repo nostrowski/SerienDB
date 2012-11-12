@@ -6,34 +6,48 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<table>
+<table class="base">
 	
-<tr id="title">
-	<td><h1>SerienDB-RAN</h1></td>
+<tr>
+	<table class="content" id="title">
+		<tr>
+			<td>
+				<h1>SerienDB-RAN</h1>
+			</td>
+		</tr>
+	</table>
+</tr>
+
+<tr>
 	<td>
-		<%= render :partial => 'layouts/notice' %>
+		<table class="content" id="mainmenu">
+			<tr>
+				<th>Menü</th>
+			</tr>
+			<tr>
+				<td>
+					<%= render :partial => 'layouts/mainmenu' %>
+				</td>
+			</tr>
+		</table>
 	</td>
 </tr>
 
-<tr>
-	<td colspan="2">
-		<fieldset>
-			<legend>Menü</legend>
-			<%= render :partial => 'layouts/mainmenu' %>
-		</fieldset>
-	</td>
-</tr>
+<%= render :partial => 'layouts/notice' %>
 
-<tr>
-	<td colspan="2">
 <%= yield %>
-	</td>
-</tr>
 
-<tr id="footer">
-	<td colspan="2">SerienDB-RAN || v2.0-dev || Copyright: NiJO's (<a href="http://www.nijos.de">nijos.de</a>)</td>
+<tr>
+	<td>
+		<table class="content" id="footer">
+			<tr>
+				<td>SerienDB-RAN || v2.0-dev || Copyright: NiJO's (<a href="http://www.nijos.de">nijos.de</a>)</td>
+			</tr>
+		</table>
+	</td>
 </tr>
 
 </table>
