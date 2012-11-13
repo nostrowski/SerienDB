@@ -1,9 +1,9 @@
-<h1>Tags</h1>
+<tr><td><table class="content" id="subtitle"><tr><td>
+<h2>Tags</h2>
+<%= link_to 'Tag anlegen', new_tag_path %>&nbsp;
+</td></tr></table></td></tr>
 
-<%= link_to 'Tag anlegen', new_tag_path %>
-<br /><br />
-
-<table class="content">
+<tr><td><table class="content">
   <tr>
     <th>Kürzel</th>
     <th>Kommentar</th>
@@ -48,7 +48,4 @@
     <%= link_to 'Löschen', tag, confirm: 'Sind Sie sicher?', method: :delete if tag.priority == 0 %></td>
   </tr>
 <% end %>
-</table>
-
-<br />
-<%= link_to 'Tag anlegen', new_tag_path %>
+</table></td></tr>

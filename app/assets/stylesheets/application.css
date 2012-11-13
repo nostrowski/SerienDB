@@ -202,6 +202,12 @@ a:hover, #mainmenu ul li#act a, #submenu tr#act a {
 	font-size: 11px;
 }
 
+.actions, .field {
+	margin-left: 5px;
+	margin-bottom: 7px;
+	margin-top: 3px;
+}
+
 textarea {
 	height:60px;
 }
