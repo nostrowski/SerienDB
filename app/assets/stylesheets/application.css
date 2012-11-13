@@ -199,6 +199,7 @@ a:hover, #mainmenu ul li#act a, #submenu tr#act a {
 
 #footer tr td {
 	text-align: center;
+	font-size: 11px;
 }
 
 textarea {

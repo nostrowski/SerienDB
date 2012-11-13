@@ -1,13 +1,13 @@
 <div id="mainmenu">
   <ul>
   	<% unless User.current then %>
-  	<li><%= link_to "Login", :controller => "session", :action => "login"  %></li>
+  	<li <%= 'id=act' if params[:controller] == "session" %>><%= link_to "Login", :controller => "session", :action => "login"  %></li>
   	<% else %>
-  	<li><%= link_to "Benutzer", :controller => "users" %></li>
-  	<li><%= link_to "Serien", :controller => "series" %></li>
-  	<li><%= link_to "Staffeln", :controller => "seasons" %></li>
-  	<li><%= link_to "Tags", :controller => "tags" %></li>
-	<li><%= link_to "Logout", :controller => "session", :action => "logout" %></li>
+  	<li <%= 'id=act' if params[:controller] == "users" %>><%= link_to "Benutzer", :controller => "users" %></li>
+  	<li <%= 'id=act' if params[:controller] == "series" %>><%= link_to "Serien", :controller => "series" %></li>
+  	<li <%= 'id=act' if params[:controller] == "seasons" %>><%= link_to "Staffeln", :controller => "seasons" %></li>
+  	<li <%= 'id=act' if params[:controller] == "tags" %>><%= link_to "Tags", :controller => "tags" %></li>
+	<li <%= 'id=act' if params[:controller] == "session" %>><%= link_to "Logout", :controller => "session", :action => "logout" %></li>
 	<% end %>
   </ul>
 </div>
