@@ -1,5 +1,9 @@
-<h1><%= @user.fullname %></h1>
+<tr><td><table class="content" id="subtitle"><tr><td>
+<h2><%= @user.fullname %></h2>
+<% if User.current.admin? || @user == User.current then %><%= link_to 'Bearbeiten', edit_user_path(@user) %><% end %>&nbsp;
+</td></tr></table></td></tr>
 
+<tr><td><table class="content"><tr><td>
 <p>
   <b>Login-Name:</b>
   <%= @user.login %>
@@ -39,6 +43,4 @@
   <b>Standart Filter Relation:</b>
   <%= if @user.filterrelation == "and" then "UND" else "ODER" end %>
 </p>
-
-
-<% if User.current.admin? || @user == User.current then %><%= link_to 'Bearbeiten', edit_user_path(@user) %><% end %>
+</td></tr></table></td></tr>
