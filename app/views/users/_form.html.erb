@@ -1,17 +1,18 @@
+<% if @user.errors.any? %>
+<tr><td><table class="content error">
+  <tr><th><%= @user.errors.count %> Fehler aufgetreten</th></tr>
+  <tr><td>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </td></tr>
+</table></td></tr>
+<% end %>
+
 <tr><td><table class="content"><tr><td>
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @user.errors.count %> Fehler aufgetreten:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
   <% if @user == User.current || User.current.admin? then %>
   
   <div class="field">

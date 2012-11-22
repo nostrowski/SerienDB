@@ -1,15 +1,15 @@
-<h1>Staffeln</h1>
-
-<%= render 'filter' if params[:filter_show] %>
+<tr><td><table class="content" id="subtitle"><tr><td>
+<h2>Staffeln</h2>
 
 <%= link_to 'Als CSV exportieren', { :controller => "seasons", :format => "csv" } %><%
 if !params[:filter_show] then %> |
 <%= link_to 'Filter', { :controller => "seasons", :filter_show => true } %>
 <% end %>
+</td></tr></table></td></tr>
 
-<br /><br />
+<%= render 'filter' if params[:filter_show] %>
 
-<table class="content">
+<tr><td><table class="content">
   <tr>
     <th>Name</th>
     <th>Tags</th>
@@ -34,11 +34,4 @@ if !params[:filter_show] then %> |
   <% end %>
 <% end %>
 
-</table>
-
-<br />
-
-<%= link_to 'Als CSV exportieren', { :controller => "season", :format => "csv" } %><%
-if !params[:filter_show] then %> |
-<%= link_to 'Filter', { :controller => "seasons", :filter_show => true } %>
-<% end %>
+</table></td></tr>

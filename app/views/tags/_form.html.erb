@@ -1,17 +1,18 @@
+<% if @tag.errors.any? %>
+<tr><td><table class="content error">
+  <tr><th><%= @tag.errors.count %> Fehler aufgetreten</th></tr>
+  <tr><td>
+    <ul>
+    <% @tag.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </td></tr>
+</table></td></tr>
+<% end %>
+
 <tr><td><table class="content"><tr><td>
 <%= form_for(@tag) do |f| %>
-  <% if @tag.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
-
-      <ul>
-      <% @tag.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     Kürzel:<br />
     <%= f.text_field :acronym %> (1 Zeichen; A bis Z)
