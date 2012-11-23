@@ -118,7 +118,7 @@ a:hover, #mainmenu ul li#act a, #submenu tr#act a {
   border-top-width: 1px;
 }
 
-.content tr:hover td, #submenu tr#act td, #mainmenu ul li:hover, #mainmenu ul li#act {
+.rowhighlight tr:hover td, #submenu tr#act td, #mainmenu ul li:hover, #mainmenu ul li#act {
   background-color: #CCCCCC;
 }
 
