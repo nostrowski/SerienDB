@@ -1,5 +1,5 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
-<h2>Login</h2>
+<h2>Login</h2>&nbsp;
 </td></tr></table></td></tr>
 <tr><td><table class="content"><tr><td>
 <%= form_tag :controller => "session", :action => "login" %>
@@ -10,5 +10,8 @@ Passwort:
 <%= password_field_tag :password, ""%>
 
 <%= submit_tag "Login"%>
+
+<%= link_to 'Passwort vergessen', :action => 'password' %>
+
 </form>
 </td></tr></table></td></tr>

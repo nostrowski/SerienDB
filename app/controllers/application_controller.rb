@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   helper_method :validate_session, :gen_users_fullname_comma_list
-  before_filter :set_current_user, :validate_session, :except => [:login]
+  before_filter :set_current_user, :validate_session, :except => [:login, :password]
   
   Time::DATE_FORMATS[:de] = "%d.%m.%y %H:%M"
   

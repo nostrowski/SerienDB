@@ -64,4 +64,20 @@ SerienDB::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  
+  config.action_mailer.raise_delivery_errors = true
+
+  # set delivery method to :smtp, :sendmail or :test
+  config.action_mailer.delivery_method = :smtp
+
+  # these options are only needed if you choose smtp delivery
+  config.action_mailer.smtp_settings = {
+    :address        => 'mail.nijos.de',
+    :port           => 587,
+    :authentication => :plain,
+    :user_name      => 'mailer@nijos.de',
+    :password       => 'Miniba53',
+    :domain         => 'nijos.de',
+    :enable_starttls_auto => false
+  }
 end

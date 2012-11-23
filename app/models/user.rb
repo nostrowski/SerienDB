@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   end
   
   def password_valid? clear_password
-    password == hash_password(clear_password)
+    password == User.hash_password(clear_password)
   end
   
-  def hash_password clear_password
+  def self.hash_password clear_password
     Digest::SHA1.hexdigest(clear_password)
   end
   
@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
       errors.add(:password, ': "Passwort" und "Passwort wiederholen" nicht identisch!')
       had_an_error = true
     else
-      self.password = hash_password(params[:password]) unless params[:password] == ""
+      self.password = User.hash_password(params[:password]) unless params[:password] == ""
     end
     
     # User-Objekt mit dem angegebenen loginnamen aus der datenbank laden
