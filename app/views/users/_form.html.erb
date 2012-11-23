@@ -64,6 +64,24 @@
   	<%= f.radio_button :filterrelation, :or %>ODER
   </div>
   
+  <div class="field">
+  	<fieldset>
+  		<legend>Angezeigte Spalten in Serienübersicht</legend>
+  		<%= f.check_box :show_ser_col_complete %>&nbsp;Komplettbesitzer<br />
+  		<%= f.check_box :show_ser_col_uncomplete %>&nbsp;Teilbesitzer<br />
+  		<%= f.check_box :show_ser_col_seasoncount %>&nbsp;Anzahl Staffeln<br />
+  		<%= f.check_box :show_ser_col_episodecount %>&nbsp;Anzahl Episoden<br />
+  	</fieldset>
+  </div>
+  
+  <div class="field">
+  	<fieldset>
+  		<legend>Angezeigte Spalten in Staffelübersicht</legend>
+  		<%= f.check_box :show_sea_col_owner %>&nbsp;Besitzer<br />
+  		<%= f.check_box :show_sea_col_episodecount %>&nbsp;Anzahl Episoden<br />
+  	</fieldset>
+  </div>
+  
   <div class="actions">
     <%= f.submit 'Speichern' %>
   </div>

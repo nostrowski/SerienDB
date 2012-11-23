@@ -65,6 +65,12 @@ class User < ActiveRecord::Base
     self.replace_uncomplete_x = params[:replace_uncomplete_x] if params[:replace_uncomplete_x]
     self.replace_complete_x = params[:replace_complete_x] if params[:replace_complete_x]
     self.filterrelation = params[:filterrelation] if params[:filterrelation]
+    self.show_ser_col_complete = params[:show_ser_col_complete] if params[:show_ser_col_complete]
+    self.show_ser_col_uncomplete = params[:show_ser_col_uncomplete] if params[:show_ser_col_uncomplete]
+    self.show_ser_col_seasoncount = params[:show_ser_col_seasoncount] if params[:show_ser_col_seasoncount]
+    self.show_ser_col_episodecount = params[:show_ser_col_episodecount] if params[:show_ser_col_episodecount]
+    self.show_sea_col_owner = params[:show_sea_col_owner] if params[:show_sea_col_owner]
+    self.show_sea_col_episodecount = params[:show_sea_col_episodecount] if params[:show_sea_col_episodecount]
     
     self.save unless had_an_error
     return !had_an_error

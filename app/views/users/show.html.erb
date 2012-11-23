@@ -30,17 +30,35 @@
 </p>
 
 <p>
-  <%= check_box_tag "admin", '0', @user.replace_uncomplete_x?, :disabled => true %>
+  <%= check_box_tag "replace_uncomplete_x", '0', @user.replace_uncomplete_x?, :disabled => true %>
   <b>Bei unvollständigen Serien '<font color="orange">X</font>' durch höchste Staffel ersetzen</b>
 </p>
 
 <p>
-  <%= check_box_tag "admin", '0', @user.replace_complete_x?, :disabled => true %>
+  <%= check_box_tag "replace_complete_x", '0', @user.replace_complete_x?, :disabled => true %>
   <b>Bei vollständigen Serien '<font color="green">X</font>' durch höchste Staffel ersetzen</b>
 </p>
 
 <p>
   <b>Standart Filter Relation:</b>
   <%= if @user.filterrelation == "and" then "UND" else "ODER" end %>
+</p>
+
+<p>
+  <fieldset>
+    <legend>Angezeigte Spalten in Serienübersicht</legend>
+  	<%= check_box_tag "show_ser_col_complete", '0', @user.show_ser_col_complete?, :disabled => true %>&nbsp;<b>Komplettbesitzer</b><br />
+  	<%= check_box_tag "show_ser_col_uncomplete", '0', @user.show_ser_col_uncomplete?, :disabled => true %>&nbsp;<b>Teilbesitzer</b><br />
+  	<%= check_box_tag "show_ser_col_seasoncount", '0', @user.show_ser_col_seasoncount?, :disabled => true %>&nbsp;<b>Anzahl Staffeln</b><br />
+  	<%= check_box_tag "show_ser_col_episodecount", '0', @user.show_ser_col_episodecount?, :disabled => true %>&nbsp;<b>Anzahl Episoden</b><br />
+  </fieldset>
+</p>
+  
+<p>
+  <fieldset>
+  	<legend>Angezeigte Spalten in Staffelübersicht</legend>
+  	<%= check_box_tag "show_sea_col_owner", '0', @user.show_sea_col_owner?, :disabled => true %>&nbsp;<b>Besitzer</b><br />
+  	<%= check_box_tag "show_sea_col_episodecount", '0', @user.show_sea_col_episodecount?, :disabled => true %>&nbsp;<b>Anzahl Episoden</b><br />
+  </fieldset>
 </p>
 </td></tr></table></td></tr>

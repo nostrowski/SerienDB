@@ -13,8 +13,8 @@ if !params[:filter_show] then %> |
   <tr>
     <th>Name</th>
     <th>Tags</th>
-    <th>Folgen</th>
-    <th>Besitzer</th>
+    <% if User.current.show_sea_col_episodecount? then %><th>Folgen</th><% end %>
+    <% if User.current.show_sea_col_owner? then %><th>Besitzer</th><% end %>
     <th></th>
   </tr>
 <% @seasons = Season.sort_by_name(@seasons) %>
@@ -24,8 +24,8 @@ if !params[:filter_show] then %> |
   <tr>
     <td><%= season.name %></td>
     <td><b><%= render 'taglist' %></b></td>
-    <td><%= @a_season.episodes_count %></td>
-    <td><%= gen_users_fullname_comma_list season.users %></td>
+    <% if User.current.show_sea_col_episodecount? then %><td><%= @a_season.episodes_count %></td><% end %>
+    <% if User.current.show_sea_col_owner? then %><td><%= gen_users_fullname_comma_list season.users %></td><% end %>
     <td><%= link_to 'Zu Serie', season.series %>
     	<%= link_to('Bearbeiten', :action => 'edit', :id => season.id ) %>
     	<%= link_to('Entfernen', :controller => 'series', :action => 'season_remove', :id => season.series.id, :mothod => 'puts') if season.series.seasons.order("number DESC").first.number == season.number %>

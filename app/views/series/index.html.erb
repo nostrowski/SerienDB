@@ -14,8 +14,10 @@ if !params[:filter_show] then %> |
   <tr>
     <th>Name</th>
     <th>Tags</th>
-    <th>Komplettbesitzer</th>
-    <th>Teilbesitzer</th>
+    <% if User.current.show_ser_col_complete? then %><th>Komplettbesitzer</th><% end %>
+    <% if User.current.show_ser_col_uncomplete? then %><th>Teilbesitzer</th><% end %>
+    <% if User.current.show_ser_col_seasoncount? then %><th>Anzahl Staffeln</th><% end %>
+    <% if User.current.show_ser_col_episodecount? then %><th>Anzahl Episoden</th><% end %>
     <th></th>
   </tr>
 
@@ -34,8 +36,10 @@ count_of_shown_episodes = 0
   <tr>
     <td><%= @a_series.name %></td>
     <td><b><%= render 'taglist' %></b></td>
-    <td id="users_complete"><%= gen_users_fullname_comma_list @a_series.users_owning_series_complete %></td>
-    <td id="users_partly"><%= gen_users_fullname_comma_list @a_series.users_owning_series_partly %></td>
+    <% if User.current.show_ser_col_complete? then %><td id="users_complete"><%= gen_users_fullname_comma_list @a_series.users_owning_series_complete %></td><% end %>
+    <% if User.current.show_ser_col_uncomplete? then %><td id="users_partly"><%= gen_users_fullname_comma_list @a_series.users_owning_series_partly %></td><% end %>
+    <% if User.current.show_ser_col_seasoncount? then %><td><%= series.seasons.count %></td><% end %>
+    <% if User.current.show_ser_col_episodecount? then %><td><%= series.episodes_count %></td><% end %>
     <td><%= link_to 'Details', @a_series %>
     <%= link_to 'Bearbeiten', edit_series_path(@a_series) %>
     <%= link_to 'Löschen', @a_series, confirm: 'Sind Sie sicher?', method: :delete %></td>
@@ -43,7 +47,12 @@ count_of_shown_episodes = 0
   <% end %>
 <% end %>
   <tr>
-  	<th colspan="5">
+  	<% colspan_count = 3
+  	colspan_count += 1 if User.current.show_ser_col_complete?
+  	colspan_count += 1 if User.current.show_ser_col_uncomplete?
+  	colspan_count += 1 if User.current.show_ser_col_seasoncount?
+  	colspan_count += 1 if User.current.show_ser_col_episodecount? %>
+  	<th colspan="<%= colspan_count %>">
   		<center>
   		<%= count_of_shown_series %> <%= (count_of_shown_series==1?"Serie":"Serien") %> mit 
   		<%= count_of_shown_seasons %> <%= (count_of_shown_seasons==1?"Staffel":"Staffeln") %> und
