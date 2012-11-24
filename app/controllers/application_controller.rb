@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   helper_method :validate_session, :gen_users_fullname_comma_list
   before_filter :set_current_user, :validate_session, :except => [:login, :password]
+  before_filter :valid_email, :except => [:login, :logout, :password]
   
   Time::DATE_FORMATS[:de] = "%d.%m.%y %H:%M"
   
@@ -14,8 +15,15 @@ class ApplicationController < ActionController::Base
   
   def validate_session
     unless session[:s_id] && (Session.find(session[:s_id]).user.id == session[:user_id]) then
-      flash[:warning] = "Nicht eingeloggt!"
+      flash[:alert] = "Nicht eingeloggt!"
       redirect_to :controller => "session", :action => "login"
+    end
+  end
+  
+  def valid_email
+    unless User.current.email_valid? then
+      flash[:alert] = "Bitte Emailadresse validieren!"
+      redirect_to :controller => 'users', :action => 'edit' , :id => User.current.id
     end
   end
   

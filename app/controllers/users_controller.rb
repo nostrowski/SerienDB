@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  skip_before_filter :valid_email, :only => [:show, :edit, :update, :validate_email]
+  
   # GET /users
   # GET /users.json
   def index
@@ -78,6 +81,33 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def validate_email
+    user = User.find(params[:id])
+    unless user.email_valid? then
+      unless params[:validation_code] then
+        user.validation_code = SecureRandom.hex(10)
+        user.save
+        UserMailer.send_validate_email(user).deliver
+        flash[:notice] = "Validation-Code wurde versandt!"
+        redirect_to :action => 'show', :id => user.id
+      else
+        if user.validation_code == params[:validation_code] then
+          user.validation_code = nil
+          user.email_valid = true
+          user.save
+          flash[:notice] = "Emailadresse wurde erfolgreich validiert!"
+          redirect_to :action => 'show', :id => user.id
+        else
+          flash[:alert] = "Validation-Code ist nicht korrekt!"
+          redirect_to :action => 'show', :id => user.id
+        end
+      end
+    else
+      flash[:notice] = "Emailadresse wurde bereits validiert."
+      redirect_to :action => 'show', :id => user.id
     end
   end
 end

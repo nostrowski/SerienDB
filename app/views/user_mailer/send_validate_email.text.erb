@@ -1,0 +1,9 @@
+Guten Tag <%= @user.fullname %>,
+
+Sie haben eine validierung Ihrer Emailadresse für SerienDB-RAN angefordert.
+Diese muss durch den folgenden Link bestätigt werden:
+<%= url_for :controller => 'users', :action => 'validate_email', :id => @user.id, :validation_code => @user.validation_code, :only_path => false %>
+
+Beachten Sie, dass Sie bei SerienDB-RAN bereits eingeloggt sein müssen!
+
+Mit freundlichen Grüßen ihr SerienDB-RAN - Team

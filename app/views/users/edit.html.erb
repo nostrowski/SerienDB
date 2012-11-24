@@ -1,6 +1,6 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
 <h2><%= @user.fullname %> bearbeiten</h2>
-&nbsp;
+<% if @user == User.current && !@user.email_valid? then %><%= link_to 'Emailadresse validieren', :action => 'validate_email', :id => @user.id %><% end %>&nbsp;
 </td></tr></table></td></tr>
 
 <%= render 'form' %>

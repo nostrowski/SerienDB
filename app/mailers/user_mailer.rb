@@ -11,4 +11,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(:to => user.email, :subject => 'SerienDB-RAN - Passwort erneuern')
   end
+  
+  def send_validate_email(user)
+    @user = user
+    mail(:to => user.email, :subject => 'SerienDB-RAN - Validierungslink')
+  end
 end

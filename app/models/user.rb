@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
     end
     
     if params[:email].include?("@") && params[:email].include?(".") && params[:email].size >= 7 then
+      self.email_valid = false if self.email != params[:email]
       self.email = params[:email] if params[:email]
     else
       errors.add(:email, ': "Mailadresse" scheint nicht korrekt zu sein!')

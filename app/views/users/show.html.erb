@@ -1,6 +1,7 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
 <h2><%= @user.fullname %></h2>
-<% if User.current.admin? || @user == User.current then %><%= link_to 'Bearbeiten', edit_user_path(@user) %><% end %>&nbsp;
+<% if User.current.admin? || @user == User.current then %><%= link_to 'Bearbeiten', edit_user_path(@user) %><% end %>
+<% if @user == User.current && !@user.email_valid? then %>| <%= link_to 'Emailadresse validieren', :action => 'validate_email', :id => @user.id %><% end %>&nbsp;
 </td></tr></table></td></tr>
 
 <tr><td><table class="content"><tr><td>
