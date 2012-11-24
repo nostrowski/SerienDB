@@ -1,17 +1,7 @@
-v2.0
-erledigt -- neues Design implementieren
-
-erledigt -- passwort-vergessen funktion einfügen
-
-erledigt -- Benutzer sollen auswählen können welche Zusätzlichen Spalten im Serien index angezeigt werden
-
-erledigt -- zweiwege-verfahren für passwortvergessen-funktion implementieren (zuerst das setzen eines neuen passworts bestätigen, dann erst neues passwort verschicken)
-
-erledigt -- benutzer müssen ihre email adressen validieren 
-
-vX.X
-Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
+v2.1
+Zu Serien Marker und Erinnerungen hinzufügen
 
 Möglichkeit schaffen an zu geben ab wann und bis wann ein Staffel-Tag gültig/gesetzt ist
 
-Zu Serien Marker und Erinnerungen hinzufügen
+vX.X
+Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
