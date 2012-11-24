@@ -80,4 +80,8 @@ SerienDB::Application.configure do
     :domain         => 'nijos.de',
     :enable_starttls_auto => false
   }
+  
+  config.action_mailer.default_url_options = {
+    :host => 'nijos.de:3000'
+  }
 end

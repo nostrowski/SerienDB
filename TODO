@@ -5,6 +5,10 @@ erledigt -- passwort-vergessen funktion einfügen
 
 erledigt -- Benutzer sollen auswählen können welche Zusätzlichen Spalten im Serien index angezeigt werden
 
+erledigt -- zweiwege-verfahren für passwortvergessen-funktion implementieren (zuerst das setzen eines neuen passworts bestätigen, dann erst neues passwort verschicken)
+
+benutzer müssen ihre email adressen validieren 
+
 vX.X
 Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
 

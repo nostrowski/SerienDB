@@ -34,25 +34,35 @@ class SessionController < ApplicationController
   end
   
   def password
-    unless params[:login] && params[:email] then
+    unless params[:login] || params[:validation_code] then
       render 'password'
     else
-      user = User.find_by_login params[:login]
-      if user then
-        if user.email == params[:email] then
+      if params[:login] then
+        user = User.find_by_login params[:login]
+        if user then
+          user.validation_code = SecureRandom.hex(10)
+          user.save
+          UserMailer.send_password_activation(user).deliver
+          flash[:notice] = "Validierungslink wurde versandt!"
+          redirect_to :action => 'login'
+        else
+          flash[:alert] = "Login-Name nicht korrekt!"
+          redirect_to :action => 'password'
+        end
+      else
+        user = User.find_by_validation_code params[:validation_code]
+        if user then
+          user.validation_code = nil
           password = SecureRandom.hex(8)
           user.password = User.hash_password(password)
           user.save
           UserMailer.send_password(user, password).deliver
-          flash[:notice] = "Neues Passwort wurde versandt!"
+          flash[:notice] = "Neues Passwort versandt!"
           redirect_to :action => 'login'
         else
-          flash[:alert] = "Angegebene und hinterlegte Email-Adresse sind nicht identisch!"
-          redirect_to :action => 'password'
+          flash[:alert] = "Validation-Code nicht korrekt!"
+          redirect_to :action => 'login'
         end
-      else
-        flash[:alert] = "Login-Name nicht korrekt!"
-        redirect_to :action => 'password'
       end
     end
   end
