@@ -40,11 +40,16 @@ class SessionController < ApplicationController
       if params[:login] then
         user = User.find_by_login params[:login]
         if user then
-          user.validation_code = SecureRandom.hex(10)
-          user.save
-          UserMailer.send_password_activation(user).deliver
-          flash[:notice] = "Validierungslink wurde versandt!"
-          redirect_to :action => 'login'
+          if user.email_valid? then
+            user.validation_code = SecureRandom.hex(10)
+            user.save
+            UserMailer.send_password_activation(user).deliver
+            flash[:notice] = "Validierungslink wurde versandt!"
+            redirect_to :action => 'login'
+          else
+            flash[:alert] = "Emailadresse ist nicht validiert worden. Diese Funktion ist Ihnen nicht erlaubt! Bitte kontaktieren Sie einen Administrator!"
+            redirect_to :action => 'login'
+          end
         else
           flash[:alert] = "Login-Name nicht korrekt!"
           redirect_to :action => 'password'
