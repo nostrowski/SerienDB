@@ -16,7 +16,7 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.login %></td>
-    <td><%= user.email %></td>
+    <td><% if !user.email_valid? then %><font color="red"><% end %><%= user.email %><% if !user.email_valid? then %></font><% end %></td>
     <td><%= user.firstname %></td>
     <td><%= user.lastname %></td>
     <td><%= check_box_tag "admin", '0', user.admin?, :disabled => true %></td>
