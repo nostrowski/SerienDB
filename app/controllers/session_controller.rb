@@ -72,4 +72,8 @@ class SessionController < ApplicationController
     end
   end
   
+  def changelog
+    
+  end
+  
 end
