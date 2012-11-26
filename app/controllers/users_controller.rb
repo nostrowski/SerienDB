@@ -1,6 +1,23 @@
 class UsersController < ApplicationController
   
   skip_before_filter :valid_email, :only => [:show, :edit, :update, :validate_email]
+  before_filter :is_admin, :except => [:show, :edit, :update, :validate_email]
+  before_filter :privilegs, :only => [:show, :edit, :update, :validate_email]
+  
+  def is_admin
+    if !User.current.admin? then
+      redirect_to :action => 'show', :id => User.current.id
+    end
+  end
+  
+  def privilegs
+    unless User.current.id.to_s == params[:id] then
+      unless User.current.admin? then
+        flash[:alert] = "Spezielle Rechte erforderlich!"
+        redirect_to :action => 'show', :id => User.current.id
+      end
+    end
+  end
   
   # GET /users
   # GET /users.json
