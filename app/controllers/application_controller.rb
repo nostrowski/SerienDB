@@ -14,9 +14,22 @@ class ApplicationController < ActionController::Base
   end
   
   def validate_session
-    unless session[:s_id] && (Session.find(session[:s_id]).user.id == session[:user_id]) then
+    unless session[:s_id] && session_userid_correct? then
       flash[:alert] = "Nicht eingeloggt!"
       redirect_to :controller => "session", :action => "login"
+    end
+  end
+  
+  def session_userid_correct?
+    db_session = Session.find_by_id(session[:s_id])
+    if db_session then
+      if db_session.user.id == session[:user_id] then
+        return true
+      else
+        return false
+      end
+    else
+      return false
     end
   end
   
