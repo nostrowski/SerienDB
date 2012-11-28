@@ -14,20 +14,20 @@
   
   <tr>
   	<% if User.current.replace_complete_x then %>
-  	<td><font color="green"><b>n</b></font></td><td>Man selbst ist Komplettbesitzer der Serie. (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td><td></td>
+  	<td><font color="green"><b>n</b></font></td><td>Man selbst ist Komplettbesitzer der Serie. (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td>
   	<% else %>
-  	<td><font color="green"><b>X</b></font></td><td>Man selbst ist Komplettbesitzer der Serie.</td><td></td><td></td><td></td>
-  	<% end %>
+  	<td><font color="green"><b>X</b></font></td><td>Man selbst ist Komplettbesitzer der Serie.</td>
+  	<% end %><td><%= check_box_tag "seasontag", '0', false, :disabled => true %></td><td></td><td></td>
   </tr>
   <tr>
   	<% if User.current.replace_uncomplete_x then %>
-  	<td><font color="orange"><b>n</b></font></td><td>Man selbst ist Teilbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td><td></td><td></td><td></td>
+  	<td><font color="orange"><b>n</b></font></td><td>Man selbst ist Teilbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td>
   	<% else %>
-  	<td><font color="orange"><b>X</b></font></td><td>Man selbst ist Teilbesitzer der Serie</td><td></td><td></td><td></td>
-  	<% end %>
+  	<td><font color="orange"><b>X</b></font></td><td>Man selbst ist Teilbesitzer der Serie</td>
+  	<% end %><td><%= check_box_tag "seasontag", '0', false, :disabled => true %></td><td></td><td></td>
   </tr>
   <tr>
-  	<td><font color="red"><b>X</b></font></td><td>Man selbst besitzt keine Staffel dieser Serie</td><td></td><td></td><td></td>
+  	<td><font color="red"><b>X</b></font></td><td>Man selbst besitzt keine Staffel dieser Serie</td><td><%= check_box_tag "seasontag", '0', false, :disabled => true %></td><td></td><td></td>
   </tr>
   <tr>
   	<td><font color="green"><b>X</b></font></td><td>Man selbst besitzt diese Staffel</td><td><%= check_box_tag "seasontag", '0', 1, :disabled => true %></td><td></td><td></td>
