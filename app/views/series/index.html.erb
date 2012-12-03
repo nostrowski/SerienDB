@@ -1,10 +1,10 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
-<h2>Serien</h2>
+<h2><%=t 'series.index.header'%></h2>
 
-<%= link_to 'Serie anlegen', new_series_path %> |
-<%= link_to 'Als CSV exportieren', { :controller => "series", :format => "csv" } %><%
+<%= link_to t('series.index.add_series'), new_series_path %> |
+<%= link_to t('series.index.export_as_csv'), { :controller => "series", :format => "csv" } %><%
 if !params[:filter_show] then %> |
-<%= link_to 'Filter', { :controller => "series", :filter_show => true } %>
+<%= link_to t('series.index.filter'), { :controller => "series", :filter_show => true } %>
 <% end %>
 </td></tr></table></td></tr>
 
@@ -12,12 +12,12 @@ if !params[:filter_show] then %> |
 
 <tr><td><table class="content rowhighlight">
   <tr>
-    <th>Name</th>
-    <th>Tags</th>
-    <% if User.current.show_ser_col_complete? then %><th>Komplettbesitzer</th><% end %>
-    <% if User.current.show_ser_col_uncomplete? then %><th>Teilbesitzer</th><% end %>
-    <% if User.current.show_ser_col_seasoncount? then %><th>Anzahl Staffeln</th><% end %>
-    <% if User.current.show_ser_col_episodecount? then %><th>Anzahl Episoden</th><% end %>
+    <th><%=t 'series.index.name'%></th>
+    <th><%=t 'series.index.tags'%></th>
+    <% if User.current.show_ser_col_complete? then %><th><%=t 'series.index.ownling_complete'%></th><% end %>
+    <% if User.current.show_ser_col_uncomplete? then %><th><%=t 'series.index.owning_partly'%></th><% end %>
+    <% if User.current.show_ser_col_seasoncount? then %><th><%=t 'series.index.season_count'%></th><% end %>
+    <% if User.current.show_ser_col_episodecount? then %><th><%=t 'seasons.index.episode_count'%></th><% end %>
     <th></th>
   </tr>
 
@@ -40,9 +40,9 @@ count_of_shown_episodes = 0
     <% if User.current.show_ser_col_uncomplete? then %><td id="users_partly"><%= gen_users_fullname_comma_list @a_series.users_owning_series_partly %></td><% end %>
     <% if User.current.show_ser_col_seasoncount? then %><td><%= series.seasons.count %></td><% end %>
     <% if User.current.show_ser_col_episodecount? then %><td><%= series.episodes_count %></td><% end %>
-    <td><%= link_to 'Details', @a_series %>
-    <%= link_to 'Bearbeiten', edit_series_path(@a_series) %>
-    <%= link_to 'Löschen', @a_series, confirm: 'Sind Sie sicher?', method: :delete %></td>
+    <td><%= link_to t('series.index.details'), @a_series %>
+    <%= link_to t('series.index.edit'), edit_series_path(@a_series) %>
+    <%= link_to t('series.index.delete'), @a_series, confirm: t('series.index.confirm_delete'), method: :delete %></td>
   </tr>
   <% end %>
 <% end %>
@@ -54,9 +54,10 @@ count_of_shown_episodes = 0
   	colspan_count += 1 if User.current.show_ser_col_episodecount? %>
   	<th colspan="<%= colspan_count %>">
   		<center>
-  		<%= count_of_shown_series %> <%= (count_of_shown_series==1?"Serie":"Serien") %> mit 
-  		<%= count_of_shown_seasons %> <%= (count_of_shown_seasons==1?"Staffel":"Staffeln") %> und
-  		<%= count_of_shown_episodes %> <%= (count_of_shown_episodes==1?"Folge":"Folgen") %>
+  		<%= t 'series.index.footer_stats',
+  		:series_count => count_of_shown_series,
+  		:season_count => count_of_shown_seasons,
+  		:episode_count => count_of_shown_episodes %>
   		</center>
   	</th>
   </tr>

@@ -1,16 +1,4 @@
 de:
-  session:
-    login:
-      header: "Login"
-      login: "Login"
-      password: "Passwort"
-      forgot_password: "Passwort Vergessen"
-    password:
-      header: "Neues Passwort generieren"
-      loginname: "Loginname"
-      mail_password: "Passwort zuschicken"
-    changelog:
-      # TODO: changelog
   users:
     loginname: "Login-Name"
     mail_adress: "E-Mail Adresse"
@@ -24,8 +12,7 @@ de:
       settings: "Einstellungen"
       delete: "Löschen"
       confirm_delete: "Sind Sie sicher?"
-    show:
-      header: "%{username}"
+    form:
       replace_x_uncomplete: "Bei unvollständigen Serien 'X' durch höchste Staffel ersetzen"
       replace_x_complete: "Bei vollständigen Serien 'X' durch höchste Staffel ersetzen"
       default_filter_relation: "Standart Filter Relation"
@@ -33,15 +20,59 @@ de:
       relation_or: "ODER"
       shown_cols_in_seriesindex: "Angezeigte Spalten in Serienübersicht"
       shown_cols_in_seasonsindex: "Angezeigte Spalten in Staffelübersicht"
-    # TODO: new, edit, form
+      password: "Passwort"
+      repeat_password: "Passwort wiederholen"
+      save: "Speichern"
+    show:
+      header: "%{username}"
+      edit: "Bearbeiten"
+    new:
+      header: "Neuer Benutzer"
+    edit:
+      header: "%{username} bearbeiten"
+      validate_email: "Emailadresse validieren"
+  #TODO: user_mailer
+  #TODO: tags
+  session:
+    login:
+      header: "Login"
+      login: "Login"
+      password: "Passwort"
+      forgot_password: "Passwort Vergessen"
+    logout:
+      header: "Logout"
+    password:
+      header: "Neues Passwort generieren"
+      loginname: "Loginname"
+      mail_password: "Passwort zuschicken"
+    changelog:
+      # TODO: changelog
   series:
-    # TODO: Alles
     index:
+      header: "Serien"
+      add_series: "Serie hinzufügen"
+      export_as_csv: "Als CSV exportieren"
+      filter: "Filter"
+      name: "Name"
+      tags: "Tags"
       owning_complete: "Komplettbesitzer"
       owning_partly: "Teilbesitzer"
       season_count: "Anzahl Staffeln"
+      details: "Details"
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      confirm_delete: "Sind Sie sicher?"
+      footer_stats: "%{series_count} Serien mit %{season_count} Staffeln und %{episode_count} Folgen"
+    # TODO: filter, form, taglist, edit, new, show
   seasons:
     # TODO: Alles
     index:
+      header: "Staffeln"
       owners: "Besitzer"
       episode_count: "Anzahl Episoden"
+  layouts:
+    notice:
+      notice: "Hinweis"
+      alert: "Warnung"
+    application:
+      menu: "Menü"

@@ -16,74 +16,74 @@
   <% if @user == User.current || User.current.admin? then %>
   
   <div class="field">
-    <%= f.label 'Loginname' %><br />
+    <%=t 'users.loginname'%><br />
     <%= f.text_field :login %>
   </div>
   <div class="field">
-    <%= f.label "Passwort" %><br />
+    <%=t 'users.form.password'%><br />
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label "Passwort wiederholen" %><br />
+    <%=t 'users.form.repeat_password'%><br />
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
-    <%= f.label "Mailadresse" %><br />
+    <%=t 'users.mail_adress'%><br />
     <%= f.text_field :email %>
   </div>
   
   <% if User.current.admin? then %>
   
   <div class="field">
-    <%= f.label 'Vorname' %><br />
+    <%=t 'users.firstname'%><br />
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label 'Nachname' %><br />
+    <%=t 'users.lastname'%><br />
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
   	<%= f.check_box :is_admin %>
-    <%= f.label 'Admin?' %>
+    <%=t 'users.admin'%>
   </div>
   
   <% end %>
   	
   <div class="field">
   	<%= f.check_box :replace_uncomplete_x %>
-    Bei unvollständigen Serien '<font color="orange"><b>X</b></font>' durch höchste Staffel ersetzen
+    <%=t 'users.form.replace_x_uncomplete'%>
   </div>
   <div class="field">
   	<%= f.check_box :replace_complete_x %>
-    Bei vollständigen Serien '<font color="green"><b>X</b></font>' durch höchste Staffel ersetzen
+    <%=t 'users.form.replace_x_complete'%>
   </div>
   
   <div class="field">
-  	Standart Filter Relation:
-  	<%= f.radio_button :filterrelation, :and %>UND
-  	<%= f.radio_button :filterrelation, :or %>ODER
+  	<%=t 'users.form.default_filter_relation'%>:
+  	<%= f.radio_button :filterrelation, :and %><%=t 'users.form.relation_and'%>
+  	<%= f.radio_button :filterrelation, :or %><%=t 'users.form.relation_or'%>
   </div>
   
   <div class="field">
   	<fieldset>
-  		<legend>Angezeigte Spalten in Serienübersicht</legend>
-  		<%= f.check_box :show_ser_col_complete %>&nbsp;Komplettbesitzer<br />
-  		<%= f.check_box :show_ser_col_uncomplete %>&nbsp;Teilbesitzer<br />
-  		<%= f.check_box :show_ser_col_seasoncount %>&nbsp;Anzahl Staffeln<br />
-  		<%= f.check_box :show_ser_col_episodecount %>&nbsp;Anzahl Episoden<br />
+  		<legend><%=t 'users.form.shown_cols_in_seriesindex'%></legend>
+  		<%= f.check_box :show_ser_col_complete %>&nbsp;<%=t 'series.index.owning_complete'%><br />
+  		<%= f.check_box :show_ser_col_uncomplete %>&nbsp;<%=t 'series.index.owning_partly'%><br />
+  		<%= f.check_box :show_ser_col_seasoncount %>&nbsp;<%=t 'series.index.season_count'%><br />
+  		<%= f.check_box :show_ser_col_episodecount %>&nbsp;<%=t 'seasons.index.episode_count'%><br />
   	</fieldset>
   </div>
   
   <div class="field">
   	<fieldset>
-  		<legend>Angezeigte Spalten in Staffelübersicht</legend>
-  		<%= f.check_box :show_sea_col_owner %>&nbsp;Besitzer<br />
-  		<%= f.check_box :show_sea_col_episodecount %>&nbsp;Anzahl Episoden<br />
+  		<legend><%=t 'users.form.shown_cols_in_seasonsindex'%></legend>
+  		<%= f.check_box :show_sea_col_owner %>&nbsp;<%=t 'seasons.index.owners'%><br />
+  		<%= f.check_box :show_sea_col_episodecount %>&nbsp;<%=t 'seasons.index.episode_count'%><br />
   	</fieldset>
   </div>
   
   <div class="actions">
-    <%= f.submit 'Speichern' %>
+    <%= f.submit t('users.form.save') %>
   </div>
   
   <% end %>
