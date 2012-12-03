@@ -1,17 +1,17 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
-<h2>Login</h2>&nbsp;
+<h2><Login><%=t 'session.login.header'%></h2>&nbsp;
 </td></tr></table></td></tr>
 <tr><td><table class="content"><tr><td>
 <%= form_tag :controller => "session", :action => "login" %>
-Login:
+<%=t 'session.login.login'%>:
 <%= text_field_tag :login, ""%>
 
-Passwort:
+<%=t 'session.login.password'%>:
 <%= password_field_tag :password, ""%>
 
-<%= submit_tag "Login"%>
+<%= submit_tag t('session.login.login')%>
 
-<%= link_to 'Passwort vergessen', :action => 'password' %>
+<%= link_to t('session.login.forgot_password'), :action => 'password' %>
 
 </form>
 </td></tr></table></td></tr>

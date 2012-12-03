@@ -1,15 +1,15 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
-<h2>Benutzer</h2>
-<%= link_to 'Benutzer anlegen', new_user_path if User.current.admin? %>&nbsp;
+<h2><%=t 'users.index.header'%></h2>
+<%= link_to t('users.index.add_user'), new_user_path if User.current.admin? %>&nbsp;
 </td></tr></table></td></tr>
 
 <tr><td><table class="content rowhighlight">
   <tr>
-    <th>Login-Name</th>
-    <th>E-Mail Adresse</th>
-    <th>Vorname</th>
-    <th>Nachname</th>
-    <th>Admin?</th>
+    <th><%=t 'users.loginname'%></th>
+    <th><%=t 'users.mail_adress'%></th>
+    <th><%=t 'users.firstname'%></th>
+    <th><%=t 'users.lastname'%></th>
+    <th><%=t 'users.admin'%></th>
     <th></th>
   </tr>
 
@@ -20,9 +20,9 @@
     <td><%= user.firstname %></td>
     <td><%= user.lastname %></td>
     <td><%= check_box_tag "admin", '0', user.admin?, :disabled => true %></td>
-    <td><%= link_to 'Details', user %>
-    <%= link_to 'Einstellungen', edit_user_path(user) if user == User.current || User.current.admin? %>
-    <%= link_to 'Löschen', user, confirm: 'Sind sie sicher?', method: :delete if User.current.admin? %></td>
+    <td><%= link_to t('users.index.details'), user %>
+    <%= link_to t('users.index.settings'), edit_user_path(user) if user == User.current || User.current.admin? %>
+    <%= link_to t('users.index.delete'), user, confirm: t('users.index.confirm_delete'), method: :delete if User.current.admin? %></td>
   </tr>
 <% end %>
 </table></td></tr>

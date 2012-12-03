@@ -1,0 +1,47 @@
+de:
+  session:
+    login:
+      header: "Login"
+      login: "Login"
+      password: "Passwort"
+      forgot_password: "Passwort Vergessen"
+    password:
+      header: "Neues Passwort generieren"
+      loginname: "Loginname"
+      mail_password: "Passwort zuschicken"
+    changelog:
+      # TODO: changelog
+  users:
+    loginname: "Login-Name"
+    mail_adress: "E-Mail Adresse"
+    firstname: "Vorname"
+    lastname: "Nachname"
+    admin: "Admin?"
+    index:
+      header: "Benutzer"
+      add_user: "Benutzer anlegen"
+      details: "Details"
+      settings: "Einstellungen"
+      delete: "Löschen"
+      confirm_delete: "Sind Sie sicher?"
+    show:
+      header: "%{username}"
+      replace_x_uncomplete: "Bei unvollständigen Serien 'X' durch höchste Staffel ersetzen"
+      replace_x_complete: "Bei vollständigen Serien 'X' durch höchste Staffel ersetzen"
+      default_filter_relation: "Standart Filter Relation"
+      relation_and: "UND"
+      relation_or: "ODER"
+      shown_cols_in_seriesindex: "Angezeigte Spalten in Serienübersicht"
+      shown_cols_in_seasonsindex: "Angezeigte Spalten in Staffelübersicht"
+    # TODO: new, edit, form
+  series:
+    # TODO: Alles
+    index:
+      owning_complete: "Komplettbesitzer"
+      owning_partly: "Teilbesitzer"
+      season_count: "Anzahl Staffeln"
+  seasons:
+    # TODO: Alles
+    index:
+      owners: "Besitzer"
+      episode_count: "Anzahl Episoden"
