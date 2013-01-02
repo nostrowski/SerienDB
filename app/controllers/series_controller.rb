@@ -28,19 +28,19 @@ class SeriesController < ApplicationController
     series = Series.find(params[:id])
     
     series.add_season!
-    redirect_to series, notice: "Staffel erfolgreich erzeugt!"
+    redirect_to series, notice: t('notice.season.created')
   end
   
   def season_remove
     series = Series.find(params[:id])
     
     if series.remove_last_season! then
-      redirect_to series, notice: "Staffel erfolgreich entfernt!"
+      redirect_to series, notice: t('notice.season.removed')
     else
       if series.last_season_pilot? then
-        redirect_to series, alert: 'Entfernen der Pilotfolge, auf diesem Weg, nicht erlaubt!'
+        redirect_to series, alert: t('alert.removing.pilot_not_allowed')
       else
-        redirect_to series, alert: 'Entfernen der Staffel nicht erlaubt! Staffel hat noch Besitzer.'
+        redirect_to series, alert: t('alert.removing.season_not_allowed')
       end
     end
   end
@@ -49,7 +49,7 @@ class SeriesController < ApplicationController
     series = Series.find(params[:id])
     
     series.update_selected_seasons! params
-    redirect_to series, notice: "Staffel erfolgreich gespeichert!"
+    redirect_to series, notice: t('notice.season.saved')
   end
 
   # GET /series/new
@@ -76,7 +76,7 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       if @series.save
-        format.html { redirect_to @series, notice: 'Serie wurde erfolgreich erstellt!' }
+        format.html { redirect_to @series, notice: t('notice.series.created') }
         format.json { render json: @series, status: :created, location: @series }
       else
         format.html { render action: "new" }
@@ -92,7 +92,7 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       if @series.update_attributes(params[:series])
-        format.html { redirect_to @series, notice: 'Serie erfolgreich aktualisiert!' }
+        format.html { redirect_to @series, notice: t('notice.series.updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -110,9 +110,9 @@ class SeriesController < ApplicationController
         season.destroy
       end
       @series.destroy
-      redirect_to Series, notice: "Serie erfolgreich entfernt!"
+      redirect_to Series, notice: t('notice.series.removed')
     else
-      redirect_to Series, alert: "Entfernen der Serie nicht erlaubt! Staffeln haben noch Besitzer."
+      redirect_to Series, alert: t('alert.removing.series_not_allowed')
     end
   end
 end

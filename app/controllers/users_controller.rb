@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def privilegs
     unless User.current.id.to_s == params[:id] then
       unless User.current.admin? then
-        flash[:alert] = "Spezielle Rechte erforderlich!"
+        flash[:alert] = t('alert.privilegs_needed')
         redirect_to :action => 'show', :id => User.current.id
       end
     end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'Benutzer erfolgreich erstellt.' }
+        format.html { redirect_to @user, notice: t('notice.user.created') }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user], params[:id])
-        format.html { redirect_to @user, notice: 'Benutzer erfolgreicht bearbeitet.' }
+        format.html { redirect_to @user, notice: t('notice.user.updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -108,22 +108,22 @@ class UsersController < ApplicationController
         user.validation_code = SecureRandom.hex(10)
         user.save
         UserMailer.send_validate_email(user).deliver
-        flash[:notice] = "Validation-Code wurde versandt!"
+        flash[:notice] = t('notice.validation.code_send')
         redirect_to :action => 'show', :id => user.id
       else
         if user.validation_code == params[:validation_code] then
           user.validation_code = nil
           user.email_valid = true
           user.save
-          flash[:notice] = "Emailadresse wurde erfolgreich validiert!"
+          flash[:notice] = t('notice.email_validated')
           redirect_to :action => 'show', :id => user.id
         else
-          flash[:alert] = "Validation-Code ist nicht korrekt!"
+          flash[:alert] = t('alert.validation_incorrect')
           redirect_to :action => 'show', :id => user.id
         end
       end
     else
-      flash[:notice] = "Emailadresse wurde bereits validiert."
+      flash[:notice] = t('notice.email_already_validated')
       redirect_to :action => 'show', :id => user.id
     end
   end

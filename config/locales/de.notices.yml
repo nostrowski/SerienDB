@@ -1,0 +1,37 @@
+de:
+  notice:
+    email_already_validated: "Emailadresse wurde bereits validiert."
+    email_validated: "Emailadresse wurde erfolgreich validiert!"
+    login: "Login erfolgreich!"
+    logout: "Logout erfolgreich!"
+    password_send: "Neues Passwort versandt!"
+    season:
+      created: "Staffel erfolgreich erzeugt!"
+      removed: "Staffel erfolgreich entfernt!"
+      saved: "Staffel erfolgreich gespeichert!"
+      updated: "Staffel erfolgreich aktualisiert!"
+    series:
+      created: "Serie wurde erfolgreich erstellt!"
+      removed: "Serie erfolgreich entfernt!"
+      updated: "Serie erfolgreich aktualisiert!"
+    tag:
+      created: "Tag erfolgreich erstellt!"
+      saved: "Tag erfolgreich gespeichert!"
+    user:
+      created: "Benutzer erfolgreich erstellt!"
+      updated: "Benutzer erfolgreicht bearbeitet."
+    validation:
+      link_send: "Validierungslink wurde versandt!"
+      code_send: "Validation-Code wurde versandt!"
+  alert:
+    login_incorrect: "Login-Name nicht korrekt!"
+    no_login: "Nicht eingeloggt!"
+    password_incorrect: "Passwort nicht korrekt!"
+    privilegs_needed: "Spezielle Rechte erforderlich!"
+    removing:
+      pilot_not_allowed: "Entfernen der Pilotfolge, auf diesem Weg, nicht erlaubt!"
+      season_not_allowed: "Entfernen der Staffel nicht erlaubt! Staffel hat noch Besitzer."
+      series_not_allowed: "Entfernen der Serie nicht erlaubt! Staffeln haben noch Besitzer."
+    validate_email: "Bitte Emailadresse validieren!"
+    validate_email_long: "Emailadresse ist nicht validiert worden. Diese Funktion ist Ihnen nicht erlaubt! Bitte kontaktieren Sie einen Administrator!"
+    validation_incorrect: "Validation-Code nicht korrekt!"

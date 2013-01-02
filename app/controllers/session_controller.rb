@@ -12,13 +12,13 @@ class SessionController < ApplicationController
           session[:user_id] = @user.id
           Session.drop_old
           
-          redirect_to Series, notice: "Login erfolgreich!"
+          redirect_to Series, notice: t('notice.login')
         else
-          flash[:alert] = "Passwort nicht korrekt!"
+          flash[:alert] = t('alert.password_incorrect')
           redirect_to :action => 'login'
         end
       else
-        flash[:alert] = "Login-Name nicht korrekt!"
+        flash[:alert] = t('alert.login_incorrect')
         redirect_to :action => 'login'
       end
     end
@@ -29,7 +29,7 @@ class SessionController < ApplicationController
     session[:s_id] = nil
     session[:user_id] = nil
     User.set_current nil
-    flash[:notice] = "Logout erfolgreich!"
+    flash[:notice] = t('notice.logout')
     redirect_to :action => 'login'
   end
   
@@ -44,14 +44,14 @@ class SessionController < ApplicationController
             user.validation_code = SecureRandom.hex(10)
             user.save
             UserMailer.send_password_activation(user).deliver
-            flash[:notice] = "Validierungslink wurde versandt!"
+            flash[:notice] = t('notice.validation.link_send')
             redirect_to :action => 'login'
           else
-            flash[:alert] = "Emailadresse ist nicht validiert worden. Diese Funktion ist Ihnen nicht erlaubt! Bitte kontaktieren Sie einen Administrator!"
+            flash[:alert] = t('alert.validate_email_long')
             redirect_to :action => 'login'
           end
         else
-          flash[:alert] = "Login-Name nicht korrekt!"
+          flash[:alert] = t('alert.login_incorrect')
           redirect_to :action => 'password'
         end
       else
@@ -62,10 +62,10 @@ class SessionController < ApplicationController
           user.password = User.hash_password(password)
           user.save
           UserMailer.send_password(user, password).deliver
-          flash[:notice] = "Neues Passwort versandt!"
+          flash[:notice] = t('notice.password_send')
           redirect_to :action => 'login'
         else
-          flash[:alert] = "Validation-Code nicht korrekt!"
+          flash[:alert] = t('alert.validation_incorrect')
           redirect_to :action => 'login'
         end
       end

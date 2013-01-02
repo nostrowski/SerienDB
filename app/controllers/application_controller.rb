@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   
   def validate_session
     unless session[:s_id] && session_userid_correct? then
-      flash[:alert] = "Nicht eingeloggt!"
+      flash[:alert] = t('alert.no_login')
       redirect_to :controller => "session", :action => "login"
     end
   end
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   
   def valid_email
     unless User.current.email_valid? then
-      flash[:alert] = "Bitte Emailadresse validieren!"
+      flash[:alert] = t('alert.validate_email')
       redirect_to :controller => 'users', :action => 'edit' , :id => User.current.id
     end
   end

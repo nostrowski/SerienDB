@@ -25,7 +25,7 @@ class SeasonsController < ApplicationController
 
     respond_to do |format|
       if @season.update_attributes(params[:season])
-        flash[:notice] = "Staffel erfolgreich aktualisiert!"
+        flash[:notice] = t('notice.season.updated')
         format.html { redirect_to :controller => "series", :action => "show", :id => @season.series.id }
       else
         format.html { render action: "edit" }

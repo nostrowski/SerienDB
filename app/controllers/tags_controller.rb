@@ -38,7 +38,7 @@ class TagsController < ApplicationController
             end
           end
         end
-        format.html { redirect_to :tags, notice: 'Tag erfolgreich erstellt.' }
+        format.html { redirect_to :tags, notice: t('notice.tag.created') }
       else
         format.html { render action: "new" }
       end
@@ -51,7 +51,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.update_attributes(params[:tag])
-        format.html { redirect_to :tags, notice: 'Tag erfolgreich gespeichert.' }
+        format.html { redirect_to :tags, notice: t('notice.tag.saved') }
       else
         format.html { render action: "edit" }
       end
