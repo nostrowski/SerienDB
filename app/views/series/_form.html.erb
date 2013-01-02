@@ -1,6 +1,6 @@
 <% if @series.errors.any? %>
 <tr><td><table class="content error">
-  <tr><th><%= @series.errors.count %> Fehler aufgetreten</th></tr>
+  <tr><th><%=t 'series.form.errors.header', :errors_count => @series.errors.count %></th></tr>
   <tr><td>
     <ul>
     <% @series.errors.full_messages.each do |msg| %>
@@ -14,21 +14,21 @@
 <tr><td><table class="content"><tr><td>
 <%= form_for(@series) do |f| %>
   <div class="field">
-    <%= f.label :name %><br />
+    <%=t 'series.form.name' %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
   	<%= f.check_box :has_pilot %>
-    Hat eine Pilotfolge
+    <%=t 'series.form.has_pilot'%>
   </div>
   <div class="field">
-  	<%= f.label :tags %><br />
+  	<%=t 'series.form.tags'%><br />
   	<%= f.collection_select :tag_ids, Tag.for_series, :id, :full_description, {}, { :multiple => true} %>
   </div>
   <%= f.hidden_field :added_by %>
   <%= f.hidden_field :edit_by, :value => User.current.id %>
   <div class="actions">
-    <%= f.submit 'Speichern' %>
+    <%= f.submit t('series.form.save') %>
   </div>
 <% end %>
 </td></tr></table></td></tr>

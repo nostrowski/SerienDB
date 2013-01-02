@@ -10,12 +10,12 @@ else
 end %>
 "><span title="<%=
 if @a_series.users_owning_series_complete.include?(User.current) then
-	"Man selbst ist Komplettbesitzer der Serie"
+	t('series.taglist.all_seasons')
 else
 	if @a_series.users_owning_series_partly.include?(User.current) then
-		"Man selbst ist Teilbesitzer der Serie"
+		t('series.taglist.some_seasons')
 	else
-		"Man selbst besitz keine Staffel dieser Serie"
+		t('series.taglist.no_season')
 	end
 end %>
 "><%=

@@ -63,7 +63,40 @@ de:
       delete: "Löschen"
       confirm_delete: "Sind Sie sicher?"
       footer_stats: "%{series_count} Serien mit %{season_count} Staffeln und %{episode_count} Folgen"
-    # TODO: filter, form, taglist, edit, new, show
+    filter:
+      header: "Filter"
+      and: "UND"
+      or: "ODER"
+      individual_tags: "Individuelle Tags"
+      filter: "Filtern"
+    form:
+      errors:
+        header: "%{error_count} Fehler aufgetreten"
+      name: "Name"
+      has_pilot: "Hat eine Pilotfolge"
+      tags: "Tags"
+      save: "Speichern"
+    taglist:
+      all_seasons: "Man selbst ist Komplettbesitzer der Serie"
+      some_seasons: "Man selbst ist Teilbesitzer der Serie"
+      no_season: "Man selbst besitz keine Staffel dieser Serie"
+    edit:
+      header: "Serie bearbeiten"
+    new:
+      header: "Serie anlegen"
+    show:
+      edit: "Bearbeiten"
+      tags: "Tags"
+      created: "Erstellt"
+      last_edit: "zuletzt Bearbeitet"
+      episodes: "Folgen"
+      i_own: "Besitze ich"
+      all_owners: "alle Besitzer"
+      pilot: "Pilotfolge"
+      season: "Staffel"
+      add_season: "Staffel hinzufügen"
+      remove_season: "Staffel entfernen"
+      save: "Speichern"
   seasons:
     # TODO: Alles
     index:

@@ -1,9 +1,9 @@
 <% @a_series = @series %>
 <tr><td><table class="content" id="subtitle"><tr>
-		<td id="first-cell"><h2><%= @series.name %></h2><%= link_to 'Bearbeiten', edit_series_path(@series) %></td>
-		<td><b>Tags:</b><br /><b><%= render 'taglist' %></b></td>
-		<td><b>Erstellt:</b><br /><%= @series.created_at.to_s(:de) %> (by <%= @series.fullname_of_creator %>)</td>
-		<td><b>zuletzt bearbeitet:</b><br /><%= @series.updated_at.to_s(:de) %> (by <%= @series.fullname_of_editor %>)</td>
+		<td id="first-cell"><h2><%= @series.name %></h2><%= link_to t('series.show.edit'), edit_series_path(@series) %></td>
+		<td><b><%=t 'series.show.tags'%>:</b><br /><b><%= render 'taglist' %></b></td>
+		<td><b><%=t 'series.show.created'%>:</b><br /><%= @series.created_at.to_s(:de) %> (by <%= @series.fullname_of_creator %>)</td>
+		<td><b><%=t 'series.show.last_edit'%>:</b><br /><%= @series.updated_at.to_s(:de) %> (by <%= @series.fullname_of_editor %>)</td>
 </tr></table></td></tr>
 
 
@@ -12,34 +12,34 @@
 <table class="content rowhighlight">
 	<tr>
 		<th></th>
-		<th>Tags</th>
-		<th>Folgen</th>
-		<th>Besitze ich</th>
-		<th>alle Besitzer</th>
+		<th><%=t 'series.show.tags'%></th>
+		<th><%=t 'series.show.episodes'%></th>
+		<th><%=t 'series.show.i_own'%></th>
+		<th><%=t 'series.show.all_owners'%></th>
 		<th></th>
 	</tr>
 	
 	<% @series.seasons.order("number ASC").each do |season| %>
 	<% @a_season = season %>
 	<tr>
-		<td><%if season.number == 0 then%>Pilotfolge<%else%>Staffel <%= season.number %><%end%></td>
+		<td><%if season.number == 0 then%><%=t 'series.show.pilot'%><%else%><%=t 'series.show.season'%> <%= season.number %><%end%></td>
 		<td><b><%= render 'seasons/taglist' %></b></td>
 		<td><%= @a_season.episodes_count %></td>
 		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
 		<td><%= gen_users_fullname_comma_list season.users %></td>
-		<td><%= link_to 'Bearbeiten', :controller => 'seasons', :action => 'edit',  :id => season.id %></td>
+		<td><%= link_to t('series.show.edit'), :controller => 'seasons', :action => 'edit',  :id => season.id %></td>
 	</tr>
 	<% end %>
 	
 	<tr class="last">
 		<td>
-			<%= link_to 'Staffel hinzufügen', :controller => 'series', :action => 'season_add', :id => @series.id, :mothod => 'puts' %><br />
-			<%= link_to 'Staffel entfernen', :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %>
+			<%= link_to t('series.show.add_season'), :controller => 'series', :action => 'season_add', :id => @series.id, :mothod => 'puts' %><br />
+			<%= link_to t('series.show.remove_season'), :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %>
 		</td>
 		<td></td>
 		<td></td>
 		<td>
-			<%= submit_tag "Speichern" %>
+			<%= submit_tag t('series.show.save') %>
 			</form>
 		</td>
 		<td></td>

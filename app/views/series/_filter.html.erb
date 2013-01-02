@@ -2,7 +2,7 @@
 	<td>
 		<table class="content">
 			<tr>
-				<th>Filter</th>
+				<th><%=t 'series.filter.header' %></th>
 			</tr>
 			<tr>
 				<td>
@@ -10,10 +10,10 @@
 	  <%= check_box(:filter, :complete) %><font color="green"><b>X</b></font>
 	  <%= check_box(:filter, :uncomplete) %><font color="orange"><b>X</b></font>
 	  <%= check_box(:filter, :nothing) %><font color="red"><b>X</b></font>
-	  <%= radio_button(:filter, :relation, :and, { :checked => (User.current.filterrelation == "and") }) %>UND
-	  <%= radio_button(:filter, :relation, :or, { :checked => (User.current.filterrelation == "or") }) %>ODER
-	  <%= collection_select(:filter, :tag_id, Tag.for_series, :id, :full_description, options={:prompt => 'Individuelle Tags'}) %>
-	  <%= f.submit 'Filtern' %>
+	  <%= radio_button(:filter, :relation, :and, { :checked => (User.current.filterrelation == "and") }) %><%=t 'series.filter.and' %>
+	  <%= radio_button(:filter, :relation, :or, { :checked => (User.current.filterrelation == "or") }) %><%=t 'series.filter.or'%>
+	  <%= collection_select(:filter, :tag_id, Tag.for_series, :id, :full_description, options={:prompt => t('series.filter.individual_tags')}) %>
+	  <%= f.submit t('series.filter.filter') %>
 	<% end %>
 				</td>
 			</tr>
