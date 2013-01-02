@@ -1,52 +1,41 @@
 de:
-  users:
-    loginname: "Login-Name"
-    mail_adress: "E-Mail Adresse"
-    firstname: "Vorname"
-    lastname: "Nachname"
-    admin: "Admin?"
-    index:
-      header: "Benutzer"
-      add_user: "Benutzer anlegen"
-      details: "Details"
-      settings: "Einstellungen"
-      delete: "Löschen"
-      confirm_delete: "Sind Sie sicher?"
+  layouts:
+    notice:
+      notice: "Hinweis"
+      alert: "Warnung"
+    application:
+      menu: "Menü"
+  seasons:
+    filter:
+      header: "Filter"
+      and: "UND"
+      or: "ODER"
+      individual_tags: "Individuelle Tags"
+      filter: "Filtern"
     form:
-      replace_x_uncomplete: "Bei unvollständigen Serien 'X' durch höchste Staffel ersetzen"
-      replace_x_complete: "Bei vollständigen Serien 'X' durch höchste Staffel ersetzen"
-      default_filter_relation: "Standart Filter Relation"
-      relation_and: "UND"
-      relation_or: "ODER"
-      shown_cols_in_seriesindex: "Angezeigte Spalten in Serienübersicht"
-      shown_cols_in_seasonsindex: "Angezeigte Spalten in Staffelübersicht"
-      password: "Passwort"
-      repeat_password: "Passwort wiederholen"
+      errors:
+        header: "%{error_count} Fehler aufgetreten"
+      name: "Name"
+      episode_count: "Anzahl Folgen"
+      tags: "Tags"
       save: "Speichern"
-    show:
-      header: "%{username}"
-      edit: "Bearbeiten"
-    new:
-      header: "Neuer Benutzer"
+    taglist:
+      owning: "Man selbst besitzt diese Staffel"
+      not_owning: "Man selbst besitzt diese Staffel nicht"
     edit:
-      header: "%{username} bearbeiten"
-      validate_email: "Emailadresse validieren"
-  #TODO: user_mailer
-  #TODO: tags
-  session:
-    login:
-      header: "Login"
-      login: "Login"
-      password: "Passwort"
-      forgot_password: "Passwort Vergessen"
-    logout:
-      header: "Logout"
-    password:
-      header: "Neues Passwort generieren"
-      loginname: "Loginname"
-      mail_password: "Passwort zuschicken"
-    changelog:
-      # TODO: changelog
+      header: "Staffel bearbeiten"
+    index:
+      header: "Staffeln"
+      export_as_csv: "Als CSV exportieren"
+      filter: "Filter"
+      name: "Name"
+      tags: "Tags"
+      episodes: "Folgen"
+      to_series: "Zu Serie"
+      edit: "Bearbeiten"
+      delete: "Entfernen"
+      owners: "Besitzer"
+      episode_count: "Anzahl Episoden"
   series:
     index:
       header: "Serien"
@@ -97,40 +86,83 @@ de:
       add_season: "Staffel hinzufügen"
       remove_season: "Staffel entfernen"
       save: "Speichern"
-  seasons:
-    filter:
-      header: "Filter"
-      and: "UND"
-      or: "ODER"
-      individual_tags: "Individuelle Tags"
-      filter: "Filtern"
+  session:
+    login:
+      header: "Login"
+      login: "Login"
+      password: "Passwort"
+      forgot_password: "Passwort Vergessen"
+    logout:
+      header: "Logout"
+    password:
+      header: "Neues Passwort generieren"
+      loginname: "Loginname"
+      mail_password: "Passwort zuschicken"
+    changelog:
+      # TODO: changelog
+  tags:
     form:
       errors:
         header: "%{error_count} Fehler aufgetreten"
-      name: "Name"
-      episode_count: "Anzahl Folgen"
-      tags: "Tags"
+      acronym: "Kürzel"
+      acronym_comment: "1 Zeichen; A bis Z"
+      commet: "Kommentar"
+      color: "Farbe"
+      color_comment: "green, red, orange, blue, black oder Hex-Code zB: #FF0000"
+      seasontag: "Staffeltag"
+      seasontag_comment: "gehört zu Staffeln nicht zu Serien"
       save: "Speichern"
-    taglist:
-      owning: "Man selbst besitzt diese Staffel"
-      not_owning: "Man selbst besitzt diese Staffel nicht"
     edit:
-      header: "Staffel bearbeiten"
+      header: "Tag bearbeiten"
     index:
-      header: "Staffeln"
-      export_as_csv: "Als CSV exportieren"
-      filter: "Filter"
-      name: "Name"
-      tags: "Tags"
-      episodes: "Folgen"
-      to_series: "Zu Serie"
+      header: "Tags"
+      create_tag: "Tag anlegen"
+      acronym: "Kürzel"
+      comment: "Kommentar"
+      seasontag: "Staffeltag"
+      priority: "Position"
+      all_seasons: "Man selbst ist Komplettbesitzer der Serie"
+      all_seasons_n: "Man selbst ist Komplettbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)"
+      some_seasons: "Man selbst ist Teilbesitzer der Serie"
+      some_seasons_n: "Man selbst ist Teilbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)"
+      no_season: "Man selbst besitzt keine Staffel dieser Serie"
+      owning_season: "Man selbst besitzt diese Staffel"
+      not_owning_season: "Man selbst besitzt diese Staffel nicht"
       edit: "Bearbeiten"
-      delete: "Entfernen"
-      owners: "Besitzer"
-      episode_count: "Anzahl Episoden"
-  layouts:
-    notice:
-      notice: "Hinweis"
-      alert: "Warnung"
-    application:
-      menu: "Menü"
+      delete: "Löschen"
+      confirm: "Sind Sie sicher?"
+    new:
+      header: "Tag anlegen"
+  #TODO: user_mailer
+  users:
+    loginname: "Login-Name"
+    mail_adress: "E-Mail Adresse"
+    firstname: "Vorname"
+    lastname: "Nachname"
+    admin: "Admin?"
+    index:
+      header: "Benutzer"
+      add_user: "Benutzer anlegen"
+      details: "Details"
+      settings: "Einstellungen"
+      delete: "Löschen"
+      confirm_delete: "Sind Sie sicher?"
+    form:
+      replace_x_uncomplete: "Bei unvollständigen Serien 'X' durch höchste Staffel ersetzen"
+      replace_x_complete: "Bei vollständigen Serien 'X' durch höchste Staffel ersetzen"
+      default_filter_relation: "Standart Filter Relation"
+      relation_and: "UND"
+      relation_or: "ODER"
+      shown_cols_in_seriesindex: "Angezeigte Spalten in Serienübersicht"
+      shown_cols_in_seasonsindex: "Angezeigte Spalten in Staffelübersicht"
+      password: "Passwort"
+      repeat_password: "Passwort wiederholen"
+      save: "Speichern"
+    show:
+      header: "%{username}"
+      edit: "Bearbeiten"
+    new:
+      header: "Neuer Benutzer"
+    edit:
+      header: "%{username} bearbeiten"
+      validate_email: "Emailadresse validieren"

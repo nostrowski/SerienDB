@@ -1,39 +1,39 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
-<h2>Tags</h2>
-<%= link_to 'Tag anlegen', new_tag_path %>&nbsp;
+<h2><%=t 'tags.index.header'%></h2>
+<%= link_to t('tags.index.create_tag'), new_tag_path %>&nbsp;
 </td></tr></table></td></tr>
 
 <tr><td><table class="content rowhighlight">
   <tr>
-    <th>Kürzel</th>
-    <th>Kommentar</th>
-    <th>Staffeltag</th>
-    <th>Position</th>
+    <th><%=t 'tags.index.acronym'%></th>
+    <th><%=t 'tags.index.comment'%></th>
+    <th><%=t 'tags.index.seasontag'%></th>
+    <th><%=t 'tags.index.priority'%></th>
     <th></th>
   </tr>
   
   <tr>
   	<% if User.current.replace_complete_x then %>
-  	<td><font color="green"><b>n</b></font></td><td>Man selbst ist Komplettbesitzer der Serie. (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td>
+  	<td><font color="green"><b>n</b></font></td><td><%=t 'tags.index.all_seasons_n'%></td>
   	<% else %>
-  	<td><font color="green"><b>X</b></font></td><td>Man selbst ist Komplettbesitzer der Serie.</td>
+  	<td><font color="green"><b>X</b></font></td><td><%=t 'tags.index.all_seasons'%></td>
   	<% end %><td><%= check_box_tag "seasontag", '0', false, :disabled => true %></td><td></td><td></td>
   </tr>
   <tr>
   	<% if User.current.replace_uncomplete_x then %>
-  	<td><font color="orange"><b>n</b></font></td><td>Man selbst ist Teilbesitzer der Serie (wobei n die höchste Staffelnummer, der besitzenden Staffeln, ist)</td>
+  	<td><font color="orange"><b>n</b></font></td><td><%=t 'tags.index.some_seasons_n'%></td>
   	<% else %>
-  	<td><font color="orange"><b>X</b></font></td><td>Man selbst ist Teilbesitzer der Serie</td>
+  	<td><font color="orange"><b>X</b></font></td><td><%=t 'tags.index.some_seasons'%></td>
   	<% end %><td><%= check_box_tag "seasontag", '0', false, :disabled => true %></td><td></td><td></td>
   </tr>
   <tr>
-  	<td><font color="red"><b>X</b></font></td><td>Man selbst besitzt keine Staffel dieser Serie</td><td><%= check_box_tag "seasontag", '0', false, :disabled => true %></td><td></td><td></td>
+  	<td><font color="red"><b>X</b></font></td><td><%=t 'tags.index.no_season'%></td><td><%= check_box_tag "seasontag", '0', false, :disabled => true %></td><td></td><td></td>
   </tr>
   <tr>
-  	<td><font color="green"><b>X</b></font></td><td>Man selbst besitzt diese Staffel</td><td><%= check_box_tag "seasontag", '0', 1, :disabled => true %></td><td></td><td></td>
+  	<td><font color="green"><b>X</b></font></td><td><%=t 'tags.index.owning_season'%></td><td><%= check_box_tag "seasontag", '0', 1, :disabled => true %></td><td></td><td></td>
   </tr>
   <tr>
-  	<td><font color="red"><b>X</b></font></td><td>Man selbst besitzt diese Staffel nicht</td><td><%= check_box_tag "seasontag", '0', 1, :disabled => true %></td><td></td><td></td>
+  	<td><font color="red"><b>X</b></font></td><td><%=t 'tags.index.not_owning_season'%></td><td><%= check_box_tag "seasontag", '0', 1, :disabled => true %></td><td></td><td></td>
   </tr>
 
 <% @tags.each do |tag| %>
@@ -44,8 +44,8 @@
     <td><%= link_to '+', {:controller => "tags", :id => tag.id, :action => "priority_up" }, method: :put %>
     	<%= link_to '-', {:controller => "tags", :id => tag.id, :action => "priority_down" }, method: :put %>
     </td>
-    <td><%= link_to 'Bearbeiten', edit_tag_path(tag) %>
-    <%= link_to 'Löschen', tag, confirm: 'Sind Sie sicher?', method: :delete if tag.priority == 0 %></td>
+    <td><%= link_to t('tags.index.edit'), edit_tag_path(tag) %>
+    <%= link_to t('tags.index.delete'), tag, confirm: t('tags.index.confirm'), method: :delete if tag.priority == 0 %></td>
   </tr>
 <% end %>
 </table></td></tr>

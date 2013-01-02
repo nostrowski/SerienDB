@@ -1,6 +1,6 @@
 <% if @tag.errors.any? %>
 <tr><td><table class="content error">
-  <tr><th><%= @tag.errors.count %> Fehler aufgetreten</th></tr>
+  <tr><th><%=t 'tags.form.errors.header', :error_count => @tag.errors.count %></th></tr>
   <tr><td>
     <ul>
     <% @tag.errors.full_messages.each do |msg| %>
@@ -14,23 +14,23 @@
 <tr><td><table class="content"><tr><td>
 <%= form_for(@tag) do |f| %>
   <div class="field">
-    Kürzel:<br />
-    <%= f.text_field :acronym %> (1 Zeichen; A bis Z)
+    <%=t 'tags.form.acronym'%>:<br />
+    <%= f.text_field :acronym %> (<%=t 'tags.form.acronym_comment'%>)
   </div>
   <div class="field">
-    Kommentar:<br />
+    <%=t 'tags.form.comment'%>:<br />
     <%= f.text_area :comment %>
   </div>
   <div class="field">
-    Farbe:<br />
-    <%= f.text_field :color %> (green, red, orange, blue, black oder Hex-Code zB: #FF0000)
+    <%=t 'tags.form.color'%>:<br />
+    <%= f.text_field :color %> (<%=t 'tags.form.color_comment'%>)
   </div>
   <div class="field">
-    Staffeltag:<br />
-    <%= f.check_box :seasontag %> (gehört zu Staffeln nicht zu Serien)
+    <%=t 'tags.form.seasontag'%>:<br />
+    <%= f.check_box :seasontag %> (<%=t 'tags.form.seasontag_comment'%>)
   </div>
   <div class="actions">
-    <%= f.submit('Speichern') %>
+    <%= f.submit(t('tags.form.save')) %>
   </div>
 <% end %>
 </td></tr></table></td></tr>
