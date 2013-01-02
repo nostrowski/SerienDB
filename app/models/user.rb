@@ -3,6 +3,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   has_and_belongs_to_many :seasons
   has_many :sessions
+  has_many :reports
   
   def self.set_current user
     @current_user = user
