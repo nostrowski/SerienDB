@@ -6,9 +6,9 @@ else
 end %>
 "><span title="<%=
 if @a_season.users.include?(User.current) then
-	"Man selbst besitzt diese Staffel"
+	t('seasons.taglist.owning')
 else
-	"Man selbst besitzt diese Staffel nicht"
+	t('seasons.taglist.not_owning')
 end %>
 ">X</span></font>
 <% @a_season.tags.order("priority DESC").each do |tag| %>

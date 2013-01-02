@@ -1,9 +1,9 @@
 <tr><td><table class="content" id="subtitle"><tr><td>
-<h2>Staffeln</h2>
+<h2><%=t 'seasons.index.header'%></h2>
 
-<%= link_to 'Als CSV exportieren', { :controller => "seasons", :format => "csv" } %><%
+<%= link_to t('seasons.index.export_as_csv'), { :controller => "seasons", :format => "csv" } %><%
 if !params[:filter_show] then %> |
-<%= link_to 'Filter', { :controller => "seasons", :filter_show => true } %>
+<%= link_to t('seasons.index.filter'), { :controller => "seasons", :filter_show => true } %>
 <% end %>
 </td></tr></table></td></tr>
 
@@ -11,10 +11,10 @@ if !params[:filter_show] then %> |
 
 <tr><td><table class="content rowhighlight">
   <tr>
-    <th>Name</th>
-    <th>Tags</th>
-    <% if User.current.show_sea_col_episodecount? then %><th>Folgen</th><% end %>
-    <% if User.current.show_sea_col_owner? then %><th>Besitzer</th><% end %>
+    <th><%=t 'seasons.index.name'%></th>
+    <th><%=t 'seasons.index.tags'%></th>
+    <% if User.current.show_sea_col_episodecount? then %><th><%=t 'seasons.index.episodes'%></th><% end %>
+    <% if User.current.show_sea_col_owner? then %><th><%=t 'seasons.index.owners'%></th><% end %>
     <th></th>
   </tr>
 <% @seasons = Season.sort_by_name(@seasons) %>
@@ -26,9 +26,9 @@ if !params[:filter_show] then %> |
     <td><b><%= render 'taglist' %></b></td>
     <% if User.current.show_sea_col_episodecount? then %><td><%= @a_season.episodes_count %></td><% end %>
     <% if User.current.show_sea_col_owner? then %><td><%= gen_users_fullname_comma_list season.users %></td><% end %>
-    <td><%= link_to 'Zu Serie', season.series %>
-    	<%= link_to('Bearbeiten', :action => 'edit', :id => season.id ) %>
-    	<%= link_to('Entfernen', :controller => 'series', :action => 'season_remove', :id => season.series.id, :mothod => 'puts') if season.series.seasons.order("number DESC").first.number == season.number %>
+    <td><%= link_to t('seasons.index.to_series'), season.series %>
+    	<%= link_to(t('seasons.index.edit'), :action => 'edit', :id => season.id ) %>
+    	<%= link_to(t('seasons.index.delete'), :controller => 'series', :action => 'season_remove', :id => season.series.id, :mothod => 'puts') if season.series.seasons.order("number DESC").first.number == season.number %>
     	</td>
   </tr>
   <% end %>

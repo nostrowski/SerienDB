@@ -98,9 +98,34 @@ de:
       remove_season: "Staffel entfernen"
       save: "Speichern"
   seasons:
-    # TODO: Alles
+    filter:
+      header: "Filter"
+      and: "UND"
+      or: "ODER"
+      individual_tags: "Individuelle Tags"
+      filter: "Filtern"
+    form:
+      errors:
+        header: "%{error_count} Fehler aufgetreten"
+      name: "Name"
+      episode_count: "Anzahl Folgen"
+      tags: "Tags"
+      save: "Speichern"
+    taglist:
+      owning: "Man selbst besitzt diese Staffel"
+      not_owning: "Man selbst besitzt diese Staffel nicht"
+    edit:
+      header: "Staffel bearbeiten"
     index:
       header: "Staffeln"
+      export_as_csv: "Als CSV exportieren"
+      filter: "Filter"
+      name: "Name"
+      tags: "Tags"
+      episodes: "Folgen"
+      to_series: "Zu Serie"
+      edit: "Bearbeiten"
+      delete: "Entfernen"
       owners: "Besitzer"
       episode_count: "Anzahl Episoden"
   layouts:

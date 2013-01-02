@@ -1,6 +1,6 @@
 <% if @season.errors.any? %>
 <tr><td><table class="content error">
-  <tr><th><%= @season.errors.count %> Fehler aufgetreten</th></tr>
+  <tr><th><%=t 'seasons.form.errors.header', :error_count => @season.errors.count %></th></tr>
   <tr><td>
     <ul>
     <% @season.errors.full_messages.each do |msg| %>
@@ -14,22 +14,22 @@
 <tr><td><table class="content"><tr><td>
 <%= form_for(@season, :url => { :action => "update", :id => @season.id }, :method => "put") do |f| %>
   <div class="field">
-  	Name:<br />
+  	<%=t 'seasons.form.name'%>:<br />
   	<%= text_field_tag :name, @season.name, :disabled => true %>
   </div>
 
   <div class="field">
-  	Anzahl Folgen:<br />
+  	<%=t 'seasons.form.episode_count'%>:<br />
   	<%= f.text_field :episodes_count %>
   </div>
 
   <div class="field">
-  	<%= f.label :tags %><br />
+  	<%=t 'seasons.form.tags'%><br />
   	<%= f.collection_select :tag_ids, Tag.for_seasons, :id, :full_description, {}, { :multiple => true} %>
   </div>
   
   <div class="actions">
-    <%= f.submit 'Speichern' %>
+    <%= f.submit t('seasons.form.save') %>
   </div>
 <% end %>
 </td></tr></table></td></tr>
