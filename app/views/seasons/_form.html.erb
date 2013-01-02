@@ -18,10 +18,12 @@
   	<%= text_field_tag :name, @season.name, :disabled => true %>
   </div>
 
+  <% if @season.number != 0 then %>
   <div class="field">
   	<%=t 'seasons.form.episode_count'%>:<br />
   	<%= f.text_field :episodes_count %>
   </div>
+  <% end %>
 
   <div class="field">
   	<%=t 'seasons.form.tags'%><br />

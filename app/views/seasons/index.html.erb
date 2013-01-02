@@ -18,13 +18,18 @@ if !params[:filter_show] then %> |
     <th></th>
   </tr>
 <% @seasons = Season.sort_by_name(@seasons) %>
+<% count_of_shown_seasons = 0 %>
+<% count_of_shown_episodes = 0 %>
 <% @seasons.each do |season| %>
   <% @a_season = season %>
   <% if !params[:filter] || !season.is_filtered?(params[:filter]) then %>
+  <% count_of_shown_seasons += 1 %>
+  <% count_of_shown_episodes += season.episodes_count %>
+  <% count_of_shown_episodes += 1 if season.number == 0 %>
   <tr>
     <td><%= season.name %></td>
     <td><b><%= render 'taglist' %></b></td>
-    <% if User.current.show_sea_col_episodecount? then %><td><%= @a_season.episodes_count %></td><% end %>
+    <% if User.current.show_sea_col_episodecount? then %><td><%= if season.number == 0 then "1" else @a_season.episodes_count end %></td><% end %>
     <% if User.current.show_sea_col_owner? then %><td><%= gen_users_fullname_comma_list season.users %></td><% end %>
     <td><%= link_to t('seasons.index.to_series'), season.series %>
     	<%= link_to(t('seasons.index.edit'), :action => 'edit', :id => season.id ) %>
@@ -33,5 +38,16 @@ if !params[:filter_show] then %> |
   </tr>
   <% end %>
 <% end %>
-
+  <tr>
+  	<% colspan_count = 3
+  	colspan_count += 1 if User.current.show_sea_col_owner?
+  	colspan_count += 1 if User.current.show_sea_col_episodecount? %>
+  	<th colspan="<%= colspan_count %>">
+  		<center>
+  		<%= t 'seasons.index.footer_stats',
+  		:season_count => count_of_shown_seasons,
+  		:episode_count => count_of_shown_episodes %>
+  		</center>
+  	</th>
+  </tr>
 </table></td></tr>

@@ -24,7 +24,7 @@
 	<tr>
 		<td><%if season.number == 0 then%><%=t 'series.show.pilot'%><%else%><%=t 'series.show.season'%> <%= season.number %><%end%></td>
 		<td><b><%= render 'seasons/taglist' %></b></td>
-		<td><%= @a_season.episodes_count %></td>
+		<td><%= if season.number == 0 then "1" else @a_season.episodes_count end %></td>
 		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
 		<td><%= gen_users_fullname_comma_list season.users %></td>
 		<td><%= link_to t('series.show.edit'), :controller => 'seasons', :action => 'edit',  :id => season.id %></td>
@@ -37,7 +37,7 @@
 			<%= link_to t('series.show.remove_season'), :controller => 'series', :action => 'season_remove', :id => @series.id, :mothod => 'puts' %>
 		</td>
 		<td></td>
-		<td></td>
+		<td><%= @series.episodes_count %></td>
 		<td>
 			<%= submit_tag t('series.show.save') %>
 			</form>

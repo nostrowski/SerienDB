@@ -36,6 +36,7 @@ de:
       delete: "Entfernen"
       owners: "Besitzer"
       episode_count: "Anzahl Episoden"
+      footer_stats: "%{season_count} Staffeln mit %{episode_count} Folgen"
   series:
     index:
       header: "Serien"

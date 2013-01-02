@@ -92,6 +92,7 @@ class Series < ActiveRecord::Base
     seasons.each do |season|
       @episodes_count += season.episodes_count
     end
+    @episodes_count += 1 if self.pilot?
     return @episodes_count
   end
   

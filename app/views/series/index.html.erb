@@ -14,7 +14,7 @@ if !params[:filter_show] then %> |
   <tr>
     <th><%=t 'series.index.name'%></th>
     <th><%=t 'series.index.tags'%></th>
-    <% if User.current.show_ser_col_complete? then %><th><%=t 'series.index.ownling_complete'%></th><% end %>
+    <% if User.current.show_ser_col_complete? then %><th><%=t 'series.index.owning_complete'%></th><% end %>
     <% if User.current.show_ser_col_uncomplete? then %><th><%=t 'series.index.owning_partly'%></th><% end %>
     <% if User.current.show_ser_col_seasoncount? then %><th><%=t 'series.index.season_count'%></th><% end %>
     <% if User.current.show_ser_col_episodecount? then %><th><%=t 'seasons.index.episode_count'%></th><% end %>
