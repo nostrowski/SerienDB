@@ -171,4 +171,4 @@ de:
       header: "%{username} bearbeiten"
       validate_email: "Emailadresse validieren"
   report:
-    seasons_given: "Der Benutzer %{name} hat Ihnen die folgenden Staffeln der Serie %{series} als habend markiert: %{seasons}"
+    seasons_given: "Der Benutzer '%{name}' hat Ihnen die folgenden Staffeln der Serie '%{series}' als habend markiert: %{seasons}"

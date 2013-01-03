@@ -13,6 +13,7 @@ class Report < ActiveRecord::Base
       unless user.email_valid? then
         user.reports.delete_all
       else
+        #---seasons_given -Reports begin
         user.reports.where(:kind => kinds[:seasons_given]).each do |report|
           seasons = ""
           report.data[:seasons].each do |season|
@@ -26,8 +27,9 @@ class Report < ActiveRecord::Base
           end
           text << I18n.translate('report.seasons_given', :name => User.find(report.data[:from_user]).fullname, :series => Series.find(report.data[:series]).name, :seasons => seasons)
         end
+        #---seasons_given -Reports end
       end
-      UserMailer.send_report(user, text) if text.size > 0
+      UserMailer.send_report(user, text).deliver if text.size > 0
     end
   end
 end
