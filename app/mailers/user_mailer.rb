@@ -16,4 +16,10 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(:to => user.email, :subject => 'SerienDB-RAN - Validierungslink')
   end
+  
+  def send_report(user, text)
+    @user = user
+    @text = text
+    mail(:to => user.email, :subject => 'SerienDB-RAN - Report')
+  end
 end
