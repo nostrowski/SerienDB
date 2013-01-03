@@ -1,9 +1,7 @@
-v2.2
-Einen Cron implementieren, der Stündlich E-Mails an User verschickt, sofern es für diese vorhandene Reports gibt
-
-vX.X
-zusätzliche Sprache: englisch
-
+v2.3
 Zu Serien Marker und Erinnerungen hinzufügen
 
 Möglichkeit schaffen an zu geben ab wann und bis wann ein Staffel-Tag gültig/gesetzt ist
+
+vX.X
+zusätzliche Sprache: englisch
