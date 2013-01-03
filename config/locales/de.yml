@@ -87,6 +87,9 @@ de:
       add_season: "Staffel hinzufügen"
       remove_season: "Staffel entfernen"
       save: "Speichern"
+      give: "Geben"
+      give_to: "An:"
+      select_user: "-Benutzer wählen-"
   session:
     login:
       header: "Login"
@@ -100,7 +103,7 @@ de:
       loginname: "Loginname"
       mail_password: "Passwort zuschicken"
     changelog:
-      # TODO: changelog
+      #TODO: changelog
   tags:
     form:
       errors:

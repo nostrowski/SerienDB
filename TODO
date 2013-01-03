@@ -1,9 +1,6 @@
 v2.2
 Einen Cron implementieren, der Stündlich E-Mails an User verschickt, sofern es für diese vorhandene Reports gibt
 
-Möglichkeit schaffen anderen Personen eine Staffel (bzw Serie) als habend zu markieren
-- Der User soll einen entsprechenden Report per E-Mail erhaten
-
 vX.X
 zusätzliche Sprache: englisch
 

@@ -10,6 +10,7 @@ de:
       removed: "Staffel erfolgreich entfernt!"
       saved: "Staffel erfolgreich gespeichert!"
       updated: "Staffel erfolgreich aktualisiert!"
+    seasons_given: "Staffeln wurden erfolgreich als gegeben markiert!"
     series:
       created: "Serie wurde erfolgreich erstellt!"
       removed: "Serie erfolgreich entfernt!"
@@ -26,12 +27,14 @@ de:
   alert:
     login_incorrect: "Login-Name nicht korrekt!"
     no_login: "Nicht eingeloggt!"
+    no_user_selected: "Es muss ein Benutzer gewählt werden, dem die Staffeln übergeben werden!"
     password_incorrect: "Passwort nicht korrekt!"
     privilegs_needed: "Spezielle Rechte erforderlich!"
     removing:
       pilot_not_allowed: "Entfernen der Pilotfolge, auf diesem Weg, nicht erlaubt!"
       season_not_allowed: "Entfernen der Staffel nicht erlaubt! Staffel hat noch Besitzer."
       series_not_allowed: "Entfernen der Serie nicht erlaubt! Staffeln haben noch Besitzer."
+    some_seasons_not_given: "Die Staffeln, die Sie nicht selbst besitzen, wurden nicht als gegeben markiert!"
     validate_email: "Bitte Emailadresse validieren!"
     validate_email_long: "Emailadresse ist nicht validiert worden. Diese Funktion ist Ihnen nicht erlaubt! Bitte kontaktieren Sie einen Administrator!"
     validation_incorrect: "Validation-Code nicht korrekt!"

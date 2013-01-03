@@ -48,8 +48,20 @@ class SeriesController < ApplicationController
   def save
     series = Series.find(params[:id])
     
-    series.update_selected_seasons! params
-    redirect_to series, notice: t('notice.season.saved')
+    if params[:give] then
+      if params[:user_id] == "" then
+        redirect_to series, alert: t('alert.no_user_selected')
+      else
+        if series.give_selected_seasons!(params) == 1 then
+          redirect_to series, alert: t('alert.some_seasons_not_given')
+        else
+          redirect_to series, notice: t('notice.seasons_given')
+        end
+      end
+    else
+      series.update_selected_seasons! params
+      redirect_to series, notice: t('notice.season.saved')
+    end
   end
 
   # GET /series/new

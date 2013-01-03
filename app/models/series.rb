@@ -104,6 +104,32 @@ class Series < ActiveRecord::Base
     update_editor!
   end
   
+  def give_selected_seasons! params
+    ret = 0
+    user = User.find(params[:user_id])
+    report = Report.new
+    report.user = user
+    report.kind = Report.kinds[:seasons_given]
+    report.data = Hash.new
+    report.data[:series] = self.id
+    report.data[:from_user] = User.current.id
+    report.data[:seasons] = Array.new
+    seasons.each do |season|
+      if params["gs#{season.number}"] then
+        if season.users.include?(User.current) then
+          season.users.delete(user)
+          season.users << user
+          report.data[:seasons] << season.number
+        else
+          ret = 1
+        end
+      end 
+    end
+    report.save if report.data[:seasons].size > 0
+    update_editor!
+    return ret
+  end
+  
   def update_attributes params
     had_an_error = false
     self.name = params[:name] if params[:name]

@@ -8,6 +8,6 @@ class Report < ActiveRecord::Base
   end
   
   def self.send_as_mail
-    
+    #TODO: send_as_mail implementieren
   end
 end

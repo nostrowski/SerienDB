@@ -15,6 +15,7 @@
 		<th><%=t 'series.show.tags'%></th>
 		<th><%=t 'series.show.episodes'%></th>
 		<th><%=t 'series.show.i_own'%></th>
+		<th><%=t 'series.show.give'%></th>
 		<th><%=t 'series.show.all_owners'%></th>
 		<th></th>
 	</tr>
@@ -25,8 +26,9 @@
 		<td><%if season.number == 0 then%><%=t 'series.show.pilot'%><%else%><%=t 'series.show.season'%> <%= season.number %><%end%></td>
 		<td><b><%= render 'seasons/taglist' %></b></td>
 		<td><%= if season.number == 0 then "1" else @a_season.episodes_count end %></td>
-		<td><%= check_box_tag "s#{season.number}", '0', season.users_fullname.include?(User.current.fullname) %></td>
-		<td><%= gen_users_fullname_comma_list season.users %></td>
+		<td><%= check_box_tag "s#{season.number}", '0', season.users.include?(User.current) %></td>
+		<td><%= check_box_tag "gs#{season.number}", '0', false %></td>
+		<td><%= gen_users_fullname_comma_list season.users.sort %></td>
 		<td><%= link_to t('series.show.edit'), :controller => 'seasons', :action => 'edit',  :id => season.id %></td>
 	</tr>
 	<% end %>
@@ -39,11 +41,15 @@
 		<td></td>
 		<td><%= @series.episodes_count %></td>
 		<td>
-			<%= submit_tag t('series.show.save') %>
-			</form>
+			<%= button_tag(t('series.show.save') ,:type => 'submit', :name => :save) %>
+		</td>
+		<td>
+			<%= button_tag(t('series.show.give_to') ,:type => 'submit', :name => :give) %><br />
+			<%= collection_select(nil, :user_id, User.all, :id, :fullname, options={:prompt => t('series.show.select_user')}) %>
 		</td>
 		<td></td>
 		<td></td>
 	</tr>
 	
 </table>
+</form>
