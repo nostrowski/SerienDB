@@ -16,14 +16,14 @@ class Report < ActiveRecord::Base
         #---seasons_given -Reports begin
         user.reports.where(:kind => kinds[:seasons_given]).each do |report|
           seasons = ""
-          report.data[:seasons].each do |season|
+          report.data[:seasons].sort.each do |season|
             if season == 0 then
               seasons += I18n.translate('series.show.pilot')
             else
               seasons += I18n.translate('series.show.season')
               seasons += " #{season}"
             end
-            seasons += ", " unless season == report.data[:seasons].last
+            seasons += ", " unless season == report.data[:seasons].sort.last
           end
           text << I18n.translate('report.seasons_given', :name => User.find(report.data[:from_user]).fullname, :series => Series.find(report.data[:series]).name, :seasons => seasons)
           report.delete
