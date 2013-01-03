@@ -26,6 +26,7 @@ class Report < ActiveRecord::Base
             seasons += ", " unless season == report.data[:seasons].last
           end
           text << I18n.translate('report.seasons_given', :name => User.find(report.data[:from_user]).fullname, :series => Series.find(report.data[:series]).name, :seasons => seasons)
+          report.delete
         end
         #---seasons_given -Reports end
       end
